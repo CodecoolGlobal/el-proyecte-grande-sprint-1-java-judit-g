@@ -1,5 +1,7 @@
 package com.codecool.ratemydrivinginstructorbackend.controller;
 
+import com.codecool.ratemydrivinginstructorbackend.dto.InstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.dto.NewInstructorDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class InstructorController {
     }
 
     @PostMapping("/instructor")
-    public void createInstructor(@RequestBody InstructorDTO instructor) {
+    public void createInstructor(@RequestBody NewInstructorDTO instructor) {
         instructorService.createInstructor(instructor);
     }
 
