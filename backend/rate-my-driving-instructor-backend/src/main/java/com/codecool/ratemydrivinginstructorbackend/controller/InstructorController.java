@@ -27,8 +27,8 @@ public class InstructorController {
         instructorService.createInstructor(instructor);
     }
 
-    @PutMapping("/instructor/{instrucorId}")
-    public void updateInstructor(@PathVariable int instrucorId, @RequestBody InstructorDTO instructor) {
-        instructorService.updateInstructor(instrucorId, instructor);
+    @PutMapping("/instructor/{instructorId}")
+    public void updateInstructor(@PathVariable int instructorId, @RequestBody InstructorDTO instructor) {
+        instructorService.updateInstructor(instructorId, instructor);
     }
 }
