@@ -1,4 +1,4 @@
-package com.codecool.ratemydrivinginstructorbackend.model;
+package com.codecool.ratemydrivinginstructorbackend.repository.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,5 +29,13 @@ public class School {
 
     public boolean addInstructor(Instructor instructor) {
         return instructors.add(instructor);
+    }
+
+    public boolean isId(int id) {
+        return this.id == id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

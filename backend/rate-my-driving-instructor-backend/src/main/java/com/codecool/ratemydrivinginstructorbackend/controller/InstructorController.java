@@ -1,7 +1,8 @@
 package com.codecool.ratemydrivinginstructorbackend.controller;
 
-import com.codecool.ratemydrivinginstructorbackend.dto.InstructorDTO;
-import com.codecool.ratemydrivinginstructorbackend.dto.NewInstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.dto.InstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.service.InstructorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,21 +22,21 @@ public class InstructorController {
 
     @GetMapping("/instructor/{instructorId}")
     public InstructorDTO getInstructor(@PathVariable int instructorId) {
-        return instructorService.getInstructor(instructorId);
+        return instructorService.getInstructorById(instructorId);
     }
 
     @PostMapping("/instructor")
-    public void createInstructor(@RequestBody NewInstructorDTO instructor) {
-        instructorService.createInstructor(instructor);
+    public boolean createInstructor(@RequestBody NewInstructorDTO instructor) {
+        return instructorService.createInstructor(instructor);
     }
 
     @PutMapping("/instructor/{instructorId}")
-    public void updateInstructor(@PathVariable int instructorId, @RequestBody InstructorDTO instructor) {
-        instructorService.updateInstructor(instructorId, instructor);
+    public boolean updateInstructor(@PathVariable int instructorId, @RequestBody InstructorDTO instructor) {
+        return instructorService.updateInstructor(instructorId, instructor);
     }
 
     @DeleteMapping("/instructor/{instructorId}")
-    public void deleteInstructor(@PathVariable int instructorId) {
-        instructorService.deleteInstructor(instructorId);
+    public boolean deleteInstructor(@PathVariable int instructorId) {
+        return instructorService.deleteInstructor(instructorId);
     }
 }

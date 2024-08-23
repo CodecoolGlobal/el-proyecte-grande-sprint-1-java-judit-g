@@ -1,4 +1,4 @@
-package com.codecool.ratemydrivinginstructorbackend.model;
+package com.codecool.ratemydrivinginstructorbackend.repository.model;
 
 public class Review {
 
