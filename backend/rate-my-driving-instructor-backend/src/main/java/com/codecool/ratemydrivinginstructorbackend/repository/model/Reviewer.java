@@ -3,7 +3,7 @@ package com.codecool.ratemydrivinginstructorbackend.repository.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class Reviewer {
 
     private static final int userCount = 0;
 
@@ -11,7 +11,7 @@ public class User {
     private String name;
     private List<Review> reviews;
 
-    public User(String name) {
+    public Reviewer(String name) {
         this.id += userCount;
         this.name = name;
         this.reviews = new ArrayList<>();

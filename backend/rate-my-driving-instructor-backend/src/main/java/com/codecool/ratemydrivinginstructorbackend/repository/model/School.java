@@ -9,6 +9,7 @@ public class School {
 
     private int id;
     private String name;
+    //create a class from the address details
     private String city;
     private String streetName;
     private String streetNumber;

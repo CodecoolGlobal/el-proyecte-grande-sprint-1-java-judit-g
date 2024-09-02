@@ -8,6 +8,7 @@ import com.codecool.ratemydrivinginstructorbackend.service.exception.InstructorC
 import com.codecool.ratemydrivinginstructorbackend.service.exception.InstructorNotFoundException;
 import com.codecool.ratemydrivinginstructorbackend.repository.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.model.Instructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class InstructorService {
     private SchoolRepository schoolRepository;
     private InstructorMapper instructorMapper;
 
+    @Autowired
     public InstructorService(InstructorRepository instructorRepository, SchoolRepository schoolRepository, InstructorMapper instructorMapper) {
         this.instructorRepository = instructorRepository;
         this.schoolRepository = schoolRepository;
@@ -43,14 +45,16 @@ public class InstructorService {
     public boolean createInstructor(NewInstructorDTO newInstructorDTO) {
         int schoolId = newInstructorDTO.schoolId();
         Optional<School> optionalSchool = schoolRepository.getSchoolById(schoolId);
+
         if (optionalSchool.isPresent()) {
             Instructor instructor = instructorMapper.mapNewInstructorDTOToInstructor(newInstructorDTO, optionalSchool.get());
             return instructorRepository.addInstructor(instructor);
         } else {
-            throw new InstructorCannotBeCreatedException();
+            throw new InstructorCannotBeCreatedException(); //could be a concrete message in the exception
         }
     }
 
+    //service should find the instructor, update and then the repo should save it in the database
     public boolean updateInstructor(int id, InstructorDTO instructorDTO) {
         return instructorRepository.getInstructorById(id)
                 .map(existingInstructor -> instructorMapper.mapInstructorDTOToInstructor(instructorDTO))

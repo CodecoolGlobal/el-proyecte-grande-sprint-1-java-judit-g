@@ -13,7 +13,7 @@ public class InstructorControllerAdvice {
 
     @ResponseBody
     @ExceptionHandler(InstructorNotFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     public String instructorNotFoundExceptionHandler(InstructorNotFoundException instructorNotFoundException) {
         return instructorNotFoundException.getMessage();
     }
