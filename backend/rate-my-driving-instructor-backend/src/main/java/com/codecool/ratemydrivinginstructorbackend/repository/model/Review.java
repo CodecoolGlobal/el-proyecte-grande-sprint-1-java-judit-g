@@ -1,18 +1,18 @@
-package com.codecool.ratemydrivinginstructorbackend.model;
+package com.codecool.ratemydrivinginstructorbackend.repository.model;
 
 public class Review {
 
     private static final int reviewCount = 0;
 
     private int id;
-    private User user;
+    private Reviewer reviewer;
     private String description;
     private int rating;
     private Instructor instructor;
 
-    public Review(User user, String description, int rating, Instructor instructor) {
+    public Review(Reviewer reviewer, String description, int rating, Instructor instructor) {
         this.id += reviewCount;
-        this.user = user;
+        this.reviewer = reviewer;
         this.description = description;
         this.rating = rating;
         this.instructor = instructor;
