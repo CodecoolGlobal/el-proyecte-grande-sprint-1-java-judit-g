@@ -1,12 +1,14 @@
 package com.codecool.ratemydrivinginstructorbackend.repository;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.model.School;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Repository
 public class MemorySchoolRepository implements SchoolRepository {
 
     private final Set<School> schools;
