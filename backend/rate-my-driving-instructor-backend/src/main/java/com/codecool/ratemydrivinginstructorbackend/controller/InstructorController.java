@@ -4,7 +4,7 @@ import com.codecool.ratemydrivinginstructorbackend.dto.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.dto.NewInstructorDTO;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 public class InstructorController {
@@ -15,7 +15,7 @@ public class InstructorController {
     }
 
     @GetMapping("/instructor")
-    public List<InstructorDTO> getAllinstructors() {
+    public Set<InstructorDTO> getAllInstructors() {
         return instructorService.getAllInstructors();
     }
 
