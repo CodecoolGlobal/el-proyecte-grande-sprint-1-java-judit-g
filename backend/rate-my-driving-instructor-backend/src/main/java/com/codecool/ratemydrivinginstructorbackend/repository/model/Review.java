@@ -1,10 +1,15 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Review {
 
     private static final int reviewCount = 0;
 
-    private int id;
+    @Id
+    private Long id;
     private Reviewer reviewer;
     private String description;
     private int rating;
@@ -16,5 +21,17 @@ public class Review {
         this.description = description;
         this.rating = rating;
         this.instructor = instructor;
+    }
+
+    public Review() {
+
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
