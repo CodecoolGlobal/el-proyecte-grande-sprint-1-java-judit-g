@@ -18,7 +18,7 @@ public class SchoolController {
     }
 
     @GetMapping
-    public List<SchoolDTO> getAllInstructors() {
+    public List<SchoolDTO> getAllSchools() {
         return schoolService.getAllSchools();
     }
 

@@ -90,4 +90,12 @@ public class School {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(UUID publicId) {
+        this.publicId = publicId;
+    }
 }
