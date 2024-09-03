@@ -1,19 +1,16 @@
 package com.codecool.ratemydrivinginstructorbackend.repository;
 
-import com.codecool.ratemydrivinginstructorbackend.repository.model.Instructor;
+import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.instructor.InstructorEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 import java.util.Set;
 
-public interface InstructorRepository {
-
-    boolean addInstructor(Instructor instructor);
-
-    Set<Instructor> getAllInstructors();
-
-    Optional<Instructor> getInstructorById(int instructorId);
-
-    boolean updateInstructor(Instructor instructor);
-
-    boolean deleteInstructor(int id);
+@Repository
+public interface InstructorRepository extends JpaRepository<InstructorEntity, Long> {
+    Optional<InstructorEntity> findByName(String name);
+    Optional<Set<InstructorEntity>> getAllInstructorsBySchoolId(Long schoolId);
+    void save(NewInstructorDTO newInstructorDTO);
 }

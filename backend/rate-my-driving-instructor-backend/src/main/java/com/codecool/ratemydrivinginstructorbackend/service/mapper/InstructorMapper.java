@@ -1,36 +1,39 @@
-package com.codecool.ratemydrivinginstructorbackend.service.mapper;
+package com.codecool.ratemydrivinginstructorbackend.service;
 
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorDTO;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.Instructor;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.school.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.instructor.InstructorEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InstructorMapper {
 
-    public Instructor mapNewInstructorDTOToInstructor(NewInstructorDTO newInstructorDTO, School school) {
-        return new Instructor(
+    public InstructorEntity mapNewInstructorDTOToInstructor(NewInstructorDTO newInstructorDTO, School school) {
+        return new InstructorEntity(
                 newInstructorDTO.firstName(),
                 newInstructorDTO.lastName(),
-                school);
+                school,
+                newInstructorDTO.licenseTypeSet());
     }
 
-    public Instructor mapInstructorDTOToInstructor(InstructorDTO instructorDTO) {
-        return new Instructor(
+    public InstructorEntity mapInstructorDTOToInstructor(InstructorDTO instructorDTO) {
+        return new InstructorEntity(
                 instructorDTO.firstName(),
                 instructorDTO.lastName(),
+                instructorDTO.school(),
                 instructorDTO.reviews(),
-                instructorDTO.school()
+                instructorDTO.licenseTypeSet()
         );
     }
 
-    public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor) {
+    public InstructorDTO mapInstructorToInstructorDTO(InstructorEntity instructor) {
         return new InstructorDTO(
                 instructor.getFirstName(),
                 instructor.getLastName(),
                 instructor.getSchool(),
-                instructor.getReviews()
+                instructor.getReviews(),
+                instructor.getLicenseType()
         );
     }
 }

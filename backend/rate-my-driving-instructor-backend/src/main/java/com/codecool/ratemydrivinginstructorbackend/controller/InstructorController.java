@@ -6,7 +6,7 @@ import com.codecool.ratemydrivinginstructorbackend.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/instructor")
@@ -19,28 +19,33 @@ public class InstructorController {
         this.instructorService = instructorService;
     }
 
-    @GetMapping
-    public List<InstructorDTO> getAllInstructors() {
+    @GetMapping("/all")
+    public Set<InstructorDTO> getAllInstructors() {
         return instructorService.getAllInstructors();
     }
 
+    @GetMapping("/{schoolId}")
+    public Set<InstructorDTO> getInstructorsBySchoolId(@PathVariable Long schoolId) {
+        return instructorService.getInstructorsBySchoolId(schoolId);
+    }
+
     @GetMapping("/{instructorId}")
-    public InstructorDTO getInstructor(@PathVariable int instructorId) {
+    public InstructorDTO getInstructor(@PathVariable Long instructorId) {
         return instructorService.getInstructorById(instructorId);
     }
 
-    @PostMapping
-    public boolean createInstructor(@RequestBody NewInstructorDTO instructor) {
-        return instructorService.createInstructor(instructor);
+    @PostMapping("/create")
+    public void createInstructor(@RequestBody NewInstructorDTO newInstructorDTO) {
+        instructorService.postNewInstructor(newInstructorDTO);
     }
 
     @PutMapping("/{instructorId}")
-    public boolean updateInstructor(@PathVariable int instructorId, @RequestBody InstructorDTO instructor) {
-        return instructorService.updateInstructor(instructorId, instructor);
+    public void updateInstructor(@PathVariable Long instructorId, @RequestBody InstructorDTO instructor) {
+        instructorService.updateInstructor(instructorId, instructor);
     }
 
     @DeleteMapping("/{instructorId}")
-    public boolean deleteInstructor(@PathVariable int instructorId) {
-        return instructorService.deleteInstructor(instructorId);
+    public void deleteInstructor(@PathVariable Long instructorId) {
+        instructorService.deleteInstructor(instructorId);
     }
 }
