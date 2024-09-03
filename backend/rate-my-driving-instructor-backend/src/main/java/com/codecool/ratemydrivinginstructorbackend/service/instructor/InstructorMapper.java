@@ -4,13 +4,16 @@ import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instruc
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.NewInstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
-import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
+import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
+import com.codecool.ratemydrivinginstructorbackend.service.review.ReviewMapper;
+import com.codecool.ratemydrivinginstructorbackend.service.school.SchoolMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class InstructorMapper {
@@ -23,22 +26,12 @@ public class InstructorMapper {
                 newInstructorDTO.licenseTypeSet());
     }
 
-    public Instructor mapInstructorDTOToInstructor(InstructorDTO instructorDTO) {
-        return new Instructor(
-                instructorDTO.firstName(),
-                instructorDTO.lastName(),
-                instructorDTO.school(),
-                instructorDTO.reviews(),
-                instructorDTO.licenseTypeSet()
-        );
-    }
-
-    public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor, SchoolNameDTO schoolNameDTO, Set<ReviewDTO> reviews) {
+    public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor, SchoolMapper schoolMapper, ReviewMapper reviewMapper) {
         return new InstructorDTO(
                 instructor.getFirstName(),
                 instructor.getLastName(),
-                schoolNameDTO,
-                reviews,
+                schoolMapper.mapSchoolToSchoolNameDTO(instructor.getSchool()),
+                mapReviewsToReviewDTOs(instructor.getReviews(), reviewMapper),
                 instructor.getLicenseType()
         );
     }
@@ -49,5 +42,17 @@ public class InstructorMapper {
                 instructor.getLastName(),
                 instructor.getPublicId()
         );
+    }
+
+    public Set<InstructorNameDTO> mapInstructorsToNameDTOs(Set<Instructor> instructors) {
+        return instructors.stream()
+                .map(this::mapInstructorToInstructorNameDTO)
+                .collect(Collectors.toSet());
+    }
+
+    private Set<ReviewDTO> mapReviewsToReviewDTOs(Set<Review> reviews, ReviewMapper reviewMapper) {
+        return  reviews.stream()
+                .map(reviewMapper::mapReviewToReviewDTO)
+                .collect(Collectors.toSet());
     }
 }

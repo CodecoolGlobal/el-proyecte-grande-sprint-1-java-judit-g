@@ -10,6 +10,8 @@ import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
 import com.codecool.ratemydrivinginstructorbackend.service.review.exception.ReviewNotCreatedException;
 import com.codecool.ratemydrivinginstructorbackend.service.review.exception.ReviewNotFoundException;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.NewReviewDTO;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -23,6 +25,7 @@ public class ReviewService {
     private final ReviewerRepository reviewerRepository;
     private final ReviewMapper reviewMapper;
 
+    @Autowired
     public ReviewService(ReviewRepository reviewRepository, InstructorRepository instructorRepository, ReviewerRepository reviewerRepository, ReviewMapper reviewMapper) {
         this.reviewRepository = reviewRepository;
         this.instructorRepository = instructorRepository;
@@ -55,6 +58,7 @@ public class ReviewService {
         reviewRepository.deleteById(review.getPrivateId());
     }
 
+    @Transactional
     public ReviewDTO updateReview(ReviewDTO reviewDTO) {
         Optional<Review> optionalReview = reviewRepository.findByPublicId(reviewDTO.publicId());
 
