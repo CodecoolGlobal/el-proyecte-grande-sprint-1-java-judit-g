@@ -3,10 +3,14 @@ package com.codecool.ratemydrivinginstructorbackend.repository.model.school;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.util.UUID;
+
 @Entity
 public class Address {
     @Id
     private long id;
+
+    private UUID publicId;
     private String city;
     private String streetName;
     private String streetNumber;
@@ -18,6 +22,7 @@ public class Address {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postCode = postCode;
+        this.publicId = UUID.randomUUID();
     }
 
     public Address() {

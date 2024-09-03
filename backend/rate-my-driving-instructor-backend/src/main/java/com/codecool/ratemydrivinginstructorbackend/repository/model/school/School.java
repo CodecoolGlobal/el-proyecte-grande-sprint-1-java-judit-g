@@ -8,6 +8,7 @@ import jakarta.persistence.OneToOne;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 public class School {
@@ -20,6 +21,8 @@ public class School {
     @OneToMany
     private Set<Instructor> instructors;
 
+
+    private UUID publicId;
     private String name;
     private String phoneNumber;
 
@@ -28,6 +31,7 @@ public class School {
         this.instructors = instructors;
         this.name = name;
         this.phoneNumber = phoneNumber;
+        this.publicId = UUID.randomUUID();
     }
 
     public School() {
