@@ -9,8 +9,6 @@ import java.util.UUID;
 @Repository
 public interface SchoolRepository extends JpaRepository<School, Long> {
 
-    Optional<School> findBySchoolId(Long schoolId);
-
     Optional<School> findByPublicId(UUID publicId);
 
     Optional<School> deleteByPublicId(UUID publicId);

@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
-    Optional<Set<Instructor>> getAllInstructorsBySchoolPublicId(UUID schoolId);
+    Set<Instructor> getAllInstructorsBySchoolPublicId(UUID schoolId);
 
     Optional<Instructor> findInstructorByPublicId(UUID publicId);
 

@@ -3,10 +3,7 @@ package com.codecool.ratemydrivinginstructorbackend.repository.school;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +11,10 @@ import java.util.UUID;
 
 @Entity
 public class School {
+
     @Id
-    private long id;
+    @GeneratedValue
+    private long privateId;
 
     @OneToOne
     private SchoolAddress schoolAddress;
@@ -23,7 +22,7 @@ public class School {
     @OneToMany
     private Set<Instructor> instructors;
 
-    private UUID publicId;
+    private UUID publicId = UUID.randomUUID();
     private String name;
     private String phoneNumber;
 
@@ -41,15 +40,15 @@ public class School {
     }
 
     public boolean isId(int id) {
-        return this.id == id;
+        return this.privateId == id;
     }
 
-    public long getId() {
-        return id;
+    public long getPrivateId() {
+        return privateId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setPrivateId(long id) {
+        this.privateId = id;
     }
 
     public String getName() {

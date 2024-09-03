@@ -2,6 +2,7 @@ package com.codecool.ratemydrivinginstructorbackend.service.review;
 
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.NewReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
+import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
 import org.springframework.stereotype.Component;
