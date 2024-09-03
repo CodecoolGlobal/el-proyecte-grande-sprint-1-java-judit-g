@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class InstructorEntity {
+public class Instructor {
     @Id
     @GeneratedValue
     private Long id;
@@ -28,7 +28,7 @@ public class InstructorEntity {
     private Set<Review> reviews;
 
 
-    public InstructorEntity(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {
+    public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
@@ -36,11 +36,11 @@ public class InstructorEntity {
         this.licenseType = licenseType;
     }
 
-    public InstructorEntity() {
+    public Instructor() {
 
     }
 
-    public InstructorEntity(String s, String s1, School school, Set<LicenseType> licenseType) {
+    public Instructor(String s, String s1, School school, Set<LicenseType> licenseType) {
         this.firstName = s;
         this.lastName = s1;
         this.school = school;

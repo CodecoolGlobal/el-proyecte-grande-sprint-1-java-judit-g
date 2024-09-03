@@ -3,13 +3,13 @@ package com.codecool.ratemydrivinginstructorbackend.service;
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.InstructorRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.instructor.InstructorEntity;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.service.exception.InstructorNotFoundException;
+import com.codecool.ratemydrivinginstructorbackend.service.exception.SchoolNotFoundException;
 import com.codecool.ratemydrivinginstructorbackend.service.mapper.InstructorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,13 +31,13 @@ public class InstructorService {
     }
 
     public void updateInstructor(Long instructorId, InstructorDTO instructorDTO) {
-        Optional<InstructorEntity> optionalInstructor = instructorRepository.findById(instructorId);
-        optionalInstructor.flatMap(instructorEntity -> {
-            instructorEntity.setFirstName(instructorDTO.firstName());
-            instructorEntity.setLastName(instructorDTO.lastName());
-            instructorEntity.setReviews(instructorDTO.reviews());
-            instructorEntity.setLicenseType(instructorDTO.licenseTypeSet());
-            return Optional.of(instructorRepository.save(instructorEntity));
+        Optional<Instructor> optionalInstructor = instructorRepository.findById(instructorId);
+        optionalInstructor.flatMap(instructor -> {
+            instructor.setFirstName(instructorDTO.firstName());
+            instructor.setLastName(instructorDTO.lastName());
+            instructor.setReviews(instructorDTO.reviews());
+            instructor.setLicenseType(instructorDTO.licenseTypeSet());
+            return Optional.of(instructorRepository.save(instructor));
         });
         if (optionalInstructor.isEmpty()) {
             throw new InstructorNotFoundException();
@@ -50,12 +50,12 @@ public class InstructorService {
 
     public Set<InstructorDTO> getAllInstructors() {
         return instructorRepository.findAll().stream()
-                .map(instructorEntity -> instructorMapper.mapInstructorToInstructorDTO(instructorEntity))
+                .map(instructor -> instructorMapper.mapInstructorToInstructorDTO(instructor))
                 .collect(Collectors.toUnmodifiableSet());
     }
 
     public InstructorDTO getInstructorById(Long instructorId) {
-        Optional<InstructorEntity> optionalInstructor = instructorRepository.findById(instructorId);
+        Optional<Instructor> optionalInstructor = instructorRepository.findById(instructorId);
         if (optionalInstructor.isEmpty()) {
             throw new InstructorNotFoundException();
         }
@@ -63,12 +63,12 @@ public class InstructorService {
     }
 
     public Set<InstructorDTO> getInstructorsBySchoolId(Long schoolId) {
-        Optional<Set<InstructorEntity>> instructorEntitiesBySchoolId = instructorRepository.getAllInstructorsBySchoolId(schoolId);
+        Optional<Set<Instructor>> instructorEntitiesBySchoolId = instructorRepository.getAllInstructorsBySchoolId(schoolId);
         if (instructorEntitiesBySchoolId.isEmpty()) {
-            throw new SchoolNotFoundException();
+            throw new SchoolNotFoundException("No school find by the given I");
         }
         return instructorEntitiesBySchoolId.get().stream()
-                .map(instructorEntity -> instructorMapper.mapInstructorToInstructorDTO(instructorEntity))
+                .map(instructor -> instructorMapper.mapInstructorToInstructorDTO(instructor))
                 .collect(Collectors.toUnmodifiableSet());
     }
 }

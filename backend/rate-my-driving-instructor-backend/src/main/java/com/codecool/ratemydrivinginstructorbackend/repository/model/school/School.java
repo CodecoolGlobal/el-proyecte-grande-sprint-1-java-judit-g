@@ -1,6 +1,5 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.model.school;
 
-import com.codecool.ratemydrivinginstructorbackend.repository.model.Instructor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
