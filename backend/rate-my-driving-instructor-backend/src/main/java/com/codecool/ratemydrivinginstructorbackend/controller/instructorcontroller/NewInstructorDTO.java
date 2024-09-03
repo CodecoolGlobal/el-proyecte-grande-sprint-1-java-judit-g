@@ -1,4 +1,4 @@
-package com.codecool.ratemydrivinginstructorbackend.controller.dto;
+package com.codecool.ratemydrivinginstructorbackend.controller.instructorcontroller;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.model.instructor.LicenseType;
 
