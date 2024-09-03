@@ -5,6 +5,7 @@ import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorD
 import com.codecool.ratemydrivinginstructorbackend.repository.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.model.instructor.InstructorEntity;
 import com.codecool.ratemydrivinginstructorbackend.service.exception.InstructorNotFoundException;
+import com.codecool.ratemydrivinginstructorbackend.service.mapper.InstructorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

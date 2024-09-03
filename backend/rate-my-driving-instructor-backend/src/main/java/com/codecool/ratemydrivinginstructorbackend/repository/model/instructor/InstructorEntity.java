@@ -1,7 +1,7 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.model.instructor;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.model.Review;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.school.School;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
