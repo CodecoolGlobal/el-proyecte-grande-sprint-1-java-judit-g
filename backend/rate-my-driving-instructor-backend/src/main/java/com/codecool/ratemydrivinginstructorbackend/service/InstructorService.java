@@ -3,11 +3,12 @@ package com.codecool.ratemydrivinginstructorbackend.service;
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.SchoolRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.school.School;
 import com.codecool.ratemydrivinginstructorbackend.service.exception.InstructorCannotBeCreatedException;
 import com.codecool.ratemydrivinginstructorbackend.service.exception.InstructorNotFoundException;
 import com.codecool.ratemydrivinginstructorbackend.repository.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.model.Instructor;
+import com.codecool.ratemydrivinginstructorbackend.service.mapper.InstructorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +44,8 @@ public class InstructorService {
     }
 
     public boolean createInstructor(NewInstructorDTO newInstructorDTO) {
-        int schoolId = newInstructorDTO.schoolId();
-        Optional<School> optionalSchool = schoolRepository.getSchoolById(schoolId);
+        long schoolId = newInstructorDTO.schoolId();
+        Optional<School> optionalSchool = schoolRepository.findBySchoolId(schoolId);
 
         if (optionalSchool.isPresent()) {
             Instructor instructor = instructorMapper.mapNewInstructorDTOToInstructor(newInstructorDTO, optionalSchool.get());

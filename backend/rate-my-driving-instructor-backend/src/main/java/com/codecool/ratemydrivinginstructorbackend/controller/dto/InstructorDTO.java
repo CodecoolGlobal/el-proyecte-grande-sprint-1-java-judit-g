@@ -1,7 +1,7 @@
 package com.codecool.ratemydrivinginstructorbackend.controller.dto;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.model.Review;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.school.School;
 
 import java.util.Set;
 

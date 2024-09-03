@@ -1,12 +1,18 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.model;
 
+import com.codecool.ratemydrivinginstructorbackend.repository.model.school.School;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Instructor {
 
     private static final int instructorCount = 0;
 
+    @Id
     private int id;
     private String firstName;
     private String lastName;
@@ -26,6 +32,10 @@ public class Instructor {
         this.lastName = lastName;
         this.reviews = reviews;
         this.school = school;
+    }
+
+    public Instructor() {
+
     }
 
     private boolean addReview(Review review) {
@@ -55,4 +65,5 @@ public class Instructor {
     public School getSchool() {
         return school;
     }
+
 }

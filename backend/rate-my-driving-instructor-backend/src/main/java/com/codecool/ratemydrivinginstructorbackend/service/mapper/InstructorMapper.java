@@ -1,9 +1,9 @@
-package com.codecool.ratemydrivinginstructorbackend.service;
+package com.codecool.ratemydrivinginstructorbackend.service.mapper;
 
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.dto.NewInstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.model.Instructor;
-import com.codecool.ratemydrivinginstructorbackend.repository.model.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.model.school.School;
 import org.springframework.stereotype.Component;
 
 @Component
