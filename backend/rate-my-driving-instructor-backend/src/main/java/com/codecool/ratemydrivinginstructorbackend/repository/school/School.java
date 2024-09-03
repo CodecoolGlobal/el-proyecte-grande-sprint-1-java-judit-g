@@ -23,7 +23,7 @@ public class School {
     @OneToMany
     private Set<Instructor> instructors;
 
-    private UUID publicId;
+    private UUID publicId = UUID.randomUUID();
     private String name;
     private String phoneNumber;
 

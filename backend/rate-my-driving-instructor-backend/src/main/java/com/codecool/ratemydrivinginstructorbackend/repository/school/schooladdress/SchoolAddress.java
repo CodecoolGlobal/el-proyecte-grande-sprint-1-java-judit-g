@@ -12,7 +12,7 @@ public class SchoolAddress {
     @Id
     @GeneratedValue
     private long privateId;
-    private UUID publicId;
+    private UUID publicId = UUID.randomUUID();
     private String city;
     private String streetName;
     private String streetNumber;

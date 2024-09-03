@@ -1,6 +1,5 @@
 package com.codecool.ratemydrivinginstructorbackend.service.school;
 
-import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.NewSchoolDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
@@ -50,7 +49,7 @@ public class SchoolService {
         if (schoolOptional.isEmpty()) {
             throw new SchoolNotFoundException("There is no school with this id");
         }
-        updateSchoolFromDTO(schoolDTO, schoolOptional.get()));
+        updateSchoolFromDTO(schoolDTO, schoolOptional.get());
     }
 
     public void deleteSchool(UUID publicId) {

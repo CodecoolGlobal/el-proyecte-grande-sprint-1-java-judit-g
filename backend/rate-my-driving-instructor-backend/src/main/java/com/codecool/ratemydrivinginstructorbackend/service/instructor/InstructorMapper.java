@@ -3,9 +3,14 @@ package com.codecool.ratemydrivinginstructorbackend.service.instructor;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.NewInstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 public class InstructorMapper {
@@ -28,12 +33,12 @@ public class InstructorMapper {
         );
     }
 
-    public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor) {
+    public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor, SchoolNameDTO schoolNameDTO, Set<ReviewDTO> reviews) {
         return new InstructorDTO(
                 instructor.getFirstName(),
                 instructor.getLastName(),
-                instructor.getSchool(),
-                instructor.getReviews(),
+                schoolNameDTO,
+                reviews,
                 instructor.getLicenseType()
         );
     }
