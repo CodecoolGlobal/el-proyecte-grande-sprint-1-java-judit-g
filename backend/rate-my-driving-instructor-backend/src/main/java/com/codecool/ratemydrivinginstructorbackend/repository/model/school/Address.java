@@ -16,7 +16,7 @@ public class Address {
     private String streetNumber;
     private int postCode;
 
-    public Address(int id, String city, String streetName, String streetNumber, int postCode) {
+    public Address(long id, String city, String streetName, String streetNumber, int postCode) {
         this.id = id;
         this.city = city;
         this.streetName = streetName;
@@ -67,5 +67,13 @@ public class Address {
 
     public void setPostCode(int postCode) {
         this.postCode = postCode;
+    }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public void setPublicId(UUID publicId) {
+        this.publicId = publicId;
     }
 }

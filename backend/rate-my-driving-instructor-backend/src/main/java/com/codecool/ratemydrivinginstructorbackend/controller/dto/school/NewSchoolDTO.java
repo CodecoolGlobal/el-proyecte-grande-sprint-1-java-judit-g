@@ -5,5 +5,5 @@ import com.codecool.ratemydrivinginstructorbackend.repository.model.school.Addre
 
 import java.util.Set;
 
-public record NewSchoolDTO(Address address, String name, String phoneNumber) {
+public record NewSchoolDTO(AddressDTO addressDTO, String name, String phoneNumber) {
 }

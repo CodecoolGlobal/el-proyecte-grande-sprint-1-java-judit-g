@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController("/api/school")
 public class SchoolController {
@@ -18,7 +19,7 @@ public class SchoolController {
     }
 
     @GetMapping
-    public List<SchoolDTO> getAllInstructors() {
+    public List<SchoolDTO> getAllSchools() {
         return schoolService.getAllSchools();
     }
 
@@ -32,13 +33,13 @@ public class SchoolController {
         schoolService.createSchool(school);
     }
 
-    @PutMapping("/{schoolId}")
-    public void updateSchool(@PathVariable long schoolId, @RequestBody SchoolDTO school) {
-        schoolService.updateSchool(schoolId, school);
+    @PutMapping("/{publicId}")
+    public void updateSchool(@PathVariable UUID publicId, @RequestBody SchoolDTO school) {
+        schoolService.updateSchool(publicId, school);
     }
 
-    @DeleteMapping("/{schoolId}")
-    public void deleteInstructor(@PathVariable long schoolId) {
-        schoolService.deleteSchool(schoolId);
+    @DeleteMapping("/{publicId}")
+    public void deleteInstructor(@PathVariable UUID publicId) {
+        schoolService.deleteSchool(publicId);
     }
 }

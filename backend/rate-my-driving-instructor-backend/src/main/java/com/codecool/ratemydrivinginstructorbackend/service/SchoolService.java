@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class SchoolService {
@@ -42,19 +43,19 @@ public class SchoolService {
         schoolRepository.save(schoolMapper.mapNewSchoolDTOToSchool(school));
     }
 
-    public void updateSchool(long schoolId, SchoolDTO schoolDTO) {
-        Optional<School> schoolOptional = schoolRepository.findById(schoolId);
+    public void updateSchool(UUID publicId, SchoolDTO schoolDTO) {
+        Optional<School> schoolOptional = schoolRepository.findByPublicId(publicId);
         if (schoolOptional.isEmpty()) {
             throw new SchoolNotFoundException("There is no school with this id");
         }
         schoolRepository.save(schoolMapper.updateSchoolFromDTO(schoolDTO, schoolOptional.get()));
     }
 
-    public void deleteSchool(long schoolId) {
-        Optional<School> schoolOptional = schoolRepository.findById(schoolId);
+    public void deleteSchool(UUID publicId) {
+        Optional<School> schoolOptional = schoolRepository.findByPublicId(publicId);
         if (schoolOptional.isEmpty()) {
             throw new SchoolNotFoundException("There is no school with this id");
         }
-        schoolRepository.deleteById(schoolId);
+        schoolRepository.deleteByPublicId(publicId);
     }
 }
