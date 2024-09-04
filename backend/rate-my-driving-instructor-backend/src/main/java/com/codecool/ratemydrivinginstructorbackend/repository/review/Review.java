@@ -26,11 +26,11 @@ public class Review {
         this.instructor = instructor;
     }
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reviewer_id")
     private Reviewer reviewer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 

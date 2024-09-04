@@ -9,23 +9,27 @@ import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
+import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddressRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @Component
 public class DataInitializer {
     private final SchoolRepository schoolRepository;
+    private SchoolAddressRepository schoolAddressRepository;
     private final InstructorRepository instructorRepository;
     private final ReviewRepository reviewRepository;
 
     @Autowired
-    public DataInitializer(SchoolRepository schoolRepository, InstructorRepository instructorRepository, ReviewRepository reviewRepository) {
+    public DataInitializer(SchoolRepository schoolRepository, InstructorRepository instructorRepository, ReviewRepository reviewRepository, SchoolAddressRepository schoolAddressRepository) {
         this.schoolRepository = schoolRepository;
+        this.schoolAddressRepository = schoolAddressRepository;
         this.instructorRepository = instructorRepository;
         this.reviewRepository = reviewRepository;
     }
@@ -35,14 +39,13 @@ public class DataInitializer {
         SchoolAddress schoolAddress = createInitSchoolAddress();
         School school = createInitSchool();
         school.setAddress(schoolAddress);
-
         Instructor instructor = createInitInstructor();
         instructor.setSchool(school);
-
         Review review = createInitReview();
-
-        schoolRepository.save(school);
-        instructorRepository.save(instructor);
+        review.setInstructor(instructor);
+        Reviewer reviewer = createInitReviewer();
+        review.setReviewer(reviewer);
+        reviewer.setReviews(List.of(review));
         reviewRepository.save(review);
     }
 
@@ -77,5 +80,11 @@ public class DataInitializer {
         instructor.setLicenseType(new HashSet<>(Set.of(LicenseType.A, LicenseType.B, LicenseType.A1, LicenseType.A2)));
         instructor.setReviews(new HashSet<>(Set.of()));
         return instructor;
+    }
+
+    private Reviewer createInitReviewer() {
+        Reviewer reviewer = new Reviewer();
+        reviewer.setName("Jani");
+        return reviewer;
     }
 }
