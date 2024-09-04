@@ -1,8 +1,6 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -10,8 +8,10 @@ import java.util.UUID;
 public class SchoolAddress {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "private_id")
     private long privateId;
+
     private UUID publicId = UUID.randomUUID();
     private String city;
     private String streetName;
