@@ -13,11 +13,10 @@ import java.util.UUID;
 public class School {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long privateId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "private_id")
     private SchoolAddress schoolAddress;
 
     @OneToMany

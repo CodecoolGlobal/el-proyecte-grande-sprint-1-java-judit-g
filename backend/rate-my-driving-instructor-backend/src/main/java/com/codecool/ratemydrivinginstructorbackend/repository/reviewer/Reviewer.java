@@ -33,4 +33,20 @@ public class Reviewer {
     public List<Review> getReviews() {
         return reviews;
     }
+
+    public void setPrivateId(long privateId) {
+        this.privateId = privateId;
+    }
+
+    public void setPublicId(UUID publicId) {
+        this.publicId = publicId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 }
