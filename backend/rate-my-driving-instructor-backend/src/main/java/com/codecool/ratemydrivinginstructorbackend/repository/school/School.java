@@ -13,7 +13,7 @@ import java.util.UUID;
 public class School {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long privateId;
 
     @OneToOne
@@ -23,7 +23,9 @@ public class School {
     private Set<Instructor> instructors;
 
     private UUID publicId = UUID.randomUUID();
+
     private String name;
+
     private String phoneNumber;
 
     public School() {

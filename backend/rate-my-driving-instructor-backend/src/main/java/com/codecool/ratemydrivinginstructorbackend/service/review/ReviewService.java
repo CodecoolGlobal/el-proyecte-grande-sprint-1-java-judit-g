@@ -45,7 +45,6 @@ public class ReviewService {
 
         if (optionalReviewer.isPresent() && optionalInstructor.isPresent()) {
             Review review = reviewMapper.mapNewReviewDTOtoReview(newReviewDTO, optionalInstructor.get(), optionalReviewer.get());
-            review.setPublicId(UUID.randomUUID());
             Review newReview = reviewRepository.save(review);
             return reviewMapper.mapReviewToReviewDTO(newReview);
         }

@@ -25,7 +25,7 @@ public class SchoolController {
     }
 
     @GetMapping("/{schoolId}")
-    public SchoolDTO getSchool(@PathVariable long schoolId) {
+    public SchoolDTO getSchool(@PathVariable UUID schoolId) {
         return schoolService.getSchoolById(schoolId);
     }
 
