@@ -5,9 +5,7 @@ import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.R
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
-import org.springframework.stereotype.Component;
 
-@Component
 public class ReviewMapper {
 
     public Review mapNewReviewDTOtoReview(NewReviewDTO newReviewDTO, Instructor instructor, Reviewer reviewer) {

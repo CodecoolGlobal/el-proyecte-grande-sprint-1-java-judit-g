@@ -23,7 +23,9 @@ public class School {
     private Set<Instructor> instructors;
 
     private UUID publicId = UUID.randomUUID();
+
     private String name;
+
     private String phoneNumber;
 
     public School() {
