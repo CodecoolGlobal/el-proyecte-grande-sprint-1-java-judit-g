@@ -2,8 +2,10 @@ package com.codecool.ratemydrivinginstructorbackend.service.school;
 
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.NewSchoolDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolDTO;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
+import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
+import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddressRepository;
+import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
 import com.codecool.ratemydrivinginstructorbackend.service.school.exception.SchoolNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +19,13 @@ import java.util.UUID;
 public class SchoolService {
     private final SchoolMapper schoolMapper;
     private final SchoolRepository schoolRepository;
+    private final SchoolAddressRepository schoolAddressRepository;
 
     @Autowired
-    public SchoolService(SchoolMapper schoolMapper, SchoolRepository schoolRepository) {
+    public SchoolService(SchoolMapper schoolMapper, SchoolRepository schoolRepository, InstructorMapper instructorMapper, SchoolAddressRepository schoolAddressRepository) {
         this.schoolMapper = schoolMapper;
         this.schoolRepository = schoolRepository;
+        this.schoolAddressRepository = schoolAddressRepository;
     }
 
     public List<SchoolDTO> getAllSchools() {
@@ -40,6 +44,7 @@ public class SchoolService {
     }
 
     public void createSchool(NewSchoolDTO school) {
+        schoolAddressRepository.save(schoolMapper.mapAddressDTOToAddress(school.addressDTO()));
         schoolRepository.save(schoolMapper.mapNewSchoolDTOToSchool(school));
     }
 

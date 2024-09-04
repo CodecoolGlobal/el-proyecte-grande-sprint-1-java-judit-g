@@ -9,6 +9,8 @@ function SchoolPage() {
     async function fetchData() {
       const response = await fetch(`/api/school/${id}`);
       const data = await response.json();
+      console.log(data);
+      
       setSchool(data);
     }
     fetchData();

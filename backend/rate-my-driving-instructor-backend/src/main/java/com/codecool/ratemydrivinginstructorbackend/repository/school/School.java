@@ -16,7 +16,8 @@ public class School {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long privateId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "private_id")
     private SchoolAddress schoolAddress;
 
     @OneToMany

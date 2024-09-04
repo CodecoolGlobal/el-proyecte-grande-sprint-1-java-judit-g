@@ -41,6 +41,15 @@ public class SchoolMapper {
         );
     }
 
+    public SchoolAddress mapAddressDTOToAddress(AddressDTO addressDTO) {
+        SchoolAddress schoolAddress = new SchoolAddress();
+        schoolAddress.setCity(addressDTO.city());
+        schoolAddress.setPostCode(addressDTO.postCode());
+        schoolAddress.setStreetName(addressDTO.streetName());
+        schoolAddress.setStreetNumber(addressDTO.streetNumber());
+        return schoolAddress;
+    }
+
     public SchoolNameDTO mapSchoolToSchoolNameDTO(School school) {
         return new SchoolNameDTO(school.getPublicId(), school.getName());
     }

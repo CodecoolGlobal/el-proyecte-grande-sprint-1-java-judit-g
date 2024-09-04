@@ -24,6 +24,7 @@ public class SchoolAddress {
 
     private int postCode;
 
+
     public long getPrivateId() {
         return privateId;
     }
