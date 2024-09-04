@@ -22,7 +22,7 @@ public class SchoolService {
     private final SchoolAddressRepository schoolAddressRepository;
 
     @Autowired
-    public SchoolService(SchoolMapper schoolMapper, SchoolRepository schoolRepository, InstructorMapper instructorMapper, SchoolAddressRepository schoolAddressRepository) {
+    public SchoolService(SchoolMapper schoolMapper, SchoolRepository schoolRepository, SchoolAddressRepository schoolAddressRepository) {
         this.schoolMapper = schoolMapper;
         this.schoolRepository = schoolRepository;
         this.schoolAddressRepository = schoolAddressRepository;

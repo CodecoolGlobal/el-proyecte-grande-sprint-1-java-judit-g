@@ -26,7 +26,7 @@ public class MapperConfiguration {
     public InstructorMapper instructorMapper(ReviewMapper reviewMapper) {
         InstructorMapper instructorMapper = new InstructorMapper();
         instructorMapper.setReviewMapper(reviewMapper);
-        instructorMapper.setSchoolMapper(schoolMapper);
+        instructorMapper.setSchoolMapper(this.schoolMapper);
         return  instructorMapper;
     }
 
