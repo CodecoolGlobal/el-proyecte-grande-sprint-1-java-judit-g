@@ -17,7 +17,6 @@ public class School {
     private long privateId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "private_id")
     private SchoolAddress schoolAddress;
 
     @OneToMany

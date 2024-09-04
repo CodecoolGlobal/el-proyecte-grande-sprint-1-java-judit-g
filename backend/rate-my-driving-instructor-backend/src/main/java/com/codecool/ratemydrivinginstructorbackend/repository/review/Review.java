@@ -25,6 +25,15 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     private Instructor instructor;
 
+
+    @ManyToOne
+    @JoinColumn(name = "reviewer_id")
+    private Reviewer reviewer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_id")
+    private Instructor instructor;
+
     public Review() {
     }
 
