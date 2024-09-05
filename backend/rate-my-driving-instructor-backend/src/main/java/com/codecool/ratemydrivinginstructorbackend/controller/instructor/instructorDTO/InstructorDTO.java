@@ -4,11 +4,10 @@ package com.codecool.ratemydrivinginstructorbackend.controller.instructor.instru
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.LicenseType;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
-import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 
 import java.util.Set;
+import java.util.UUID;
 
-public record InstructorDTO(String firstName, String lastName, SchoolNameDTO schoolNameDTO, Set<ReviewDTO> reviewDTOs, Set<LicenseType> licenseTypeSet) {
+public record InstructorDTO(UUID publicID, String firstName, String lastName, SchoolNameDTO schoolNameDTO, Set<ReviewDTO> reviewDTOs, Set<LicenseType> licenseTypeSet) {
 
 }

@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface ReviewerRepository extends JpaRepository<Reviewer, Long> {
 
     Optional<Reviewer> findByPublicId(UUID publicId);
+
 }

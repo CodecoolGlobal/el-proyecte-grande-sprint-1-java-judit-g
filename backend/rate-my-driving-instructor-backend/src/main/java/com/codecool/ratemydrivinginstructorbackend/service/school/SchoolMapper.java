@@ -7,12 +7,15 @@ import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.S
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class SchoolMapper {
 
+    private InstructorMapper instructorMapper;
+
+    public void setInstructorMapper(InstructorMapper instructorMapper) {
+        this.instructorMapper = instructorMapper;
+    }
 
     public School mapNewSchoolDTOToSchool(NewSchoolDTO newSchoolDTO) {
         return new School(
@@ -20,8 +23,9 @@ public class SchoolMapper {
                 newSchoolDTO.phoneNumber());
     }
 
-    public SchoolDTO mapSchoolToSchoolDTO(School school, InstructorMapper instructorMapper) {
+    public SchoolDTO mapSchoolToSchoolDTO(School school) {
         return new SchoolDTO(
+                school.getPublicId(),
                 mapAddressToAddressDTO(school.getAddress()),
                 school.getName(),
                 school.getPhoneNumber(),
@@ -31,6 +35,7 @@ public class SchoolMapper {
 
     private AddressDTO mapAddressToAddressDTO(SchoolAddress schoolAddress) {
         return new AddressDTO(
+                schoolAddress.getPublicId(),
                 schoolAddress.getCity(),
                 schoolAddress.getStreetName(),
                 schoolAddress.getStreetNumber(),

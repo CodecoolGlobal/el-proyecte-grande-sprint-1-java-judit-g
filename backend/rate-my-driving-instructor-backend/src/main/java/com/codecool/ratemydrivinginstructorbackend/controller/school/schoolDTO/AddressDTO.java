@@ -1,4 +1,6 @@
 package com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO;
 
-public record AddressDTO(String city, String streetName, String streetNumber, int postCode) {
+import java.util.UUID;
+
+public record AddressDTO(UUID publicId, String city, String streetName, String streetNumber, int postCode) {
 }

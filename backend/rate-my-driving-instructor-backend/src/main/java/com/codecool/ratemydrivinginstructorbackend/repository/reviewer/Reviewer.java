@@ -21,6 +21,15 @@ public class Reviewer {
     @OneToMany(cascade = CascadeType.ALL)
     List<Review> reviews = new ArrayList<>();
 
+    public Reviewer() {
+
+    }
+
+    public Reviewer(String name) {
+        this.name = name;
+        this.reviews = new ArrayList<>();
+    }
+
     public long getPrivateId() {
         return privateId;
     }
