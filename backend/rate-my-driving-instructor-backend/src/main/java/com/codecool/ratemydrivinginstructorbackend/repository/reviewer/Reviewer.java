@@ -18,7 +18,7 @@ public class Reviewer {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     List<Review> reviews = new ArrayList<>();
 
     public Reviewer() {
