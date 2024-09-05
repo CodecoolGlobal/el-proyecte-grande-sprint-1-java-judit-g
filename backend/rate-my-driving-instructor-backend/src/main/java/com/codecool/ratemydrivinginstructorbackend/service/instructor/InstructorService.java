@@ -39,7 +39,7 @@ public class InstructorService {
     }
 
     public InstructorDTO updateInstructor(UUID instructorId, InstructorDTO instructorDTO) {
-        Optional<Instructor> optionalInstructor = instructorRepository.findInstructorByPublicId(instructorId);
+        Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(instructorId);
 
         if (optionalInstructor.isEmpty()) {
             throw new InstructorNotFoundException();
@@ -63,7 +63,7 @@ public class InstructorService {
     }
 
     public InstructorDTO getInstructorById(UUID publicId) {
-        Optional<Instructor> optionalInstructor = instructorRepository.findInstructorByPublicId(publicId);
+        Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(publicId);
         if (optionalInstructor.isEmpty()) {
             throw new InstructorNotFoundException();
         }
