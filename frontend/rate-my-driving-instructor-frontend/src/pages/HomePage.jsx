@@ -38,10 +38,11 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-
+        fetchAllStatData()
     }, [])
 
     return (
+        <>
         <div className="homePage">
             <form className="searchForm" onSubmit={onSubmit}>
                 <input 
@@ -60,11 +61,35 @@ export default function HomePage() {
         
             <div className="searchResults">    
                 {fetchedList ? fetchedList.map((item) => (
-                    <div>
-                        <l>{item.name}</l>
-                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    
                 )) : (<div>no results yet</div>)}
             </div>
         </div>
+
+        <div className="statDiv">STATS
+            <div className="schoolBox">
+                Number of schools: 
+                {fetchAllStatData[school]}
+            </div>
+            <div className="intructorBox">
+            Number of instructors: 
+            {fetchAllStatData[instructor]}
+            </div>
+            <div className="userBox">
+            {fetchAllStatData[user]}
+            </div>
+            <div className="reviewBox">
+            {fetchAllStatData[review]}
+            </div>
+        </div>
+        </>
     )
 }
