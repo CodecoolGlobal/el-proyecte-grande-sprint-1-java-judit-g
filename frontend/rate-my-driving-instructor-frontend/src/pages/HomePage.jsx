@@ -8,7 +8,7 @@ export default function HomePage() {
     const [stats, setStats] = useState({});
 
     async function fetchSearchData(searchType, searchItem) {
-        const response = await fetch(`/api/school/${searchType.toLoweCase()}/${searchItem}`);
+        const response = await fetch(`/api/school/${searchType.toLowerCase()}/${searchItem}`);
         const listedSearchResult = await response.json();
         setFetchedList(listedSearchResult);
     }
@@ -23,6 +23,9 @@ export default function HomePage() {
         const instructorNumber = await instructorRes.json();
         const reviewNumber = await reviewRes.json();
         const userNumber = await userRes.json();
+
+        console.log(schoolNumber + "s", instructorNumber + "i", reviewNumber + "r", userNumber + "u");
+        
 
         if (schoolNumber || instructorNumber || reviewNumber || userNumber) {
             setStats({
