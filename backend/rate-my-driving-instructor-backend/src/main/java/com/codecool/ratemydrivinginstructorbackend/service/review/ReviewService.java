@@ -14,6 +14,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,9 +40,21 @@ public class ReviewService {
         return reviewMapper.mapReviewToReviewDTO(review);
     }
 
+    public List<ReviewDTO> findAllReviews() {
+        return reviewRepository.findAll().stream()
+                .map(reviewMapper::mapReviewToReviewDTO)
+                .toList();
+    }
+
+    public ReviewDTO findByPublicId(UUID publicId) {
+        Optional<Review> optionalReview = reviewRepository.findByPublicId(publicId);
+        Review review = optionalReview.orElseThrow(() -> new ReviewNotFoundException("Review was not found by publicId"));
+        return reviewMapper.mapReviewToReviewDTO(review);
+    }
+
     public ReviewDTO createReview(NewReviewDTO newReviewDTO) {
-        Optional<Instructor> optionalInstructor = instructorRepository.findInstructorByPublicId(newReviewDTO.instructorPublicId());
-        Optional<Reviewer> optionalReviewer = reviewerRepository.findByPublicId(newReviewDTO.instructorPublicId());
+        Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(newReviewDTO.instructorPublicId());
+        Optional<Reviewer> optionalReviewer = reviewerRepository.findByPublicId(newReviewDTO.reviewerPublicId());
 
         if (optionalReviewer.isPresent() && optionalInstructor.isPresent()) {
             Review review = reviewMapper.mapNewReviewDTOtoReview(newReviewDTO, optionalInstructor.get(), optionalReviewer.get());
@@ -59,8 +72,8 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewDTO updateReview(ReviewDTO reviewDTO) {
-        Optional<Review> optionalReview = reviewRepository.findByPublicId(reviewDTO.publicId());
+    public ReviewDTO updateReview(UUID publicId, ReviewDTO reviewDTO) {
+        Optional<Review> optionalReview = reviewRepository.findByPublicId(publicId);
 
         Review review = optionalReview.orElseThrow(() -> new ReviewNotFoundException("Review was not found, update failed"));
 

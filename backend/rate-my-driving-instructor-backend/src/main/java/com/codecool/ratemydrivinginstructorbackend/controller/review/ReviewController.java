@@ -5,6 +5,7 @@ import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.R
 import com.codecool.ratemydrivinginstructorbackend.service.review.ReviewService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -22,9 +23,14 @@ public class ReviewController {
         return reviewService.findReviewByInstructorName(lastName, firstName);
     }
 
-    @GetMapping("/count")
-    public int getNumberOfInstructors() {
-        return reviewService.getNumberOfReviews();
+    @GetMapping
+    public List<ReviewDTO> findAllReviews() {
+        return reviewService.findAllReviews();
+    }
+
+    @GetMapping("/{publicId}")
+    public ReviewDTO findByPublicId(@PathVariable UUID publicId) {
+        return reviewService.findByPublicId(publicId);
     }
 
     @PostMapping
@@ -37,8 +43,8 @@ public class ReviewController {
         reviewService.deleteReview(publicId);
     }
 
-    @PutMapping
-    public ReviewDTO updateReview(@RequestBody ReviewDTO reviewDTO) {
-        return reviewService.updateReview(reviewDTO);
+    @PutMapping("/{publicId}")
+    public ReviewDTO updateReview(@PathVariable UUID publicId, @RequestBody ReviewDTO reviewDTO) {
+        return reviewService.updateReview(publicId, reviewDTO);
     }
 }

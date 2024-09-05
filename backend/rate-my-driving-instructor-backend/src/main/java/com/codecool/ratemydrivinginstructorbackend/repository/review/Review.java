@@ -12,9 +12,20 @@ public class Review {
     @Id
     @GeneratedValue
     private long privateId;
-    private UUID publicId;
+
+    private UUID publicId = UUID.randomUUID();
+
     private String description;
+
     private int rating;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reviewer_id")
+    private Reviewer reviewer;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "instructor_id")
+    private Instructor instructor;
 
     public Review() {
     }
@@ -25,15 +36,6 @@ public class Review {
         this.reviewer = reviewer;
         this.instructor = instructor;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "reviewer_id")
-    private Reviewer reviewer;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_id")
-    private Instructor instructor;
-
 
     public long getPrivateId() {
         return privateId;

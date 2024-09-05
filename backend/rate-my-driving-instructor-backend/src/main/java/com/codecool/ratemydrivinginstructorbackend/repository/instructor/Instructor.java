@@ -12,13 +12,16 @@ import java.util.UUID;
 public class Instructor {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long privateId;
-    private UUID publicId;
+
+    private UUID publicId = UUID.randomUUID();
+
     private String firstName;
+
     private String lastName;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private School school;
 
     @ElementCollection(targetClass = LicenseType.class)
@@ -26,7 +29,8 @@ public class Instructor {
     @CollectionTable(name = "instructor_license_types", joinColumns = @JoinColumn(name = "instructor_id"))
     @Column(name = "license_type")
     private Set<LicenseType> licenseType;
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Review> reviews;
 
     public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {

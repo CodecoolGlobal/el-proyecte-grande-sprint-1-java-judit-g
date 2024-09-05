@@ -28,6 +28,7 @@ public class InstructorMapper {
 
     public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor, SchoolMapper schoolMapper, ReviewMapper reviewMapper) {
         return new InstructorDTO(
+                instructor.getPublicId(),
                 instructor.getFirstName(),
                 instructor.getLastName(),
                 schoolMapper.mapSchoolToSchoolNameDTO(instructor.getSchool()),
