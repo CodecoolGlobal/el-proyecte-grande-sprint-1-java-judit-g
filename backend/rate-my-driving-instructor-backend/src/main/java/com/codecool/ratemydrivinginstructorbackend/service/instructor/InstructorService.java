@@ -61,6 +61,9 @@ public class InstructorService {
                 .map(instructorMapper::mapInstructorToInstructorDTO)
                 .collect(Collectors.toUnmodifiableSet());
     }
+    public int countNumberOfInstructors() {
+        return (int) instructorRepository.count();
+    }
 
     public InstructorDTO getInstructorByPublicId(UUID publicId) {
         Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(publicId);

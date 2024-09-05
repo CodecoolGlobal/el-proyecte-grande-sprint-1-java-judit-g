@@ -22,6 +22,10 @@ public class ReviewerService {
         this.reviewerMapper = reviewerMapper;
     }
 
+    public int countNumberOfReviewers() {
+        return (int) reviewerRepository.count();
+    }
+
     public ReviewerDTO createReviewer(NewReviewerDTO newReviewerDTO) {
         Reviewer reviewer = reviewerMapper.mapNewReviewerDTOToReviewer(newReviewerDTO);
         Reviewer savedReviewer = reviewerRepository.save(reviewer);
