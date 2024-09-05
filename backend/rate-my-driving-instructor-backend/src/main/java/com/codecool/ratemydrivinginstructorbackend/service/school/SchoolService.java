@@ -62,6 +62,7 @@ public class SchoolService {
         updateSchoolFromDTO(schoolDTO, schoolOptional.get());
     }
 
+    @Transactional
     public void deleteSchool(UUID publicId) {
         Optional<School> schoolOptional = schoolRepository.findByPublicId(publicId);
         if (schoolOptional.isEmpty()) {

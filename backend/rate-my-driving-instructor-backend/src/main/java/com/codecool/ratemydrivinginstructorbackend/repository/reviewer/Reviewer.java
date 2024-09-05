@@ -11,9 +11,11 @@ import java.util.UUID;
 public class Reviewer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long privateId;
-    private UUID publicId;
+
+    private UUID publicId = UUID.randomUUID();
+
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)

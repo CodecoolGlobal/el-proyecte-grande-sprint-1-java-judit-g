@@ -1,17 +1,13 @@
 package com.codecool.ratemydrivinginstructorbackend;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
-import com.codecool.ratemydrivinginstructorbackend.repository.instructor.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.LicenseType;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
-import com.codecool.ratemydrivinginstructorbackend.repository.review.ReviewRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
+import com.codecool.ratemydrivinginstructorbackend.repository.review.ReviewRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddressRepository;
 import jakarta.annotation.PostConstruct;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,16 +15,11 @@ import java.util.*;
 
 @Component
 public class DataInitializer {
-    private final SchoolRepository schoolRepository;
-    private SchoolAddressRepository schoolAddressRepository;
-    private final InstructorRepository instructorRepository;
+
     private final ReviewRepository reviewRepository;
 
     @Autowired
-    public DataInitializer(SchoolRepository schoolRepository, InstructorRepository instructorRepository, ReviewRepository reviewRepository, SchoolAddressRepository schoolAddressRepository) {
-        this.schoolRepository = schoolRepository;
-        this.schoolAddressRepository = schoolAddressRepository;
-        this.instructorRepository = instructorRepository;
+    public DataInitializer(ReviewRepository reviewRepository) {
         this.reviewRepository = reviewRepository;
     }
 

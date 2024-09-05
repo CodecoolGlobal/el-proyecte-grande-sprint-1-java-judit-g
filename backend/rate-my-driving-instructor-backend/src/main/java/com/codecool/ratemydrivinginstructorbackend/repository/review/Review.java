@@ -12,7 +12,7 @@ public class Review {
     @Id
     @GeneratedValue
     private long privateId;
-    private UUID publicId;
+    private UUID publicId = UUID.randomUUID();
     private String description;
     private int rating;
 
