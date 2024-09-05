@@ -47,7 +47,7 @@ public class InstructorController {
 
     @GetMapping("/count")
     public int getNumberOfInstructors() {
-        instructorService.countNumberOfInstructors();
+       return instructorService.countNumberOfInstructors();
     }
 
     @DeleteMapping("/{instructorId}")
