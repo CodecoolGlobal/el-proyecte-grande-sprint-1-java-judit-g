@@ -3,12 +3,12 @@ import './HomePage.css'
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
-    const [searchType, setSearchType] = useState("instructor");
+    const [searchType, setSearchType] = useState("Instructor");
     const [fetchedList, setFetchedList] = useState([]);
     const [stats, setStats] = useState({});
 
     async function fetchSearchData(searchType, searchItem) {
-        const response = await fetch(`/api/school/${searchType}/${searchItem}`);
+        const response = await fetch(`/api/school/${searchType.toLoweCase()}/${searchItem}`);
         const listedSearchResult = await response.json();
         setFetchedList(listedSearchResult);
     }
@@ -47,24 +47,26 @@ export default function HomePage() {
     return (
         <>
         <div className="homePage">
-            <form className="searchForm" onSubmit={onSubmit}>
-                <input 
-                type="text"
-                value={searchItem}
-                onChange={(e) => setSearchItem(e.target.value)} 
-                name="search" 
-                id="search" 
-                />
-            </form>
-            <div className="searchButtons">
-                <button 
-                type="button" 
-                onClick={() => setSearchType("instructor")}>Instructor</button>
-                <button 
-                type="button" 
-                onClick={() => setSearchType("school")}>School</button> 
+            <div className="searchBar">
+                <form className="searchForm" onSubmit={onSubmit}>
+                    <input 
+                    type="text"
+                    value={searchItem}
+                    placeholder={`${searchType}...`}
+                    onChange={(e) => setSearchItem(e.target.value)} 
+                    name="search" 
+                    id="search" 
+                    />
+                </form>
+                <div className="searchButtons">
+                    <button 
+                    type="button" 
+                    onClick={() => setSearchType("Instructor")}>Instructor</button>
+                    <button 
+                    type="button" 
+                    onClick={() => setSearchType("School")}>School</button> 
+                </div>
             </div>
-        
             <div className="searchResults">    
                 {fetchedList ? fetchedList.map((item) => (
 
@@ -80,21 +82,24 @@ export default function HomePage() {
             </div>
         </div>
 
-        <div className="statDiv">STATS
+        <div className="statDiv">
+            <h1>
+                STATISTICS
+            </h1>
             <div className="schoolBox">
-            Number of schools: 
+            <h3>Number of schools:</h3>
                 {stats["school"]}
                 </div>
                 <div className="intructorBox">
-            Number of instructors: 
+            <h3> Number of instructors: </h3>  
                 {stats["instructor"]}
                 </div>
-                <div className="userBox">
-            Number of registered users:
+               <div className="userBox">
+            <h3>Number of registered users:</h3>
                 {stats["user"]}
             </div>
                 <div className="reviewBox">
-                Number of reviews:
+                <h3> Number of reviews: </h3>
                 {stats["review"]}
             </div>
         </div>

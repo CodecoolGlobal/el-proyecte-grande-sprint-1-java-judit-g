@@ -83,6 +83,14 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.statDiv h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-align: center; 
+    color: #fff;
+}
+
+
 .statDiv > div {
     width: 200px;
     padding: 20px;
