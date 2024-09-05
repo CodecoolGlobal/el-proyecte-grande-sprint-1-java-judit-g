@@ -25,14 +25,14 @@ public class InstructorController {
         return instructorService.getAllInstructors();
     }
 
-    @GetMapping("/{schoolId}")
-    public Set<InstructorDTO> getInstructorsBySchoolId(@PathVariable UUID schoolId) {
+    @GetMapping("/school/{schoolId}")
+    public Set<InstructorDTO> getInstructorsBySchoolPublicId(@PathVariable UUID schoolId) {
         return instructorService.getInstructorsBySchoolId(schoolId);
     }
 
     @GetMapping("/{instructorId}")
     public InstructorDTO getInstructor(@PathVariable UUID instructorId) {
-        return instructorService.getInstructorById(instructorId);
+        return instructorService.getInstructorByPublicId(instructorId);
     }
 
     @PostMapping("/create")
