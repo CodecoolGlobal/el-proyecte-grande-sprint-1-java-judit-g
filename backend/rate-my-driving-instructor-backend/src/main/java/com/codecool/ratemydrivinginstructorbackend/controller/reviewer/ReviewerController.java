@@ -5,6 +5,9 @@ import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerD
 import com.codecool.ratemydrivinginstructorbackend.service.reviewer.ReviewerService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/user")
 public class ReviewerController {
@@ -20,8 +23,13 @@ public class ReviewerController {
         return reviewerService.createReviewer(newReviewerDTO);
     }
 
-    @GetMapping("/count")
-    public int getNumberOfReviewers() {
-        return reviewerService.countNumberOfReviewers();
+    @GetMapping
+    public List<ReviewerDTO> findAll() {
+        return reviewerService.findAll();
+    }
+
+    @GetMapping("/{publicId}")
+    public ReviewerDTO findByPublicId(@PathVariable UUID publicId) {
+        return reviewerService.findByPublicId(publicId);
     }
 }

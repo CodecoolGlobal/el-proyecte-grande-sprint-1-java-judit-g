@@ -65,7 +65,7 @@ public class InstructorService {
         return (int) instructorRepository.count();
     }
 
-    public InstructorDTO getInstructorById(UUID publicId) {
+    public InstructorDTO getInstructorByPublicId(UUID publicId) {
         Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(publicId);
         if (optionalInstructor.isEmpty()) {
             throw new InstructorNotFoundException();
