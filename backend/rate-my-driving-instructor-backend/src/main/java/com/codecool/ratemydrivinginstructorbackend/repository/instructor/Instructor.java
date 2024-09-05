@@ -18,7 +18,7 @@ public class Instructor {
     private String firstName;
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private School school;
 
     @ElementCollection(targetClass = LicenseType.class)
@@ -26,15 +26,16 @@ public class Instructor {
     @CollectionTable(name = "instructor_license_types", joinColumns = @JoinColumn(name = "instructor_id"))
     @Column(name = "license_type")
     private Set<LicenseType> licenseType;
-    @OneToMany
-    private Set<Review> reviews;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Review> reviews = new HashSet<>();
 
     public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
-        this.reviews = reviews;
-        this.licenseType = licenseType;
+        this.reviews = new HashSet<>(reviews);
+        this.licenseType = new HashSet<>(licenseType);
     }
 
     public Instructor() {

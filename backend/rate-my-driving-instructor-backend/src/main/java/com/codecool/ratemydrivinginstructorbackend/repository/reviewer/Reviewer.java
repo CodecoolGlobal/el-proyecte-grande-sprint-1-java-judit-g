@@ -3,6 +3,7 @@ package com.codecool.ratemydrivinginstructorbackend.repository.reviewer;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,8 +16,8 @@ public class Reviewer {
     private UUID publicId;
     private String name;
 
-    @OneToMany
-    List<Review> reviews;
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Review> reviews = new ArrayList<>();
 
     public long getPrivateId() {
         return privateId;

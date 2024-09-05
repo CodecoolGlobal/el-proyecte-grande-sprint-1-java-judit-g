@@ -20,7 +20,7 @@ public class School {
     private SchoolAddress schoolAddress;
 
     @OneToMany
-    private Set<Instructor> instructors;
+    private Set<Instructor> instructors = new HashSet<>();
 
     private UUID publicId = UUID.randomUUID();
     private String name;
