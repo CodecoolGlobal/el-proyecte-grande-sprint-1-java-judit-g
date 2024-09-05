@@ -3,10 +3,10 @@ package com.codecool.ratemydrivinginstructorbackend.controller.reviewer;
 import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.NewReviewerDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.ReviewerDTO;
 import com.codecool.ratemydrivinginstructorbackend.service.reviewer.ReviewerService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/user")
@@ -21,5 +21,15 @@ public class ReviewerController {
     @PostMapping
     public ReviewerDTO createReviewer(@RequestBody NewReviewerDTO newReviewerDTO) {
         return reviewerService.createReviewer(newReviewerDTO);
+    }
+
+    @GetMapping
+    public List<ReviewerDTO> findAll() {
+        return reviewerService.findAll();
+    }
+
+    @GetMapping("/{publicId}")
+    public ReviewerDTO findByPublicId(@PathVariable UUID publicId) {
+        return reviewerService.findByPublicId(publicId);
     }
 }
