@@ -45,8 +45,14 @@ public class InstructorController {
         return instructorService.updateInstructor(instructorId, instructor);
     }
 
+    @GetMapping("/count")
+    public int getNumberOfInstructors() {
+        instructorService.countNumberOfInstructors();
+    }
+
     @DeleteMapping("/{instructorId}")
     public void deleteInstructor(@PathVariable UUID instructorId) {
         instructorService.deleteInstructor(instructorId);
     }
 }
+

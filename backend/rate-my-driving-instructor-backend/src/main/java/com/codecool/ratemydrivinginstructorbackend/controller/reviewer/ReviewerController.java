@@ -32,4 +32,9 @@ public class ReviewerController {
     public ReviewerDTO findByPublicId(@PathVariable UUID publicId) {
         return reviewerService.findByPublicId(publicId);
     }
+
+    @GetMapping("/")
+    public int getNumberOfReviewers() {
+        return reviewerService.countNumberOfReviewers();
+    }
 }
