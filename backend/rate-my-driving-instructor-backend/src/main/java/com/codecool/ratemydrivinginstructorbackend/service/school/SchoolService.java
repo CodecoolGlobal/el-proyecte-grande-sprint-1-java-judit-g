@@ -50,11 +50,11 @@ public class SchoolService {
 
     @Transactional
     public void updateSchool(UUID publicId, SchoolDTO schoolDTO) {
-        Optional<School> schoolOptional = schoolRepository.findByPublicId(publicId);
-        if (schoolOptional.isEmpty()) {
-            throw new SchoolNotFoundException("There is no school with this id");
-        }
-        updateSchoolFromDTO(schoolDTO, schoolOptional.get());
+        School school = schoolRepository
+                .findByPublicId(publicId)
+                .orElseThrow(() -> new SchoolNotFoundException("There is no school with this id"));
+        school.setName(schoolDTO.name());
+        school.setPhoneNumber(schoolDTO.phoneNumber());
     }
 
     @Transactional
