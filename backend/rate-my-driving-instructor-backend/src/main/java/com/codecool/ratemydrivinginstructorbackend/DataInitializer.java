@@ -18,6 +18,7 @@ import java.util.UUID;
 
 @Component
 public class DataInitializer {
+
     private final ReviewRepository reviewRepository;
 
     @Autowired

@@ -19,18 +19,11 @@ public class Review {
 
     private int rating;
 
-    @ManyToOne
-    private Reviewer reviewer;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Instructor instructor;
-
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reviewer_id")
     private Reviewer reviewer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 

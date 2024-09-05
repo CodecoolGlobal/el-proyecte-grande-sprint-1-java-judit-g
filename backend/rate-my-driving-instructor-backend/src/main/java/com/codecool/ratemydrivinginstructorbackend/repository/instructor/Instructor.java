@@ -30,7 +30,7 @@ public class Instructor {
     @Column(name = "license_type")
     private Set<LicenseType> licenseType;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Review> reviews;
 
     public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {
