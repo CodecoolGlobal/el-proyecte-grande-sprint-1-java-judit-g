@@ -21,7 +21,7 @@ public class Instructor {
 
     private String lastName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private School school;
 
     @ElementCollection(targetClass = LicenseType.class)
