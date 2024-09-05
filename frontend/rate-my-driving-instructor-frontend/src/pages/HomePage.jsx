@@ -23,23 +23,24 @@ export default function HomePage() {
         const instructorNumber = await instructorRes.json();
         const reviewNumber = await reviewRes.json();
         const userNumber = await userRes.json();
-
+        
         console.log(schoolNumber + "s", instructorNumber + "i", reviewNumber + "r", userNumber + "u");
         
 
-        if (schoolNumber || instructorNumber || reviewNumber || userNumber) {
+        if (schoolNumber && instructorNumber && reviewNumber && userNumber) {
             setStats({
                 "school": schoolNumber,
                 "instructor": instructorNumber,
                 "review": reviewNumber,
                 "user": userNumber
             })
-        } 
+        }
     }
 
     function onSubmit(event) {
         event.preventDefault();
         fetchSearchData(searchType, searchItem);
+        
     }
 //function onClickToggle()
 
@@ -72,19 +73,22 @@ export default function HomePage() {
             </div>
             <div className="searchResults">    
                 {fetchedList ? fetchedList.map((item) => (
+                    <div key={item.id}>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                    </table>
                     
                 )) : (<div>no results yet</div>)}
             </div>
         </div>
 
+        
         <div className="statDiv">
             <h1>
                 STATISTICS
@@ -97,7 +101,7 @@ export default function HomePage() {
             <h3> Number of instructors: </h3>  
                 {stats["instructor"]}
                 </div>
-               <div className="userBox">
+            <div className="userBox">
             <h3>Number of registered users:</h3>
                 {stats["user"]}
             </div>
