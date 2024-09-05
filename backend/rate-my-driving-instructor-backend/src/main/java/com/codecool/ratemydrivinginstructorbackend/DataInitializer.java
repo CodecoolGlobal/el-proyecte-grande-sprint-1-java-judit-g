@@ -32,7 +32,7 @@ public class DataInitializer {
 
     @Transactional
     @PostConstruct
-    public void init() {
+    public void initializeData() {
         Reviewer reviewer1 = createInitReviewer("Ádám");
         Reviewer reviewer2 = createInitReviewer("Kata");
         reviewerRepository.saveAll(List.of(reviewer1, reviewer2));

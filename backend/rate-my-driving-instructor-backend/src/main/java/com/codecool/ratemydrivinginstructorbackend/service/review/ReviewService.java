@@ -73,13 +73,11 @@ public class ReviewService {
 
     @Transactional
     public ReviewDTO updateReview(UUID publicId, ReviewDTO reviewDTO) {
-        Optional<Review> optionalReview = reviewRepository.findByPublicId(publicId);
-
-        Review review = optionalReview.orElseThrow(() -> new ReviewNotFoundException("Review was not found, update failed"));
-
+        Review review = reviewRepository
+                .findByPublicId(publicId)
+                .orElseThrow(() -> new ReviewNotFoundException("Review was not found, update failed"));
         review.setDescription(reviewDTO.description());
         review.setRating(reviewDTO.rating());
-
         return reviewMapper.mapReviewToReviewDTO(review);
     }
 }
