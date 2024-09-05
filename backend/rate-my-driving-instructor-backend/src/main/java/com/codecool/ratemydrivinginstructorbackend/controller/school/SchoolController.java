@@ -24,6 +24,11 @@ public class SchoolController {
         return schoolService.getAllSchools();
     }
 
+    @GetMapping("/count")
+    public int getNumberOfInstructors() {
+        return schoolService.getNumberOfSchools();
+    }
+
     @GetMapping("/{schoolId}")
     public SchoolDTO getSchool(@PathVariable long schoolId) {
         return schoolService.getSchoolById(schoolId);

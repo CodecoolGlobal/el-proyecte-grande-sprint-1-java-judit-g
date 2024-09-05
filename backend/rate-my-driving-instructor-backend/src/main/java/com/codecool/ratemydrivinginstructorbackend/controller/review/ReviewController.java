@@ -22,6 +22,11 @@ public class ReviewController {
         return reviewService.findReviewByInstructorName(lastName, firstName);
     }
 
+    @GetMapping("/count")
+    public int getNumberOfInstructors() {
+        return reviewService.getNumberOfReviews();
+    }
+
     @PostMapping
     public ReviewDTO createReview(@RequestBody NewReviewDTO newReviewDTO) {
         return reviewService.createReview(newReviewDTO);

@@ -75,5 +75,7 @@ public class SchoolService {
         school.setPhoneNumber(schoolDTO.phoneNumber());
     }
 
-
+    public int getNumberOfSchools() {
+        return (int) schoolAddressRepository.count();
+    }
 }

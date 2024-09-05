@@ -69,4 +69,8 @@ public class ReviewService {
 
         return reviewMapper.mapReviewToReviewDTO(review);
     }
+
+    public int getNumberOfReviews() {
+        return (int) reviewerRepository.count();
+    }
 }

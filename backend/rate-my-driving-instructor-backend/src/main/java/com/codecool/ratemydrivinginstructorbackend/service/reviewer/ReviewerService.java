@@ -23,4 +23,8 @@ public class ReviewerService {
         Reviewer savedReviewer = reviewerRepository.save(reviewer);
         return reviewerMapper.mapReviewerToReviewerDTO(savedReviewer);
     }
+
+    public int getNumberOfReviewers() {
+        return (int) reviewerRepository.count();
+    }
 }

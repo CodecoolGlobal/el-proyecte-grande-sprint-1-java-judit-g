@@ -87,5 +87,9 @@ public class InstructorService {
                 .map(instructor -> instructorMapper.mapInstructorToInstructorDTO(instructor, schoolMapper, reviewMapper))
                 .collect(Collectors.toUnmodifiableSet());
     }
+
+    public int getNumberOfInstructors() {
+        return (int) instructorRepository.count();
+    }
 }
 
