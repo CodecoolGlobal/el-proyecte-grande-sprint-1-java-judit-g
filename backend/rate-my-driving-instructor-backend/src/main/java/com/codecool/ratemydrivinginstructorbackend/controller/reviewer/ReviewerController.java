@@ -33,8 +33,9 @@ public class ReviewerController {
         return reviewerService.findByPublicId(publicId);
     }
 
-    @GetMapping("/")
+    @GetMapping("/count")
     public int getNumberOfReviewers() {
         return reviewerService.countNumberOfReviewers();
     }
+
 }
