@@ -43,4 +43,14 @@ public class SchoolController {
     public void deleteInstructor(@PathVariable UUID publicId) {
         schoolService.deleteSchool(publicId);
     }
+
+    @GetMapping("/count")
+    public int getNumberOfSchools() {
+        return schoolService.countNumberOfSchools();
+    }
+
+//    @GetMapping("/count")
+//    public int getSchoolByName(@RequestParam String name) {
+//        return null;
+//    }
 }

@@ -25,6 +25,11 @@ public class InstructorController {
         return instructorService.getAllInstructors();
     }
 
+    @GetMapping("/count")
+    public int getNumberOfInstructors() {
+        return instructorService.countNumberOfInstructors();
+    }
+
     @GetMapping("/{schoolId}")
     public Set<InstructorDTO> getInstructorsBySchoolId(@PathVariable UUID schoolId) {
         return instructorService.getInstructorsBySchoolId(schoolId);

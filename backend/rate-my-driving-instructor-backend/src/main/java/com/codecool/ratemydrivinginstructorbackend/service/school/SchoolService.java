@@ -70,4 +70,8 @@ public class SchoolService {
         school.setName(schoolDTO.name());
         school.setPhoneNumber(schoolDTO.phoneNumber());
     }
+
+    public int countNumberOfSchools() {
+        return (int) schoolRepository.count();
+    }
 }
