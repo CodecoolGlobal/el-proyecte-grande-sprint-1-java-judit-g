@@ -25,6 +25,7 @@ public class SchoolMapper {
 
     public SchoolDTO mapSchoolToSchoolDTO(School school) {
         return new SchoolDTO(
+                school.getPublicId(),
                 mapAddressToAddressDTO(school.getAddress()),
                 school.getName(),
                 school.getPhoneNumber(),
@@ -34,6 +35,7 @@ public class SchoolMapper {
 
     private AddressDTO mapAddressToAddressDTO(SchoolAddress schoolAddress) {
         return new AddressDTO(
+                schoolAddress.getPublicId(),
                 schoolAddress.getCity(),
                 schoolAddress.getStreetName(),
                 schoolAddress.getStreetNumber(),

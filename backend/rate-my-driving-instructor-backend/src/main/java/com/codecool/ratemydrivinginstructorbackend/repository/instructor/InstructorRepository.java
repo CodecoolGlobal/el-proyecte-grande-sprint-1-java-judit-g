@@ -12,7 +12,7 @@ public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 
     Set<Instructor> getAllInstructorsBySchoolPublicId(UUID schoolId);
 
-    Optional<Instructor> findInstructorByPublicId(UUID publicId);
+    Optional<Instructor> findByPublicId(UUID publicId);
 
     void deleteByPublicId(UUID publicID);
 }

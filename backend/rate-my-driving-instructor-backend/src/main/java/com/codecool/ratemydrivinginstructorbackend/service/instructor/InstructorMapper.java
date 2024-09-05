@@ -36,6 +36,7 @@ public class InstructorMapper {
 
     public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor) {
         return new InstructorDTO(
+                instructor.getPublicId(),
                 instructor.getFirstName(),
                 instructor.getLastName(),
                 schoolMapper.mapSchoolToSchoolNameDTO(instructor.getSchool()),
