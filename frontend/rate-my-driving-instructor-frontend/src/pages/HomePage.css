@@ -71,3 +71,34 @@ body {
   height: 5vh;
   font-family: system-ui, sans-serif;
 }
+
+.statDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 20px;
+    background-color: #b4880d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.statDiv > div {
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #c11515;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.statDiv > div:hover {
+    border-color: #007bff;
+    background-color: #627c0d;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+

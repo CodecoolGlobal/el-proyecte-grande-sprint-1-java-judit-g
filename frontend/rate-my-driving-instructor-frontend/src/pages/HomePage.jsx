@@ -17,29 +17,28 @@ export default function HomePage() {
         const schoolRes = await fetch(`/api/school/count`);   
         const instructorRes = await fetch(`/api/instructor/count`);
         const reviewRes = await fetch(`/api/review/count`);
-        const userRes = await fetch(`/api/reviwer/count`);
+        const userRes = await fetch(`/api/user/count`);
 
         const schoolNumber = await schoolRes.json();
         const instructorNumber = await instructorRes.json();
         const reviewNumber = await reviewRes.json();
         const userNumber = await userRes.json();
 
-        // if (schoolNumber || instructorNumber || reviewNumber || userNumber) {
-        //     setStats({
-        //         "school": schoolNumber,
-        //         "instructor": instructorNumber,
-        //         "review": reviewNumber,
-        //         "user": userNumber
-        //     })
-        // } 
-
+        if (schoolNumber || instructorNumber || reviewNumber || userNumber) {
+            setStats({
+                "school": schoolNumber,
+                "instructor": instructorNumber,
+                "review": reviewNumber,
+                "user": userNumber
+            })
+        } 
     }
 
     function onSubmit(event) {
         event.preventDefault();
         fetchSearchData(searchType, searchItem);
     }
-function onClickToggle()
+//function onClickToggle()
 
     useEffect(() => {
         fetchAllStatData()
@@ -83,18 +82,20 @@ function onClickToggle()
 
         <div className="statDiv">STATS
             <div className="schoolBox">
-                Number of schools: 
+            Number of schools: 
                 {stats["school"]}
-            </div>
-            <div className="intructorBox">
+                </div>
+                <div className="intructorBox">
             Number of instructors: 
-            {stats["instructor"]}
+                {stats["instructor"]}
+                </div>
+                <div className="userBox">
+            Number of registered users:
+                {stats["user"]}
             </div>
-            <div className="userBox">
-            {stats["user"]}
-            </div>
-            <div className="reviewBox">
-            {stats["review"]}
+                <div className="reviewBox">
+                Number of reviews:
+                {stats["review"]}
             </div>
         </div>
         </>
