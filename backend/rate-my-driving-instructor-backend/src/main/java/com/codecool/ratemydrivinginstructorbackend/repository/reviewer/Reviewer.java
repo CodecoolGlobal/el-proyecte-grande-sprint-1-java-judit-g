@@ -18,8 +18,8 @@ public class Reviewer {
 
     private String name;
 
-    @OneToMany
-    List<Review> reviews;
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Review> reviews = new ArrayList<>();
 
     public Reviewer() {
 

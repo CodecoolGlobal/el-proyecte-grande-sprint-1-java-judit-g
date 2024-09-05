@@ -4,6 +4,8 @@ package com.codecool.ratemydrivinginstructorbackend.repository.school;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,8 +21,8 @@ public class School {
     @OneToOne(cascade = CascadeType.ALL)
     private SchoolAddress schoolAddress;
 
-    @OneToMany
-    private Set<Instructor> instructors;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Instructor> instructors = new HashSet<>();
 
     private UUID publicId = UUID.randomUUID();
 
