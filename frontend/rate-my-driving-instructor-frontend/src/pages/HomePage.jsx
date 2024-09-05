@@ -39,8 +39,7 @@ export default function HomePage() {
         event.preventDefault();
         fetchSearchData(searchType, searchItem);
     }
-
-    function onClickToggle()
+function onClickToggle()
 
     useEffect(() => {
         fetchAllStatData()
