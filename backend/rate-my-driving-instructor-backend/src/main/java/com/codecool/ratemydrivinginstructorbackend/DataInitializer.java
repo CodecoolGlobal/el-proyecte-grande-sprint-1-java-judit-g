@@ -1,6 +1,7 @@
 package com.codecool.ratemydrivinginstructorbackend;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
+import com.codecool.ratemydrivinginstructorbackend.repository.instructor.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.LicenseType;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
@@ -10,6 +11,9 @@ import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
 import jakarta.annotation.PostConstruct;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,12 +26,17 @@ public class DataInitializer {
     private final ReviewRepository reviewRepository;
     private final SchoolRepository schoolRepository;
     private final ReviewerRepository reviewerRepository;
+    private final InstructorRepository instructorRepository;
 
     @Autowired
-    public DataInitializer(ReviewRepository reviewRepository, SchoolRepository schoolRepository, ReviewerRepository reviewerRepository) {
+    public DataInitializer(ReviewRepository reviewRepository,
+                           SchoolRepository schoolRepository,
+                           ReviewerRepository reviewerRepository,
+                           InstructorRepository instructorRepository) {
         this.reviewRepository = reviewRepository;
         this.schoolRepository = schoolRepository;
         this.reviewerRepository = reviewerRepository;
+        this.instructorRepository = instructorRepository;
     }
 
     @Transactional

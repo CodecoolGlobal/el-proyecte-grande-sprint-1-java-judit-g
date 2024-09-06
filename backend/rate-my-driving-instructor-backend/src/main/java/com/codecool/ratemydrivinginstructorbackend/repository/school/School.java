@@ -17,14 +17,15 @@ public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long privateId;
+    private UUID publicId = UUID.randomUUID();
 
     @OneToOne(cascade = CascadeType.ALL)
     private SchoolAddress schoolAddress;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "school_private_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private Set<Instructor> instructors = new HashSet<>();
-
-    private UUID publicId = UUID.randomUUID();
 
     private String name;
 

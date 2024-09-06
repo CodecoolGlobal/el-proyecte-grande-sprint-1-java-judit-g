@@ -3,6 +3,8 @@ package com.codecool.ratemydrivinginstructorbackend.repository.instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +23,7 @@ public class Instructor {
 
     private String lastName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private School school;
 
     @ElementCollection(targetClass = LicenseType.class)
@@ -30,7 +32,9 @@ public class Instructor {
     @Column(name = "license_type")
     private Set<LicenseType> licenseType;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "instructor_private_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private Set<Review> reviews = new HashSet<>();
 
     public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {

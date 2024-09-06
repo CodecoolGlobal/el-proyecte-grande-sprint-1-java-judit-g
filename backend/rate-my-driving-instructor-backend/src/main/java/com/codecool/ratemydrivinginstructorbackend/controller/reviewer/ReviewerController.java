@@ -32,4 +32,9 @@ public class ReviewerController {
     public ReviewerDTO findByPublicId(@PathVariable UUID publicId) {
         return reviewerService.findByPublicId(publicId);
     }
+
+    @DeleteMapping("/{publicId}")
+    public void deleteReviewer(@PathVariable UUID publicId) {
+        reviewerService.deleteReviewer(publicId);
+    }
 }
