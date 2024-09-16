@@ -5,7 +5,6 @@ import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.S
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddressRepository;
-import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
 import com.codecool.ratemydrivinginstructorbackend.service.school.exception.SchoolNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +72,12 @@ public class SchoolService {
 
     public int countNumberOfSchools() {
         return (int) schoolRepository.count();
+    }
+
+    public List<SchoolDTO> getSchoolsByName(String name) {
+        List<School> schools = schoolRepository.findByNameContaining(name);
+        return schools.stream()
+                .map(schoolMapper::mapSchoolToSchoolDTO)
+                .toList();
     }
 }
