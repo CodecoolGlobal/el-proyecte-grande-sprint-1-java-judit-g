@@ -49,10 +49,6 @@ public class ReviewerService {
 
     @Transactional
     public void deleteReviewer(UUID publicId) {
-        Optional<Reviewer> reviewerOptional = reviewerRepository.findByPublicId(publicId);
-        if (reviewerOptional.isEmpty()) {
-            throw new SchoolNotFoundException("There is no school with this id");
-        }
         reviewerRepository.deleteByPublicId(publicId);
     }
 }

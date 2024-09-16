@@ -33,16 +33,13 @@ public class ReviewerController {
         return reviewerService.findByPublicId(publicId);
     }
 
-<<<<<<< HEAD
     @DeleteMapping("/{publicId}")
     public void deleteReviewer(@PathVariable UUID publicId) {
         reviewerService.deleteReviewer(publicId);
     }
-=======
+
     @GetMapping("/count")
     public int getNumberOfReviewers() {
         return reviewerService.countNumberOfReviewers();
     }
-
->>>>>>> development
 }
