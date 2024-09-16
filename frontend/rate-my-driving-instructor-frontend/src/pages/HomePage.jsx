@@ -8,8 +8,12 @@ export default function HomePage() {
     const [stats, setStats] = useState({});
 
     async function fetchSearchData(searchType, searchItem) {
-        const response = await fetch(`/api/school/${searchType.toLowerCase()}/${searchItem}`);
+        console.log(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`);
+        
+        const response = await fetch(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`);
         const listedSearchResult = await response.json();
+        console.log(listedSearchResult);
+        
         setFetchedList(listedSearchResult);
     }
 
@@ -61,6 +65,7 @@ export default function HomePage() {
                     name="search" 
                     id="search" 
                     />
+                    <button type="submit">Search</button>
                 </form>
                 <div className="searchButtons">
                     <button 
@@ -69,7 +74,7 @@ export default function HomePage() {
                     <button 
                     type="button" 
                     onClick={() => setSearchType("School")}>School</button> 
-                </div>
+                </div>  
             </div>
             <div className="searchResults">    
                 {fetchedList ? fetchedList.map((item) => (
@@ -77,7 +82,7 @@ export default function HomePage() {
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>{JSON.stringify(item)}</th>
                                 </tr>
                             </thead>
                         </table>
