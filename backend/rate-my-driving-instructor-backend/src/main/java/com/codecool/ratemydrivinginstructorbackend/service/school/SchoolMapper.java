@@ -24,7 +24,7 @@ public class SchoolMapper {
     }
 
     public SchoolDTO mapSchoolToSchoolDTO(School school) {
-        return new SchoolDTO(
+        return school == null ? null : new SchoolDTO(
                 school.getPublicId(),
                 mapAddressToAddressDTO(school.getAddress()),
                 school.getName(),
@@ -34,7 +34,7 @@ public class SchoolMapper {
     }
 
     private AddressDTO mapAddressToAddressDTO(SchoolAddress schoolAddress) {
-        return new AddressDTO(
+        return schoolAddress == null ? null : new AddressDTO(
                 schoolAddress.getPublicId(),
                 schoolAddress.getCity(),
                 schoolAddress.getStreetName(),
@@ -53,6 +53,6 @@ public class SchoolMapper {
     }
 
     public SchoolNameDTO mapSchoolToSchoolNameDTO(School school) {
-        return new SchoolNameDTO(school.getPublicId(), school.getName());
+        return school == null ? null : new SchoolNameDTO(school.getPublicId(), school.getName());
     }
 }

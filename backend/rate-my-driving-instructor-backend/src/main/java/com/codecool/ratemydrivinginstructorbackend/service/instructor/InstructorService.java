@@ -8,6 +8,7 @@ import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.exception.InstructorNotFoundException;
 import com.codecool.ratemydrivinginstructorbackend.service.school.exception.SchoolNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,7 @@ public class InstructorService {
         return instructorMapper.mapInstructorToInstructorDTO(newInstructor);
     }
 
+    @Transactional
     public InstructorDTO updateInstructor(UUID instructorId, InstructorDTO instructorDTO) {
         Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(instructorId);
 
@@ -52,6 +54,7 @@ public class InstructorService {
         return instructorMapper.mapInstructorToInstructorDTO(instructor);
     }
 
+    @Transactional
     public void deleteInstructor(UUID publicId) {
         instructorRepository.deleteByPublicId(publicId);
     }

@@ -35,7 +35,7 @@ public class InstructorMapper {
     }
 
     public InstructorDTO mapInstructorToInstructorDTO(Instructor instructor) {
-        return new InstructorDTO(
+        return instructor == null ? null : new InstructorDTO(
                 instructor.getPublicId(),
                 instructor.getFirstName(),
                 instructor.getLastName(),
@@ -46,7 +46,7 @@ public class InstructorMapper {
     }
 
     public InstructorNameDTO mapInstructorToInstructorNameDTO(Instructor instructor) {
-        return new InstructorNameDTO(
+        return instructor == null ? null : new InstructorNameDTO(
                 instructor.getFirstName(),
                 instructor.getLastName(),
                 instructor.getPublicId()

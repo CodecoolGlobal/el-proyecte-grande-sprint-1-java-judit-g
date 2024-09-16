@@ -5,10 +5,14 @@ import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
 import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.ReviewerRepository;
 import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.NewReviewerDTO;
+import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.service.reviewer.exception.ReviewerNotFoundException;
+import com.codecool.ratemydrivinginstructorbackend.service.school.exception.SchoolNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -41,5 +45,10 @@ public class ReviewerService {
         return reviewerRepository.findAll().stream()
                 .map(reviewerMapper::mapReviewerToReviewerDTO)
                 .toList();
+    }
+
+    @Transactional
+    public void deleteReviewer(UUID publicId) {
+        reviewerRepository.deleteByPublicId(publicId);
     }
 }

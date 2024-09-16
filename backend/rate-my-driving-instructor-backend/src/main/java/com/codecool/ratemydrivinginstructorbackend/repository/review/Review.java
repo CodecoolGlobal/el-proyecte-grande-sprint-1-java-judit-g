@@ -27,11 +27,11 @@ public class Review {
     }
 
     @ManyToOne
-    @JoinColumn(name = "reviewer_id")
+    @JoinColumn(name = "reviewer_private_id")
     private Reviewer reviewer;
 
     @ManyToOne
-    @JoinColumn(name = "instructor_id")
+    @JoinColumn(name = "instructor_private_id")
     private Instructor instructor;
 
 

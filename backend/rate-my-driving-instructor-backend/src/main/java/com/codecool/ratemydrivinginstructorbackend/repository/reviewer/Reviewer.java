@@ -2,6 +2,8 @@ package com.codecool.ratemydrivinginstructorbackend.repository.reviewer;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,9 @@ public class Reviewer {
 
     private String name;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "reviewer_private_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     List<Review> reviews = new ArrayList<>();
 
     public Reviewer() {

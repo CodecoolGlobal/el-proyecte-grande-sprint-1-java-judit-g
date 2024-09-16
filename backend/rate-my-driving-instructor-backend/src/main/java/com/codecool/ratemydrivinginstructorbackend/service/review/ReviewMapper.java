@@ -18,11 +18,11 @@ public class ReviewMapper {
     }
 
     public ReviewDTO mapReviewToReviewDTO(Review review) {
-        return new ReviewDTO(
+        return review == null ? null : new ReviewDTO(
                 review.getPublicId(),
                 review.getDescription(),
                 review.getRating(),
-                review.getReviewerPublicId()
+                review.getReviewer() == null ? null : review.getReviewerPublicId()
         );
     }
 }

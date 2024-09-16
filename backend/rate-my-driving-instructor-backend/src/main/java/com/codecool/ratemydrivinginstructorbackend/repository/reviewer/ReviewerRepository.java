@@ -11,4 +11,5 @@ public interface ReviewerRepository extends JpaRepository<Reviewer, Long> {
 
     Optional<Reviewer> findByPublicId(UUID publicId);
 
+    void deleteByPublicId(UUID publicId);
 }

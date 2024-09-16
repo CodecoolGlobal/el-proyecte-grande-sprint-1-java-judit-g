@@ -15,7 +15,7 @@ public class ReviewerMapper {
     }
 
     public ReviewerDTO mapReviewerToReviewerDTO(Reviewer reviewer) {
-        return new ReviewerDTO(
+        return reviewer == null ? null : new ReviewerDTO(
                 reviewer.getPublicId(),
                 reviewer.getName()
         );
