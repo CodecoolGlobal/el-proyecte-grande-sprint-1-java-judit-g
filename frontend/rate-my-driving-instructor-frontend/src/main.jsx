@@ -4,12 +4,17 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 import Layout from './component/Layout.jsx'
 import SchoolPage from './component/SchoolPage.jsx'
+import HomePage from './pages/HomePage.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout/>,
     children: [
+        {
+          path: "/home",
+          element:<HomePage/>
+        },
         {
           path: "/school/:id",
           element:<SchoolPage/>

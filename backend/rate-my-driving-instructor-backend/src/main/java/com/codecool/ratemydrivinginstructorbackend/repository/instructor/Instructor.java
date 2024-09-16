@@ -45,9 +45,7 @@ public class Instructor {
         this.licenseType = new HashSet<>(licenseType);
     }
 
-    public Instructor() {
-
-    }
+    public Instructor() {}
 
     public Instructor(String s, String s1, School school, Set<LicenseType> licenseType) {
         this.firstName = s;

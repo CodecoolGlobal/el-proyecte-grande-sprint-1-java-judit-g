@@ -34,6 +34,10 @@ public class ReviewService {
         this.reviewMapper = reviewMapper;
     }
 
+    public int countNumberOfReviews() {
+        return (int) reviewRepository.count();
+    }
+
     public ReviewDTO findReviewByInstructorName(String lastName, String firstName) {
         Optional<Review> optionalReview = reviewRepository.findByInstructorFirstNameAndInstructorLastName(firstName, lastName);
         Review review = optionalReview.orElseThrow(() -> new ReviewNotFoundException("Review with " + firstName + " and " + lastName + " was not found."));
