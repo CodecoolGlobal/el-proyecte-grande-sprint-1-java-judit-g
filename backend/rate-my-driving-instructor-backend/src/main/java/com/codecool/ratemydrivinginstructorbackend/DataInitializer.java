@@ -77,8 +77,8 @@ public class DataInitializer {
         SchoolAddress schoolAddress1 = createInitSchoolAddress("Budapest", "Nagymező", "1", 1111);
         SchoolAddress schoolAddress2 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
 
-        School school1 = createInitSchool("Autós suli1", "+36999999");
-        School school2 = createInitSchool("Autós suli2", "+36666666");
+        School school1 = createInitSchool("asd", "+36999999");
+        School school2 = createInitSchool("qwe", "+36666666");
 
         school1.setAddress(schoolAddress1);
         school2.setAddress(schoolAddress2);

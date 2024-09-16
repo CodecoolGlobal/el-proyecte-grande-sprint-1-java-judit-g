@@ -2,10 +2,12 @@ package com.codecool.ratemydrivinginstructorbackend.controller.instructor;
 
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.NewInstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolDTO;
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -53,6 +55,11 @@ public class InstructorController {
     @DeleteMapping("/{instructorId}")
     public void deleteInstructor(@PathVariable UUID instructorId) {
         instructorService.deleteInstructor(instructorId);
+    }
+
+    @GetMapping("/search")
+    public List<InstructorDTO> getInstructorsBySearchWord(@RequestParam String name) {
+        return instructorService.getInstructorsByName(name, name);
     }
 }
 

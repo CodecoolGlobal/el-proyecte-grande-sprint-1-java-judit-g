@@ -49,8 +49,8 @@ public class SchoolController {
         return schoolService.countNumberOfSchools();
     }
 
-//    @GetMapping("/count")
-//    public int getSchoolByName(@RequestParam String name) {
-//        return null;
-//    }
+    @GetMapping("/search")
+    public List<SchoolDTO> getSchoolsBySearchWord(@RequestParam String name) {
+        return schoolService.getSchoolsByName(name);
+    }
 }
