@@ -5,6 +5,8 @@ import './index.css'
 import Layout from './component/Layout.jsx'
 import SchoolPage from './component/SchoolPage.jsx'
 import HomePage from './pages/HomePage.jsx'
+import Login from './component/Login.jsx'
+import Register from './component/Register.jsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
         {
           path: "/school/:id",
           element:<SchoolPage/>
+        },
+        {
+          path: "/login",
+          element:<Login/>
+        },
+        {
+          path: "/register",
+          element:<Register/>
         },
     ],
   },

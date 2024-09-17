@@ -16,7 +16,7 @@ public class Reviewer {
 
     private UUID publicId = UUID.randomUUID();
 
-    private String name;
+    private String username;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
@@ -35,15 +35,15 @@ public class Reviewer {
 
     }
 
-    public Reviewer(String name, String password, List<Role> roles) {
-        this.name = name;
+    public Reviewer(String username, String password, List<Role> roles) {
+        this.username = username;
         this.reviews = new ArrayList<>();
         this.password = password;
         this.roles = roles;
     }
 
-    public Reviewer(String name) {
-        this.name = name;
+    public Reviewer(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -74,8 +74,8 @@ public class Reviewer {
         return publicId;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public List<Review> getReviews() {
@@ -90,8 +90,8 @@ public class Reviewer {
         this.publicId = publicId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public void setReviews(List<Review> reviews) {

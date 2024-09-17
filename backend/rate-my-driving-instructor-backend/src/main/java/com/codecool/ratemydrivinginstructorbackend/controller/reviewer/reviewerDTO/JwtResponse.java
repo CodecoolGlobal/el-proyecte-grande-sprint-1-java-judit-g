@@ -2,5 +2,5 @@ package com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewer
 
 import java.util.List;
 
-public record JwtResponse(String jwt, String userName, List<String> role) {
+public record JwtResponse(String jwt, String username, List<String> role) {
 }

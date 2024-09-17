@@ -2,5 +2,5 @@ package com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewer
 
 import java.util.UUID;
 
-public record ReviewerDTO(UUID publicId, String name) {
+public record ReviewerDTO(UUID publicId, String username) {
 }
