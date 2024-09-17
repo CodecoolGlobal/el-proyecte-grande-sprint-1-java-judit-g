@@ -1,8 +1,11 @@
 package com.codecool.ratemydrivinginstructorbackend.controller.reviewer;
 
+import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.JwtResponse;
 import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.NewReviewerDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.ReviewerDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.ReviewerLoginDTO;
 import com.codecool.ratemydrivinginstructorbackend.service.reviewer.ReviewerService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +21,15 @@ public class ReviewerController {
         this.reviewerService = reviewerService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public ReviewerDTO createReviewer(@RequestBody NewReviewerDTO newReviewerDTO) {
         return reviewerService.createReviewer(newReviewerDTO);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> authenticateReviewer(@RequestBody ReviewerLoginDTO reviewerLoginDTO) {
+        JwtResponse jwtResponse = reviewerService.authenticateUser(reviewerLoginDTO);
+        return ResponseEntity.ok(jwtResponse);
     }
 
     @GetMapping
