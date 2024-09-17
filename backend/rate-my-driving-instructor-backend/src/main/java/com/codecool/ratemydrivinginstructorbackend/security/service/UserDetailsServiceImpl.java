@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Reviewer reviewerEntity = reviewerRepository.findUserByName(username)
+        Reviewer reviewerEntity = reviewerRepository.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
         List<SimpleGrantedAuthority> roles = new ArrayList<>();
@@ -35,6 +35,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             roles.add(new SimpleGrantedAuthority(role.name()));
         }
 
-        return new User(reviewerEntity.getName(), reviewerEntity.getPassword(), roles);
+        return new User(reviewerEntity.getUsername(), reviewerEntity.getPassword(), roles);
     }
 }

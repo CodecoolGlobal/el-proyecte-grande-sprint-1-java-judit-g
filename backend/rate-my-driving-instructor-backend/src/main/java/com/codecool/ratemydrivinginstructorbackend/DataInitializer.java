@@ -11,9 +11,6 @@ import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
 import jakarta.annotation.PostConstruct;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,7 +39,7 @@ public class DataInitializer {
     @Transactional
     @PostConstruct
     public void initializeData() {
-        Reviewer reviewer1 = createInitReviewer("Ádám");
+        Reviewer reviewer1 = createInitReviewer("xxx");
         Reviewer reviewer2 = createInitReviewer("Kata");
         reviewerRepository.saveAll(List.of(reviewer1, reviewer2));
 
@@ -169,7 +166,7 @@ public class DataInitializer {
 
     private Reviewer createInitReviewer(String name) {
         Reviewer reviewer = new Reviewer();
-        reviewer.setName(name);
+        reviewer.setUsername(name);
         return reviewer;
     }
 }

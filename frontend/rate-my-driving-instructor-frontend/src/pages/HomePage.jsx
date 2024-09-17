@@ -10,7 +10,13 @@ export default function HomePage() {
     async function fetchSearchData(searchType, searchItem) {
         console.log(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`);
         
-        const response = await fetch(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`);
+        const response = await fetch(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+                'Content-Type': 'application/json',
+            }
+        });
         const listedSearchResult = await response.json();
         console.log(listedSearchResult);
         
@@ -56,7 +62,7 @@ export default function HomePage() {
         <>
         <div className="homePage">
             <div className="searchBar">
-                <form className="searchForm" onChange={onSubmit}>
+                <form className="searchForm" onSubmit={onSubmit}>
                     <input 
                     type="text"
                     value={searchItem}
@@ -94,7 +100,7 @@ export default function HomePage() {
         </div>
 
         
-        <div className="statDiv">
+        {/* <div className="statDiv">
             <h1>
                 STATISTICS
             </h1>
@@ -114,7 +120,7 @@ export default function HomePage() {
                 <h3> Number of reviews: </h3>
                 {stats["review"]}
             </div>
-        </div>
+        </div> */}
         </>
     )
 }
