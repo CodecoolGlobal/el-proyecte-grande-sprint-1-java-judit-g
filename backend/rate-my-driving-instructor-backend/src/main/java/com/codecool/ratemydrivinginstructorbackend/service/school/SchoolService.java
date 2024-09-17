@@ -75,7 +75,7 @@ public class SchoolService {
     }
 
     public List<SchoolDTO> getSchoolsByName(String name) {
-        List<School> schools = schoolRepository.findByNameContaining(name);
+        List<School> schools = schoolRepository.findByNameContainingIgnoreCase(name);
         return schools.stream()
                 .map(schoolMapper::mapSchoolToSchoolDTO)
                 .toList();

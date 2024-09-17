@@ -89,7 +89,7 @@ public class InstructorService {
     }
 
     public List<InstructorDTO> getInstructorsByName(String name1, String name2) {
-        List<Instructor> instructors = instructorRepository.findByFirstNameContainingOrLastNameContaining(name1, name2);
+        List<Instructor> instructors = instructorRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(name1, name2);
         return instructors.stream()
                 .map(instructorMapper::mapInstructorToInstructorDTO)
                 .toList();
