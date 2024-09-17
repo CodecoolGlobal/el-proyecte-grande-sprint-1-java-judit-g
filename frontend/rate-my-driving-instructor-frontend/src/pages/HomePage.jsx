@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import './HomePage.css'
+import InstructorCard from "../component/InstructorCard";
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
@@ -19,6 +20,7 @@ export default function HomePage() {
         });
         const listedSearchResult = await response.json();
         console.log(listedSearchResult);
+        console.log(listedSearchResult[0]);
         
         setFetchedList(listedSearchResult);
     }
@@ -84,14 +86,15 @@ export default function HomePage() {
             </div>
             <div className="searchResults">    
                 {fetchedList ? fetchedList.map((item) => (
-                    <div key={item.id}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>{JSON.stringify(item)}</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <div key={item.publicID}>
+                       <InstructorCard 
+                       firstname={item.firstName} 
+                       lastname={item.lastName}
+                        publicId={item.publicID}
+                        schoolname={item.schoolNameDTO.name}
+                        licenceType={item.licenseTypeSet}
+                        rating={console.log(item.reviewDTOs.length)}
+                        />
                     </div>
 
                     
