@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface SchoolRepository extends JpaRepository<School, Long> {
 
     Optional<School> findByPublicId(UUID publicId);
-    List<School> findByNameContaining(String name);
+    List<School> findByNameContainingIgnoreCase(String name);
 
     Optional<School> deleteByPublicId(UUID publicId);
 }

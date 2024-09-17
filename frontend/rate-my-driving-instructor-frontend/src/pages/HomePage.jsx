@@ -56,7 +56,7 @@ export default function HomePage() {
         <>
         <div className="homePage">
             <div className="searchBar">
-                <form className="searchForm" onSubmit={onSubmit}>
+                <form className="searchForm" onChange={onSubmit}>
                     <input 
                     type="text"
                     value={searchItem}
