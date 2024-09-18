@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import './HomePage.css'
 import SchoolCard from "../component/SchoolCard";
+import InstructorCard from "../component/InstructorCard";
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
     const [searchType, setSearchType] = useState("School");
     const [fetchedList, setFetchedList] = useState([]);
+    const [isSearched, setIsSearched] = useState(false);
     const [stats, setStats] = useState({});
 
     async function fetchSearchData(searchType, searchItem) {
@@ -20,6 +22,7 @@ export default function HomePage() {
         });
         const listedSearchResult = await response.json();
         console.log(listedSearchResult);
+        console.log(listedSearchResult[0]);
         
         setFetchedList(listedSearchResult);
     }
@@ -86,7 +89,18 @@ export default function HomePage() {
             <div className="searchResults" key='1' style={{ height: '10vh' }}>    
                 {fetchedList ? fetchedList.map((item) => (
                     <div key={item.id}>
-                        {searchType === "School" ? <SchoolCard school={item}/> : null}
+                        {searchType === "School" ? 
+                        <SchoolCard school={item}/> :
+                        <InstructorCard 
+                       firstname={item.firstName} 
+                       lastname={item.lastName}
+                        publicId={item.publicID}
+                        schoolname={item.schoolNameDTO.name}
+                        licenceType={item.licenseTypeSet}
+                        rating={item.avgRating}
+                        isSearched={isSearched}
+                        />
+                    }
                     </div>
                 )) : (<div>no results yet</div>)}
             </div>

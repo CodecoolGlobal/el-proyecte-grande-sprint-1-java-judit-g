@@ -41,7 +41,8 @@ public class InstructorMapper {
                 instructor.getLastName(),
                 schoolMapper.mapSchoolToSchoolNameDTO(instructor.getSchool()),
                 mapReviewsToReviewDTOs(instructor.getReviews()),
-                instructor.getLicenseType()
+                instructor.getLicenseType(),
+                instructor.getAvgRating()
         );
     }
 
