@@ -8,6 +8,6 @@ import com.codecool.ratemydrivinginstructorbackend.repository.instructor.License
 import java.util.Set;
 import java.util.UUID;
 
-public record InstructorDTO(UUID publicID, String firstName, String lastName, SchoolNameDTO schoolNameDTO, Set<ReviewDTO> reviewDTOs, Set<LicenseType> licenseTypeSet) {
+public record InstructorDTO(UUID publicID, String firstName, String lastName, SchoolNameDTO schoolNameDTO, Set<ReviewDTO> reviewDTOs, Set<LicenseType> licenseTypeSet, double avgRating) {
 
 }

@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage.jsx'
 import Login from './component/Login.jsx'
 import Register from './component/Register.jsx'
 import App from './App.jsx'
+import InstructorPage from './component/InstructorPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         {
           path: "/register",
           element:<Register/>
+        },
+        {
+          path: "/instructor/:publicID",
+          element:<InstructorPage/>
         },
     ],
   },

@@ -73,12 +73,21 @@ public class DataInitializer {
 
         SchoolAddress schoolAddress1 = createInitSchoolAddress("Budapest", "Nagymező", "1", 1111);
         SchoolAddress schoolAddress2 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
+        SchoolAddress schoolAddress3 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
+        SchoolAddress schoolAddress4 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
+        SchoolAddress schoolAddress5 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
 
         School school1 = createInitSchool("asd", "+36999999");
         School school2 = createInitSchool("qwe", "+36666666");
+        School school3 = createInitSchool("asd", "+36666666");
+        School school4 = createInitSchool("asd", "+36666666");
+        School school5 = createInitSchool("asd", "+36666666");
 
         school1.setAddress(schoolAddress1);
         school2.setAddress(schoolAddress2);
+        school3.setAddress(schoolAddress3);
+        school4.setAddress(schoolAddress4);
+        school5.setAddress(schoolAddress5);
 
         Instructor instructor1 = createInitInstructor("Peter", "Nagy", new HashSet<>(Set.of(LicenseType.B, LicenseType.A)));
         Instructor instructor2 = createInitInstructor("Zoltán", "Szabó", new HashSet<>(Set.of(LicenseType.A, LicenseType.B)));
@@ -93,7 +102,7 @@ public class DataInitializer {
         school1.setInstructors(new HashSet<>(Set.of(instructor1, instructor2)));
         school2.setInstructors(new HashSet<>(Set.of(instructor3, instructor4)));
 
-        schoolRepository.saveAll(List.of(school1, school2));
+        schoolRepository.saveAll(List.of(school1, school2, school3, school4, school5));
 
         instructor1.setReviews(new HashSet<>(Set.of(review1)));
         instructor2.setReviews(new HashSet<>(Set.of(review2)));
@@ -134,9 +143,9 @@ public class DataInitializer {
 
     private SchoolAddress createInitSchoolAddress(String city, String street, String streetNumber, int zipCode) {
         SchoolAddress schoolAddress = new SchoolAddress();
-        schoolAddress.setStreetName(city);
-        schoolAddress.setStreetNumber(street);
-        schoolAddress.setCity(streetNumber);
+        schoolAddress.setStreetName(street);
+        schoolAddress.setStreetNumber(streetNumber);
+        schoolAddress.setCity(city);
         schoolAddress.setPostCode(zipCode);
         return schoolAddress;
     }

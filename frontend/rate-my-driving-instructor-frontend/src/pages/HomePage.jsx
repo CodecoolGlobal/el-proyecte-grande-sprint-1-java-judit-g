@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import './HomePage.css'
+import SchoolCard from "../component/SchoolCard";
+import InstructorCard from "../component/InstructorCard";
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
-    const [searchType, setSearchType] = useState("Instructor");
+    const [searchType, setSearchType] = useState("School");
     const [fetchedList, setFetchedList] = useState([]);
+    const [isSearched, setIsSearched] = useState(false);
     const [stats, setStats] = useState({});
 
     async function fetchSearchData(searchType, searchItem) {
@@ -19,6 +22,7 @@ export default function HomePage() {
         });
         const listedSearchResult = await response.json();
         console.log(listedSearchResult);
+        console.log(listedSearchResult[0]);
         
         setFetchedList(listedSearchResult);
     }
@@ -76,25 +80,34 @@ export default function HomePage() {
                 <div className="searchButtons">
                     <button 
                     type="button" 
-                    onClick={() => setSearchType("Instructor")}>Instructor</button>
+                    onClick={() => {
+                        setSearchType("Instructor");
+                        setFetchedList([]);
+                        }}>Instructor</button>
                     <button 
                     type="button" 
-                    onClick={() => setSearchType("School")}>School</button> 
+                    onClick={() => {
+                        setSearchType("School");
+                        setFetchedList([]);
+                        }}>School</button> 
                 </div>  
             </div>
-            <div className="searchResults">    
+            <div className="searchResults" key='1' style={{ height: '10vh' }}>    
                 {fetchedList ? fetchedList.map((item) => (
                     <div key={item.id}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>{JSON.stringify(item)}</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        {searchType === "School" ? 
+                        <SchoolCard school={item}/> :
+                        <InstructorCard 
+                       firstname={item.firstName} 
+                       lastname={item.lastName}
+                        publicId={item.publicID}
+                        schoolname={item.schoolNameDTO.name}
+                        licenceType={item.licenseTypeSet}
+                        rating={item.avgRating}
+                        isSearched={isSearched}
+                        />
+                    }
                     </div>
-
-                    
                 )) : (<div>no results yet</div>)}
             </div>
         </div>
