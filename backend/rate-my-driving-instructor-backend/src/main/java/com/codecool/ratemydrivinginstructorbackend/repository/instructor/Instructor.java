@@ -23,6 +23,8 @@ public class Instructor {
 
     private String lastName;
 
+    private double avgRating;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     private School school;
 
@@ -37,12 +39,13 @@ public class Instructor {
     @OneToMany(cascade = CascadeType.PERSIST)
     private Set<Review> reviews = new HashSet<>();
 
-    public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType) {
+    public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType, double avgRating) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
         this.reviews = new HashSet<>(reviews);
         this.licenseType = new HashSet<>(licenseType);
+        this.avgRating = avgRating;
     }
 
     public Instructor() {}
@@ -57,6 +60,17 @@ public class Instructor {
 
     public UUID getPublicId() {
         return publicId;
+    }
+
+    public double getAvgRating() {
+        return reviews.stream()
+                .mapToDouble(Review::getRating)
+                .average()
+                .orElse(0);
+    }
+
+    public void setAvgRating(double avgRating) {
+        this.avgRating = avgRating;
     }
 
     public String getFirstName() {
