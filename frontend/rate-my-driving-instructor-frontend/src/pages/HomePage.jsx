@@ -80,10 +80,16 @@ export default function HomePage() {
                 <div className="searchButtons">
                     <button 
                     type="button" 
-                    onClick={() => setSearchType("Instructor")}>Instructor</button>
+                    onClick={() => {
+                        setSearchType("Instructor");
+                        setFetchedList([]);
+                        }}>Instructor</button>
                     <button 
                     type="button" 
-                    onClick={() => setSearchType("School")}>School</button> 
+                    onClick={() => {
+                        setSearchType("School");
+                        setFetchedList([]);
+                        }}>School</button> 
                 </div>  
             </div>
             <div className="searchResults" key='1' style={{ height: '10vh' }}>    
