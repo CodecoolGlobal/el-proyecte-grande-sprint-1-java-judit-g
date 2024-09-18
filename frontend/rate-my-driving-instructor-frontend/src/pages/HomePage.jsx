@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import './HomePage.css'
+import SchoolCard from "../component/SchoolCard";
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
-    const [searchType, setSearchType] = useState("Instructor");
+    const [searchType, setSearchType] = useState("School");
     const [fetchedList, setFetchedList] = useState([]);
     const [stats, setStats] = useState({});
 
@@ -82,19 +83,11 @@ export default function HomePage() {
                     onClick={() => setSearchType("School")}>School</button> 
                 </div>  
             </div>
-            <div className="searchResults">    
+            <div className="searchResults" key='1' style={{ height: '10vh' }}>    
                 {fetchedList ? fetchedList.map((item) => (
                     <div key={item.id}>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>{JSON.stringify(item)}</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        {searchType === "School" ? <SchoolCard school={item}/> : null}
                     </div>
-
-                    
                 )) : (<div>no results yet</div>)}
             </div>
         </div>
