@@ -77,7 +77,9 @@ public class ReviewerService {
         List<String> roles = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority)
                 .toList();
 
-        return new JwtResponse(jwt, userDetails.getUsername(), roles);
+        Reviewer reviewer = reviewerRepository.findUserByUsername(loginRequest.username()).orElseThrow(() -> new ReviewerNotFoundException("Reviewer not found"));
+
+        return new JwtResponse(jwt, userDetails.getUsername(), roles, reviewer.getPublicId());
     }
 
     @Transactional

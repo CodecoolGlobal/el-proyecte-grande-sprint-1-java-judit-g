@@ -19,7 +19,7 @@ public class MapperConfiguration {
 
     @Bean
     public ReviewMapper reviewMapper() {
-        return new ReviewMapper();
+        return new ReviewMapper(reviewerMapper());
     }
 
     @Bean
