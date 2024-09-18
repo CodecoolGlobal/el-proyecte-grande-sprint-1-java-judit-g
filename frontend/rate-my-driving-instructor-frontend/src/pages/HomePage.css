@@ -110,3 +110,11 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
+#searchResults {
+  width: 50vw;       /* 50% of the viewport width */
+  height: 50vh;      /* 50% of the viewport height */
+  overflow-y: auto;  /* Scroll when content exceeds the box height */
+  border: 1px solid #ccc;  /* Optional border styling */
+  padding: 10px;     /* Padding inside the box */
+  box-sizing: border-box; /* Ensure padding is included in the width/height */
+}
