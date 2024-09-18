@@ -6,6 +6,7 @@ export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
     const [searchType, setSearchType] = useState("Instructor");
     const [fetchedList, setFetchedList] = useState([]);
+    const [isSearched, setIsSearched] = useState(false);
     const [stats, setStats] = useState({});
 
     async function fetchSearchData(searchType, searchItem) {
@@ -93,8 +94,9 @@ export default function HomePage() {
                         publicId={item.publicID}
                         schoolname={item.schoolNameDTO.name}
                         licenceType={item.licenseTypeSet}
-                        rating={console.log(item.reviewDTOs.length)}
-                        />
+                        rating={item.avgRating}
+                        isSearched={isSearched}
+                        /> 
                     </div>
 
                     

@@ -1,4 +1,7 @@
-export default function InstructorCard({ firstname, lastname, publicId, schoolname, licenceType, rating }) {
+import { Link } from "react-router-dom";
+
+export default function InstructorCard({ firstname, lastname, publicId, schoolname, licenceType, rating, isSearched }) {
+
     return <>
         <div className="intructor-card" id={publicId}>
             <div className="picture">place of picture</div>
@@ -19,15 +22,16 @@ export default function InstructorCard({ firstname, lastname, publicId, schoolna
                         <tr>
                             <td>Licence type: </td>
                             {licenceType && licenceType.map((item) =>
-                                (<td>{item}</td>)
+                                (<td key={item}>{item}</td>)
                             )}
                         </tr>
                         <tr>
                             <td>Rating: {rating}</td>
                         </tr>
                     </tbody>
-
                 </table>
+                {!isSearched && 
+                (<Link to={`/instructor/${publicId}`}>See reviews</Link>)}
             </div>
         </div>
     </>;
