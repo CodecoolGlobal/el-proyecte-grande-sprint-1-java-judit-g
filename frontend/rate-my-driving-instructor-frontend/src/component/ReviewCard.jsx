@@ -1,4 +1,4 @@
-function ReviewCard({ review }) {
+function ReviewCard( review ) {
   
   return (
     <div className="wrapper">
