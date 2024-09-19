@@ -16,15 +16,6 @@ public class Review {
     private String description;
     private int rating;
 
-    public Review() {
-    }
-
-    public Review(String description, int rating, Reviewer reviewer, Instructor instructor) {
-        this.description = description;
-        this.rating = rating;
-        this.reviewer = reviewer;
-        this.instructor = instructor;
-    }
 
     @ManyToOne
     @JoinColumn(name = "reviewer_private_id")
@@ -34,6 +25,15 @@ public class Review {
     @JoinColumn(name = "instructor_private_id")
     private Instructor instructor;
 
+    public Review() {
+    }
+
+    public Review(String description, int rating, Reviewer reviewer, Instructor instructor) {
+        this.description = description;
+        this.rating = rating;
+        this.reviewer = reviewer;
+        this.instructor = instructor;
+    }
 
     public long getPrivateId() {
         return privateId;

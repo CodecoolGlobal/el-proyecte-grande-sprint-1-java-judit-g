@@ -29,6 +29,7 @@ public class ReviewerController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateReviewer(@RequestBody ReviewerLoginDTO reviewerLoginDTO) {
         JwtResponse jwtResponse = reviewerService.authenticateUser(reviewerLoginDTO);
+        System.out.println(jwtResponse);
         return ResponseEntity.ok(jwtResponse);
     }
 
