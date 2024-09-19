@@ -4,7 +4,7 @@ export default function InstructorCard({ firstname, lastname, publicId, schoolna
 
     return <>
         <div>
-            <Link to={`/school/${publicId}`}>
+            <Link to={`/instructor/${publicId}`}>
                 <div className="row row-cols-1 row-cols-md-2 mx-auto" style={{marginRight: '900px'}}>
                 <div className="col mb-5">
                     <img className="rounded img-fluid shadow" src="../public/images/no_profile.jpg" />
