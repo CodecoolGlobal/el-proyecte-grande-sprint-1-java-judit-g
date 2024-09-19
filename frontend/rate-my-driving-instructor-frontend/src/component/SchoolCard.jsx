@@ -1,23 +1,27 @@
-import React from 'react'
 import Address from './Address'
+import { Link } from "react-router-dom";
 
 function SchoolCard({ school }) {
   
   
   return (
-    <div className='wrapper'>
-      <div className='user-card'>
-        <div className='user-card-img'>
-          <img src="../public/images/school_logo3.jpg" alt="" />
+    <div>
+      <Link to={`/school/${school.publicId}`}>
+        <div className="row row-cols-1 row-cols-md-2 mx-auto" style={{marginRight: '900px'}}>
+          <div className="col mb-5">
+            <img className="rounded img-fluid shadow" src="../public/images/school_logo3.jpg" />
+          </div>
+          <div className="col d-flex align-items-center justify-content-center mb-5">
+            <div>
+            <h5 className="fw-bold">{school.name}</h5>
+            <p className="text-muted mb-4"><span>Phone number: </span>{school.phoneNumber}</p>
+            <Address address={school.addressDTO}/>
+            <p className="text-muted mb-4">Number of instructors:</p>
+            <p className="text-muted mb-4">Average rating of instructors:</p>
+          </div>
+          </div>
         </div>
-        <div className='user-card-info'>
-          <h2>{school.name}</h2>
-          <p><span>Phone number:</span>{school.phoneNumber}</p>
-          <Address address={school.addressDTO}/>
-          <p><span>Number of instructors:</span></p>
-          <p><span>Average rating of instructors:</span></p>
-        </div>
-      </div>
+      </Link>
     </div>
   )
 }
