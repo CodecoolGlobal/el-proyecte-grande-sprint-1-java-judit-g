@@ -1,32 +1,38 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import StarRating from './StarRating';
 
-async function createForm(review) {
-
-  await fetch('/api/review', {
+async function createReview(review) {
+  const response = await fetch('/api/review', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify()
+    body: JSON.stringify(review)
   })
+
+  //exception handling on frontend!
+  if (response.status === 400) {
+    const error = await response.json();
+    console.log(error);
+  } 
 }
 
-function ReviewForm({ publicId }) {
+function ReviewForm({ instructorPublicId, onSubmit }) {
 
-  const navigate = useNavigate();
   const [description, setDescription] = useState(null);
   const [rating, setRating] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
     if (description) {
-      let instructorPublicId = publicId;
+      localStorage.setItem('publicId', 'df26fd1d-ad5c-4921-8446-05bc24e75b8e')
       let reviewerPublicId = localStorage.getItem('publicId');
+      console.log(reviewerPublicId);
       let review = {description, instructorPublicId, reviewerPublicId, rating}
-      createForm(review);
-      navigate(`/instructor/${instructorPublicId}`);
+      console.log(review);
+      createReview(review);
+      onSubmit(review);
     }
   }
 
@@ -34,11 +40,12 @@ function ReviewForm({ publicId }) {
     <form className="review-form" onSubmit={event => handleSubmit(event)}>
       <div>
         <label htmlFor="description" />
-        <input type="text" name="description" onChange={event => setDescription(event.target)} />
+        <input type="text" name="description" onChange={event => setDescription(event.target.value)} />
       </div>
       <div className="buttons">
         <button type="submit">Submit</button>
       </div>
+      <StarRating onRating={setRating} rating={rating}/>
     </form>
     )
 }
