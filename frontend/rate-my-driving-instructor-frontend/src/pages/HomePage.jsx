@@ -22,7 +22,6 @@ export default function HomePage() {
         });
         const listedSearchResult = await response.json();
         console.log(listedSearchResult);
-        console.log(listedSearchResult[0]);
         
         setFetchedList(listedSearchResult);
     }
@@ -97,13 +96,7 @@ export default function HomePage() {
                     <div key={item.id}>
                         {searchType === "School" ? 
                         <SchoolCard school={item}/> :
-                        <InstructorCard 
-                       firstname={item.firstName} 
-                       lastname={item.lastName}
-                        publicId={item.publicID}
-                        schoolname={item.schoolNameDTO.name}
-                        licenceType={item.licenseTypeSet}
-                        rating={item.avgRating}
+                        <InstructorCard instructor={item}
                         isSearched={isSearched}
                         />
                     }

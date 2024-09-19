@@ -26,7 +26,6 @@ function ReviewForm({ instructorPublicId, onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault();
     if (description) {
-      localStorage.setItem('publicId', 'df26fd1d-ad5c-4921-8446-05bc24e75b8e')
       let reviewerPublicId = localStorage.getItem('publicId');
       console.log(reviewerPublicId);
       let review = {description, instructorPublicId, reviewerPublicId, rating}

@@ -6,15 +6,26 @@ function SchoolPage() {
   const { id } = useParams();
   const [school, setSchool] = useState(null);
 
+  console.log(id);
+  
+
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/school/${id}`);
+      const response = await fetch(`/api/school/${id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+          'Content-type': 'application/json'
+        }
+      });
       const data = await response.json();
       console.log(data);
       
       setSchool(data);
+      console.log(data);
     }
     fetchData();
+    
   }, [id]);
 
 

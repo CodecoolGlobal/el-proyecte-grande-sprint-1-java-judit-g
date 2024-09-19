@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
+  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -25,6 +27,7 @@ function LoginPage() {
       localStorage.setItem('jwt', data.jwt)
       localStorage.setItem('publicId', data.publicId)
     }
+    navigate('/home');
   }
 
   return (
