@@ -3,36 +3,22 @@ import { Link } from "react-router-dom";
 export default function InstructorCard({ firstname, lastname, publicId, schoolname, licenceType, rating, isSearched }) {
 
     return <>
-        <div className="intructor-card" id={publicId}>
-            <div className="picture">place of picture</div>
-            <div className="details">
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Intstructor</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Name: {lastname} {" "} {firstname}</td>
-                        </tr>
-                        <tr>
-                            <td>Schholname: {schoolname}</td>
-                        </tr>
-                        <tr>
-                            <td>Licence type: </td>
-                            {licenceType && licenceType.map((item) =>
-                                (<td key={item}>{item}</td>)
-                            )}
-                        </tr>
-                        <tr>
-                            <td>Rating: {rating}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {!isSearched && 
-                (<Link to={`/instructor/${publicId}`}>See reviews</Link>)}
-            </div>
+        <div>
+            <Link to={`/school/${publicId}`}>
+                <div className="row row-cols-1 row-cols-md-2 mx-auto" style={{marginRight: '900px'}}>
+                <div className="col mb-5">
+                    <img className="rounded img-fluid shadow" src="../public/images/no_profile.jpg" />
+                </div>
+                <div className="col d-flex align-items-center justify-content-center mb-5">
+                    <div>
+                    <h5 className="fw-bold">{firstname + ' ' + lastname}</h5>
+                    <p className="text-muted mb-4"><span>School: </span>{schoolname}</p>
+                    <p className="text-muted mb-4"><span>Licences: </span>{licenceType}</p>
+                    <p className="text-muted mb-4"><span>Rating: </span>{rating}</p>
+                </div>
+                </div>
+                </div>
+            </Link>
         </div>
     </>;
 }

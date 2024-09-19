@@ -77,13 +77,13 @@ public class DataInitializer {
         SchoolAddress schoolAddress4 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
         SchoolAddress schoolAddress5 = createInitSchoolAddress("Budapest", "Király", "2", 2222);
 
-        School school1 = createInitSchool("asd", "+36999999");
-        School school2 = createInitSchool("qwe", "+36666666");
-        School school3 = createInitSchool("asd", "+36666666");
-        School school4 = createInitSchool("asd", "+36666666");
-        School school5 = createInitSchool("asd", "+36666666");
+        School school1 = createInitSchool("Precision Driving School", "+36999999");
+        School school2 = createInitSchool("Elite Road School", "+36666666");
+        School school3 = createInitSchool("Safe Wheels School", "+36666666");
+        School school4 = createInitSchool("SpeedMaster Driving School", "+36666666");
+        School school5 = createInitSchool("Urban Drive School", "+36666666");
 
-        school1.setAddress(schoolAddress1);
+        school1.setAddress(schoolAddress1); 
         school2.setAddress(schoolAddress2);
         school3.setAddress(schoolAddress3);
         school4.setAddress(schoolAddress4);

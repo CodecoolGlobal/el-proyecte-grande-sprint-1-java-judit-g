@@ -23,7 +23,7 @@ function Register() {
 
 
   return (
-    <div>register
+    <div>
       <section className="position-relative py-4 py-xl-5">
         <div className='container'>
           <div className='row mb-5'>

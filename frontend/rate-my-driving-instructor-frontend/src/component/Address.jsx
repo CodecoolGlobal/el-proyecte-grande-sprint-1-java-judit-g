@@ -2,7 +2,7 @@ import React from 'react'
 
 function Address({ address }) {
   return (
-      <p><span>Address:</span>{address.city + ', ' + address.postCode + ', ' + address.streetName + ' ' + address.streetNumber + '.'}</p>
+      <p className="text-muted mb-4"><span>Address: </span>{address.city + ', ' + address.postCode + ', ' + address.streetName + ' ' + address.streetNumber + '.'}</p>
   )
 }
 

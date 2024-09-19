@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
-function Login() {
+function LoginPage() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -27,7 +25,7 @@ function Login() {
   }
 
   return (
-    <div>login
+    <div>
       <section className="position-relative py-4 py-xl-5">
         <div className='container'>
           <div className='row mb-5'>
@@ -63,4 +61,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginPage
