@@ -66,7 +66,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth ->
                         //regex!
                         auth.requestMatchers("/**").permitAll()
-//                                .requestMatchers("/api/instructor/**").hasRole("USER")
+                                //.requestMatchers("/api/instructor/**").hasRole("USER")
 //                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/error").permitAll()
                                 .anyRequest().authenticated()
