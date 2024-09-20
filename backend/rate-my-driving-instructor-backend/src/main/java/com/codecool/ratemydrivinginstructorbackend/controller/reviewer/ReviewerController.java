@@ -6,6 +6,9 @@ import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerD
 import com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO.ReviewerLoginDTO;
 import com.codecool.ratemydrivinginstructorbackend.service.reviewer.ReviewerService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,6 +48,8 @@ public class ReviewerController {
 
     @DeleteMapping("/{publicId}")
     public void deleteReviewer(@PathVariable UUID publicId) {
+        var userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDetails.
         reviewerService.deleteReviewer(publicId);
     }
 

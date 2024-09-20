@@ -35,6 +35,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             roles.add(new SimpleGrantedAuthority(role.name()));
         }
 
-        return new User(reviewerEntity.getUsername(), reviewerEntity.getPassword(), roles);
+        return new MyUser(reviewerEntity.getUsername(), reviewerEntity.getPassword(), roles, reviewerEntity.getPublicId());
     }
 }

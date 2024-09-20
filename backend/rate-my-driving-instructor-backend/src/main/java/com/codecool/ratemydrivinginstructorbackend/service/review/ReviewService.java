@@ -56,9 +56,9 @@ public class ReviewService {
         return reviewMapper.mapReviewToReviewDTO(review);
     }
 
-    public ReviewDTO createReview(NewReviewDTO newReviewDTO) {
+    public ReviewDTO createReview(UUID reviewerId, NewReviewDTO newReviewDTO) {
         Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(newReviewDTO.instructorPublicId());
-        Optional<Reviewer> optionalReviewer = reviewerRepository.findByPublicId(newReviewDTO.reviewerPublicId());
+        Optional<Reviewer> optionalReviewer = reviewerRepository.findByPublicId(reviewerId);
 
         if (optionalReviewer.isPresent() && optionalInstructor.isPresent()) {
             Review review = reviewMapper.mapNewReviewDTOtoReview(newReviewDTO, optionalInstructor.get(), optionalReviewer.get());

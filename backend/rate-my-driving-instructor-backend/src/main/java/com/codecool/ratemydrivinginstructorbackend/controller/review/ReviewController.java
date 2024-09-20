@@ -3,6 +3,8 @@ package com.codecool.ratemydrivinginstructorbackend.controller.review;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.NewReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.service.review.ReviewService;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +42,9 @@ public class ReviewController {
 
     @PostMapping
     public ReviewDTO createReview(@RequestBody NewReviewDTO newReviewDTO) {
-        return reviewService.createReview(newReviewDTO);
+        var userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return reviewService.createReview(reviewerId, newReviewDTO);
     }
 
     @DeleteMapping("/{publicId}")

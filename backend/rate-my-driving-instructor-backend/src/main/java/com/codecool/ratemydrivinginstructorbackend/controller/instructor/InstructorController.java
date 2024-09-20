@@ -44,6 +44,7 @@ public class InstructorController {
 
     @PutMapping("/{instructorId}")
     public InstructorDTO updateInstructor(@PathVariable UUID instructorId, @RequestBody InstructorDTO instructor) {
+
         return instructorService.updateInstructor(instructorId, instructor);
     }
 
