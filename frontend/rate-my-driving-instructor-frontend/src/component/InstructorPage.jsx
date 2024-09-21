@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import InstructorCard from "./InstructorCard";
-import ReviewCard from "./ReviewCard";
 import ReviewForm from "./ReviewForm";
+import InstructorCard from "./cards/InstructorCard";
+import ReviewCard from "./cards/ReviewCard";
+import './Content.css';
+
 
 export default function InstructorPage() {
   const [instructor, setInstructor] = useState(null);
@@ -33,7 +35,7 @@ export default function InstructorPage() {
   }
 
   return instructor && (<>
-    <div className="details">
+    <div className="content">
       <InstructorCard 
         instructor={instructor}
         isSearched={isSearched}

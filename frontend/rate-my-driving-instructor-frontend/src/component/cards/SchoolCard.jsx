@@ -1,15 +1,16 @@
-import Address from './Address'
+import Address from '../Address'
 import { Link } from "react-router-dom";
+import './Card.css';
 
 function SchoolCard({ school }) {
   
   
   return (
-    <div>
+    <div className='card'>
       <Link to={`/school/${school.publicId}`}>
         <div className="row row-cols-1 row-cols-md-2 mx-auto" style={{marginRight: '900px'}}>
-          <div className="col mb-5">
-            <img className="rounded img-fluid shadow" src="../public/images/school_logo3.jpg" />
+          <div className="col mb-5 imgHolder">
+            <img className="rounded img-fluid shadow" src="../public/images/school_logo3.jpg" style={{width: '200px'}}/>
           </div>
           <div className="col d-flex align-items-center justify-content-center mb-5">
             <div>

@@ -1,13 +1,23 @@
+import { useEffect, useState } from "react";
+import './NavBar.css';
+
 function NavBar() {
-   console.log(localStorage.getItem('jwt'));
+   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('jwt'));
    
    function handleLogout() {
-      
-      localStorage.setItem('jwt', null);
-      localStorage.setItem('publicId', null);
-      console.log(localStorage.getItem('jwt'));
-      console.log(localStorage.getItem('publicId'));
+      localStorage.clear('jwt');
+      localStorage.clear('publicId');
+      setIsLoggedIn(false);
+      window.dispatchEvent(new Event('storage'));
    }
+
+   useEffect(() => {
+      const checkAuthStatus = () => setIsLoggedIn(!!localStorage.getItem('jwt'));
+      
+      window.addEventListener('storage', checkAuthStatus);
+  
+      return () => window.removeEventListener('storage', checkAuthStatus);
+    }, []);
 
    return <div>
             <nav id="mainNav" className="navbar navbar-dark navbar-expand-md sticky-top navbar-shrink py-3">
@@ -17,16 +27,16 @@ function NavBar() {
                            </svg></span><span>Ratemydrivinginstructor.com</span></a><button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1"><span className="visually-hidden">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
                   <div id="navcol-1" className="collapse navbar-collapse">
                         <ul className="navbar-nav mx-auto">
-                           <li className="nav-item"><a className="nav-link">Home</a></li>
-                           <li className="nav-item"><a className="nav-link">Instructors</a></li>
-                           <li className="nav-item"><a className="nav-link">Schools</a></li>
-                           <li className="nav-item"><a className="nav-link">Contacts</a></li>
-                           <li className="nav-item"><a className="nav-link">About us</a></li>
+                           <li className="nav-item"><a className="nav-link" href="/home">Home</a></li>
+                           <li className="nav-item"><a className="nav-link" href="/instructors">Instructors</a></li>
+                           <li className="nav-item"><a className="nav-link" href="/schools">Schools</a></li>
+                           <li className="nav-item"><a className="nav-link" href="/contacts">Contacts</a></li>
+                           <li className="nav-item"><a className="nav-link" href="/aboutus">About us</a></li>
                         </ul>
                         {localStorage.getItem('jwt') ? 
                            <a className="btn btn-primary shadow" role="button" onClick={handleLogout}>Log out</a> : 
-                           <><a className="btn btn-primary shadow" role="button">Sign in</a>
-                           <a className="btn btn-primary shadow" role="button">Register</a></>}
+                           <><a className="btn btn-primary shadow" role="button" href="/login">Sign in</a>
+                           <a className="btn btn-primary shadow" role="button" href="/register">Register</a></>}
                   </div>
                </div>
             </nav>

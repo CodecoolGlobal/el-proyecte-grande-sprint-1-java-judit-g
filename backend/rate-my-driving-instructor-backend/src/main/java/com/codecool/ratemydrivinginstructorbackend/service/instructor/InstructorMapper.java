@@ -50,7 +50,9 @@ public class InstructorMapper {
         return instructor == null ? null : new InstructorNameDTO(
                 instructor.getFirstName(),
                 instructor.getLastName(),
-                instructor.getPublicId()
+                instructor.getPublicId(),
+                instructor.getLicenseType(),
+                instructor.getAvgRating()
         );
     }
 

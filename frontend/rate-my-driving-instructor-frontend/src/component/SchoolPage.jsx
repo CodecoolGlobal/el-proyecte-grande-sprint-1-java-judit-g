@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Address from './Address';
+import InstructorCard from './cards/InstructorCard';
 
 function SchoolPage() {
   const { id } = useParams();
@@ -41,7 +42,7 @@ function SchoolPage() {
       school.instructors.map(instructor => (
         //ide jön majd az instructor card komponens
         <div key={instructor.publicId}>
-          {JSON.stringify(instructor)}
+          <InstructorCard instructor={instructor}></InstructorCard>
         </div>
       )) : null}
         </div>
