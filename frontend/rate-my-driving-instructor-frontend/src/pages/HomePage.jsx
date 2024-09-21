@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import './HomePage.css'
-import SchoolCard from "../component/SchoolCard";
-import InstructorCard from "../component/InstructorCard";
+import SchoolCard from "../component/cards/SchoolCard";
+import InstructorCard from "../component/cards/InstructorCard";
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
@@ -55,7 +55,6 @@ export default function HomePage() {
         fetchSearchData(searchType, searchItem);
         
     }
-//function onClickToggle()
 
     useEffect(() => {
         fetchAllStatData()
@@ -64,9 +63,26 @@ export default function HomePage() {
     return (
         <>
         <div className="homePage">
-            <div className="searchBar">
-                <form className="searchForm" onSubmit={onSubmit}>
+            <div className="searchBar card-body d-flex flex-column align-items-center">
+                <div className="searchButtons">
+                    <button 
+                    className="btn btn-primary d-block w-100"
+                    type="button" 
+                    onClick={() => {
+                        setSearchType("Instructor");
+                        searchType === "Instructor" ? null : setFetchedList([]);
+                        }}>Instructor</button>
+                    <button 
+                    className="btn btn-primary d-block w-100"
+                    type="button" 
+                    onClick={() => {
+                        setSearchType("School");
+                        searchType === "School" ? null : setFetchedList([]);
+                        }}>School</button> 
+                </div>  
+                <form className="searchForm text-center" onSubmit={onSubmit}>
                     <input 
+                    className="form-control"
                     type="text"
                     value={searchItem}
                     placeholder={`${searchType}...`}
@@ -74,35 +90,24 @@ export default function HomePage() {
                     name="search" 
                     id="search" 
                     />
-                    <button type="submit">Search</button>
+                    <button type="submit" className="btn btn-primary d-block w-100">Search</button>
                 </form>
-                <div className="searchButtons">
-                    <button 
-                    type="button" 
-                    onClick={() => {
-                        setSearchType("Instructor");
-                        setFetchedList([]);
-                        }}>Instructor</button>
-                    <button 
-                    type="button" 
-                    onClick={() => {
-                        setSearchType("School");
-                        setFetchedList([]);
-                        }}>School</button> 
-                </div>  
             </div>
-            <div className="searchResults" key='1' style={{ height: '10vh' }}>    
-                {fetchedList ? fetchedList.map((item) => (
-                    <div key={item.id}>
-                        {searchType === "School" ? 
-                        <SchoolCard school={item}/> :
-                        <InstructorCard instructor={item}
-                        isSearched={isSearched}
-                        />
-                    }
+            {fetchedList[0] ? 
+                <div className="searchResultBox">
+                    <div className="searchResults" key='1' style={{ height: '10vh' }}>    
+                        {fetchedList ? fetchedList.map((item) => (
+                            <div key={item.id}>
+                                {searchType === "School" ? 
+                                <SchoolCard school={item}/> :
+                                <InstructorCard instructor={item}
+                                isSearched={isSearched}
+                                />
+                            }
+                            </div>
+                        )) : (<div>no results yet</div>)}
                     </div>
-                )) : (<div>no results yet</div>)}
-            </div>
+                </div> : null}
         </div>
 
         

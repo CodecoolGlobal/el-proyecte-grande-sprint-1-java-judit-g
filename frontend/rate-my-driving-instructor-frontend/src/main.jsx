@@ -9,6 +9,8 @@ import Register from './component/Register.jsx'
 import App from './App.jsx'
 import InstructorPage from './component/InstructorPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import AboutUsPage from './pages/AboutUsPage.jsx'
+import ContactPage from './pages/ContactPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
         {
           path: "/instructor/:publicID",
           element:<InstructorPage/>
+        },
+        {
+          path: "/aboutus",
+          element:<AboutUsPage/>
+        },
+        {
+          path: "/contacts",
+          element:<ContactPage/>
         },
     ],
   },

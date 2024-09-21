@@ -26,8 +26,9 @@ function LoginPage() {
     if (data.jwt) {
       localStorage.setItem('jwt', data.jwt)
       localStorage.setItem('publicId', data.publicId)
+      window.dispatchEvent(new Event('storage'));
+      navigate('/home');
     }
-    navigate('/home');
   }
 
   return (
