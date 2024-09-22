@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './NavBar.css';
 
 function NavBar() {
-   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('jwt'));
+   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('jwt'));
    
    function handleLogout() {
       localStorage.clear('jwt');

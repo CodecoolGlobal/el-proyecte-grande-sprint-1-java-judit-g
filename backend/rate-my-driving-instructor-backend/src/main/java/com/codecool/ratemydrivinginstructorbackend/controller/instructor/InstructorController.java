@@ -59,6 +59,11 @@ public class InstructorController {
 
     @GetMapping("/search")
     public List<InstructorDTO> getInstructorsBySearchWord(@RequestParam String name) {
+        if (name.contains(" ")) {
+            String lastName = name.substring(0, name.indexOf(" "));
+            String firstName = name.substring(name.indexOf(" ") + 1);
+            return instructorService.getInstructorsByFullName(lastName, firstName);
+        }
         return instructorService.getInstructorsByName(name, name);
     }
 }

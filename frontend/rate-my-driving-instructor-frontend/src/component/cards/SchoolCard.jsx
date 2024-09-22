@@ -6,7 +6,7 @@ function SchoolCard({ school }) {
   
   
   return (
-    <div className='card'>
+    <div className='customCard'>
       <Link to={`/school/${school.publicId}`}>
         <div className="row row-cols-1 row-cols-md-2 mx-auto" style={{marginRight: '900px'}}>
           <div className="col mb-5 imgHolder">
