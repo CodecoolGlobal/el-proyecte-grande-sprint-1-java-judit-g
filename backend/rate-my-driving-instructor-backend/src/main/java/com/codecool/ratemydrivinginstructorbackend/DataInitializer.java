@@ -297,8 +297,6 @@ public class DataInitializer {
                 instructor31, instructor32, instructor33, instructor34, instructor35, instructor36, instructor37, instructor38, instructor39, instructor40
         );
         instructorRepository.saveAll(instructors);
-        instructor3.addReview(review5);
-        instructor3.setSchool(school7);
 
         for (Instructor instructor : instructors) {
             instructor.setSchool(schools.get(random.nextInt(schools.size())));
