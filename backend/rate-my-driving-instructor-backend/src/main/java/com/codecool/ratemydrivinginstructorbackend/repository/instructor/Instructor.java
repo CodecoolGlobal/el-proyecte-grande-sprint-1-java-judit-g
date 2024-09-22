@@ -116,4 +116,8 @@ public class Instructor {
     public void setPublicId(UUID publicId) {
         this.publicId = publicId;
     }
+
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
 }
