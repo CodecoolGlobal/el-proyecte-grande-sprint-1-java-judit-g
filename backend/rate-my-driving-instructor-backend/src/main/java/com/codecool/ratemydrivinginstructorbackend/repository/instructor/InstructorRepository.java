@@ -18,4 +18,6 @@ public interface InstructorRepository extends JpaRepository<Instructor, Long> {
     void deleteByPublicId(UUID publicID);
 
     List<Instructor> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String name1, String name2);
+
+    List<Instructor> findByLastNameIgnoreCaseAndFirstNameIgnoreCase(String lastName, String firstName);
 }

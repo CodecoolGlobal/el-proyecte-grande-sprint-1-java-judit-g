@@ -94,5 +94,12 @@ public class InstructorService {
                 .map(instructorMapper::mapInstructorToInstructorDTO)
                 .toList();
     }
+
+    public List<InstructorDTO> getInstructorsByFullName(String lastName, String firstName) {
+        List<Instructor> instructors = instructorRepository.findByLastNameIgnoreCaseAndFirstNameIgnoreCase(lastName, firstName);
+        return instructors.stream()
+                .map(instructorMapper::mapInstructorToInstructorDTO)
+                .toList();
+    }
 }
 
