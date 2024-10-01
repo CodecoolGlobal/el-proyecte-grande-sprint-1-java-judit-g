@@ -26,8 +26,8 @@ public class AppUser {
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "user_role")
+    @CollectionTable(name = "appuser_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "appuser_role")
     private List<Role> roles = new ArrayList<>();
 
     @JoinColumn(name = "reviewer_private_id")
