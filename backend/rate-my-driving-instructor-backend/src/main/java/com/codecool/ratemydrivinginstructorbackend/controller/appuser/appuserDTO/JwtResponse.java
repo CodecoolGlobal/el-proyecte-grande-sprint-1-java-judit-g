@@ -1,4 +1,4 @@
-package com.codecool.ratemydrivinginstructorbackend.controller.reviewer.reviewerDTO;
+package com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO;
 
 import java.util.List;
 import java.util.UUID;

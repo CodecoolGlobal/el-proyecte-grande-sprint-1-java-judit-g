@@ -4,22 +4,22 @@ import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.N
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
-import com.codecool.ratemydrivinginstructorbackend.service.reviewer.ReviewerMapper;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.AppUser;
+import com.codecool.ratemydrivinginstructorbackend.service.appuser.AppUserMapper;
 
 public class ReviewMapper {
 
-    private final ReviewerMapper reviewerMapper;
+    private final AppUserMapper appUserMapper;
 
-    public ReviewMapper(ReviewerMapper reviewerMapper) {
-        this.reviewerMapper = reviewerMapper;
+    public ReviewMapper(AppUserMapper appUserMapper) {
+        this.appUserMapper = appUserMapper;
     }
 
-    public Review mapNewReviewDTOtoReview(NewReviewDTO newReviewDTO, Instructor instructor, Reviewer reviewer) {
+    public Review mapNewReviewDTOtoReview(NewReviewDTO newReviewDTO, Instructor instructor, AppUser appUser) {
         return new Review(
                 newReviewDTO.description(),
                 newReviewDTO.rating(),
-                reviewer,
+                appUser,
                 instructor
         );
     }
@@ -29,6 +29,6 @@ public class ReviewMapper {
                 review.getPublicId(),
                 review.getDescription(),
                 review.getRating(),
-                reviewerMapper.mapReviewerToReviewerDTO(review.getReviewer()));
+                appUserMapper.mapAppUserToAppUserDTO(review.getAppUser()));
     }
 }

@@ -26,7 +26,7 @@ public class SchoolMapper {
     public SchoolDTO mapSchoolToSchoolDTO(School school) {
         return school == null ? null : new SchoolDTO(
                 school.getPublicId(),
-                mapAddressToAddressDTO(school.getAddress()),
+                mapAddressToAddressDTO(school.getSchoolAddress()),
                 school.getName(),
                 school.getPhoneNumber(),
                 instructorMapper.mapInstructorsToNameDTOs(school.getInstructors())

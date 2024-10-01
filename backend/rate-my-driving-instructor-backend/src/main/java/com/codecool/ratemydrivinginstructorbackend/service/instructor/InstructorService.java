@@ -97,6 +97,9 @@ public class InstructorService {
 
     public List<InstructorDTO> getInstructorsByFullName(String lastName, String firstName) {
         List<Instructor> instructors = instructorRepository.findByLastNameIgnoreCaseAndFirstNameIgnoreCase(lastName, firstName);
+        if (instructors.isEmpty()) {
+            instructors = instructorRepository.findByLastNameIgnoreCaseAndFirstNameIgnoreCase(firstName, lastName);
+        }
         return instructors.stream()
                 .map(instructorMapper::mapInstructorToInstructorDTO)
                 .toList();

@@ -1,4 +1,4 @@
-package com.codecool.ratemydrivinginstructorbackend.repository.reviewer;
+package com.codecool.ratemydrivinginstructorbackend.repository.appuser;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import jakarta.persistence.*;
@@ -8,7 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.util.*;
 
 @Entity
-public class Reviewer {
+public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,18 +31,18 @@ public class Reviewer {
 
     private String password;
 
-    public Reviewer() {
+    public AppUser() {
 
     }
 
-    public Reviewer(String username, String password, List<Role> roles) {
+    public AppUser(String username, String password, List<Role> roles) {
         this.username = username;
         this.reviews = new ArrayList<>();
         this.password = password;
         this.roles = roles;
     }
 
-    public Reviewer(String username) {
+    public AppUser(String username) {
         this.username = username;
     }
 
