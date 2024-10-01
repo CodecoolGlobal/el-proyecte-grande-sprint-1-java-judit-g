@@ -3,6 +3,9 @@ package com.codecool.ratemydrivinginstructorbackend.repository.instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -11,6 +14,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Instructor {
 
     @Id
@@ -48,18 +54,12 @@ public class Instructor {
         this.avgRating = avgRating;
     }
 
-    public Instructor() {}
-
     public Instructor(String s, String s1, School school, Set<LicenseType> licenseType) {
         this.firstName = s;
         this.lastName = s1;
         this.school = school;
         this.reviews = new HashSet<>();
         this.licenseType = licenseType;
-    }
-
-    public UUID getPublicId() {
-        return publicId;
     }
 
     public double getAvgRating() {
@@ -71,50 +71,6 @@ public class Instructor {
 
     public void setAvgRating(double avgRating) {
         this.avgRating = avgRating;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public School getSchool() {
-        return school;
-    }
-
-    public void setSchool(School school) {
-        this.school = school;
-    }
-
-    public Set<LicenseType> getLicenseType() {
-        return licenseType;
-    }
-
-    public void setLicenseType(Set<LicenseType> licenseType) {
-        this.licenseType = licenseType;
-    }
-
-    public Set<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Set<Review> reviews) {
-        this.reviews = reviews;
-    }
-
-    public void setPublicId(UUID publicId) {
-        this.publicId = publicId;
     }
 
     public void addReview(Review review) {

@@ -5,7 +5,7 @@ import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.N
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.SchoolNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
+import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolAddress;
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
 
 
@@ -35,7 +35,6 @@ public class SchoolMapper {
 
     private AddressDTO mapAddressToAddressDTO(SchoolAddress schoolAddress) {
         return schoolAddress == null ? null : new AddressDTO(
-                schoolAddress.getPublicId(),
                 schoolAddress.getCity(),
                 schoolAddress.getStreetName(),
                 schoolAddress.getStreetNumber(),
