@@ -2,12 +2,18 @@ package com.codecool.ratemydrivinginstructorbackend.repository.appuser;
 
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.*;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class AppUser {
 
     @Id
@@ -31,10 +37,6 @@ public class AppUser {
 
     private String password;
 
-    public AppUser() {
-
-    }
-
     public AppUser(String username, String password, List<Role> roles) {
         this.username = username;
         this.reviews = new ArrayList<>();
@@ -46,55 +48,8 @@ public class AppUser {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
     public void addRole(Role role) {
         roles.add(role);
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    public long getPrivateId() {
-        return privateId;
-    }
-
-    public UUID getPublicId() {
-        return publicId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setPrivateId(long privateId) {
-        this.privateId = privateId;
-    }
-
-    public void setPublicId(UUID publicId) {
-        this.publicId = publicId;
-    }
-
-    public void setUsername(String name) {
-        this.username = name;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
 }

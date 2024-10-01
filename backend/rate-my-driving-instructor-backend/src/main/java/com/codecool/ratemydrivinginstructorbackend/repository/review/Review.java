@@ -4,6 +4,7 @@ import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instruc
 import com.codecool.ratemydrivinginstructorbackend.repository.appuser.AppUser;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Review {
 
     @Id
@@ -28,9 +30,6 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "instructor_private_id")
     private Instructor instructor;
-
-    public Review() {
-    }
 
     public Review(String description, int rating, AppUser appUser, Instructor instructor) {
         this.description = description;

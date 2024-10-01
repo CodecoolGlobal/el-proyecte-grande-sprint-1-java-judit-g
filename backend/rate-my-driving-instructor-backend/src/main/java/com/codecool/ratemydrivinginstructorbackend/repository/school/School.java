@@ -1,8 +1,6 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.school;
 
-
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +21,6 @@ public class School {
     private long privateId;
     private UUID publicId = UUID.randomUUID();
 
-    @OneToOne(cascade = CascadeType.ALL)
     private SchoolAddress schoolAddress;
 
     @JoinColumn(name = "school_private_id")

@@ -10,7 +10,7 @@ import com.codecool.ratemydrivinginstructorbackend.repository.appuser.ReviewerRe
 import com.codecool.ratemydrivinginstructorbackend.repository.appuser.Role;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
+import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolAddress;
 import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
