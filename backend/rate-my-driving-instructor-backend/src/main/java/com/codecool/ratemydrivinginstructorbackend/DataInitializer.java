@@ -4,10 +4,10 @@ import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instruc
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.LicenseType;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.AppUser;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.ReviewRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.ReviewerRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Role;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.ReviewerRepository;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.Role;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
@@ -45,23 +45,23 @@ public class DataInitializer {
     @Transactional
     @PostConstruct
     public void initializeData() {
-        Reviewer reviewer1 = createInitReviewer("xxx", "xxx");
-        Reviewer reviewer2 = createInitReviewer("Éva", "Nagy");
-        Reviewer reviewer3 = createInitReviewer("Péter", "Szabó");
-        Reviewer reviewer4 = createInitReviewer("Kata", "Tóth");
-        Reviewer reviewer5 = createInitReviewer("László", "Varga");
-        Reviewer reviewer6 = createInitReviewer("Mária", "Horváth");
-        Reviewer reviewer7 = createInitReviewer("Béla", "Kiss");
-        Reviewer reviewer8 = createInitReviewer("Zoltán", "Balogh");
-        Reviewer reviewer9 = createInitReviewer("Anna", "Farkas");
-        Reviewer reviewer10 = createInitReviewer("Tamás", "Molnár");
+        AppUser appUser1 = createInitReviewer("xxx", "xxx");
+        AppUser appUser2 = createInitReviewer("Éva", "Nagy");
+        AppUser appUser3 = createInitReviewer("Péter", "Szabó");
+        AppUser appUser4 = createInitReviewer("Kata", "Tóth");
+        AppUser appUser5 = createInitReviewer("László", "Varga");
+        AppUser appUser6 = createInitReviewer("Mária", "Horváth");
+        AppUser appUser7 = createInitReviewer("Béla", "Kiss");
+        AppUser appUser8 = createInitReviewer("Zoltán", "Balogh");
+        AppUser appUser9 = createInitReviewer("Anna", "Farkas");
+        AppUser appUser10 = createInitReviewer("Tamás", "Molnár");
 
-        List<Reviewer> reviewers = List.of(
-                reviewer1, reviewer2, reviewer3, reviewer4, reviewer5,
-                reviewer6, reviewer7, reviewer8, reviewer9, reviewer10
+        List<AppUser> appUsers = List.of(
+                appUser1, appUser2, appUser3, appUser4, appUser5,
+                appUser6, appUser7, appUser8, appUser9, appUser10
         );
 
-        reviewerRepository.saveAll(reviewers);
+        reviewerRepository.saveAll(appUsers);
 
         Review review1 = createInitReview("Nagyon türelmes és segítőkész.", 5);
         Review review2 = createInitReview("Túl lassú és figyelmetlen volt.", 2);
@@ -201,9 +201,9 @@ public class DataInitializer {
         );
 
         for (Review review : reviews) {
-            Reviewer randomReviewer = reviewers.get(random.nextInt(reviewers.size()));
-            review.setReviewer(randomReviewer);
-            randomReviewer.getReviews().add(review);
+            AppUser randomAppUser = appUsers.get(random.nextInt(appUsers.size()));
+            review.setAppUser(randomAppUser);
+            randomAppUser.getReviews().add(review);
         }
 
         reviewRepository.saveAll(reviews);
@@ -241,7 +241,7 @@ public class DataInitializer {
         );
 
         for (int i = 0; i < schools.size(); i++) {
-            schools.get(i).setAddress(addresses.get(i));
+            schools.get(i).setSchoolAddress(addresses.get(i));
         }
 
         schoolRepository.saveAll(schools);
@@ -341,11 +341,11 @@ public class DataInitializer {
         return instructor;
     }
 
-    private Reviewer createInitReviewer(String name, String password) {
-        Reviewer reviewer = new Reviewer();
-        reviewer.setUsername(name);
-        reviewer.setPassword(passwordEncoder.encode(password));
-        reviewer.setRoles(List.of(Role.ROLE_USER));
-        return reviewer;
+    private AppUser createInitReviewer(String name, String password) {
+        AppUser appUser = new AppUser();
+        appUser.setUsername(name);
+        appUser.setPassword(passwordEncoder.encode(password));
+        appUser.setRoles(List.of(Role.ROLE_USER));
+        return appUser;
     }
 }

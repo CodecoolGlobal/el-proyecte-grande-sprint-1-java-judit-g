@@ -2,7 +2,7 @@ package com.codecool.ratemydrivinginstructorbackend.service.configuration;
 
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
 import com.codecool.ratemydrivinginstructorbackend.service.review.ReviewMapper;
-import com.codecool.ratemydrivinginstructorbackend.service.reviewer.ReviewerMapper;
+import com.codecool.ratemydrivinginstructorbackend.service.appuser.AppUserMapper;
 import com.codecool.ratemydrivinginstructorbackend.service.school.SchoolMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +13,8 @@ public class MapperConfiguration {
     private SchoolMapper schoolMapper = new SchoolMapper();
 
     @Bean
-    public ReviewerMapper reviewerMapper() {
-        return new ReviewerMapper();
+    public AppUserMapper reviewerMapper() {
+        return new AppUserMapper();
     }
 
     @Bean

@@ -1,8 +1,8 @@
 package com.codecool.ratemydrivinginstructorbackend.security.service;
 
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.ReviewerRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Role;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.AppUser;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.ReviewerRepository;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -27,14 +27,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Reviewer reviewerEntity = reviewerRepository.findUserByUsername(username)
+        AppUser appUserEntity = reviewerRepository.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
         List<SimpleGrantedAuthority> roles = new ArrayList<>();
-        for (Role role : reviewerEntity.getRoles()) {
+        for (Role role : appUserEntity.getRoles()) {
             roles.add(new SimpleGrantedAuthority(role.name()));
         }
 
-        return new User(reviewerEntity.getUsername(), reviewerEntity.getPassword(), roles);
+        return new User(appUserEntity.getUsername(), appUserEntity.getPassword(), roles);
     }
 }
