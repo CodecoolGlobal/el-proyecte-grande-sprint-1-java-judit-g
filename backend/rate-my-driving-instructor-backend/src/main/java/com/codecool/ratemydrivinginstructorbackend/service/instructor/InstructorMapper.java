@@ -1,6 +1,7 @@
 package com.codecool.ratemydrivinginstructorbackend.service.instructor;
 
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorForAdminDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorNameDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.NewInstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
@@ -9,22 +10,18 @@ import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.service.review.ReviewMapper;
 import com.codecool.ratemydrivinginstructorbackend.service.school.SchoolMapper;
+import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Setter
 public class InstructorMapper {
 
     private SchoolMapper schoolMapper;
     private ReviewMapper reviewMapper;
 
-    public void setSchoolMapper(SchoolMapper schoolMapper) {
-        this.schoolMapper = schoolMapper;
-    }
-
-    public void setReviewMapper(ReviewMapper reviewMapper) {
-        this.reviewMapper = reviewMapper;
-    }
 
     public Instructor mapNewInstructorDTOToInstructor(NewInstructorDTO newInstructorDTO, School school) {
         return new Instructor(
@@ -62,9 +59,18 @@ public class InstructorMapper {
                 .collect(Collectors.toSet());
     }
 
-    private Set<ReviewDTO> mapReviewsToReviewDTOs(Set<Review> reviews) {
+    private Set<ReviewDTO> mapReviewsToReviewDTOs(List<Review> reviews) {
         return  reviews.stream()
                 .map(reviewMapper::mapReviewToReviewDTO)
                 .collect(Collectors.toSet());
+    }
+
+    public InstructorForAdminDTO mapInstructorToInstructorForAdminDTO(Instructor instructor) {
+        return new InstructorForAdminDTO(
+                instructor.getPublicId(),
+                instructor.getFirstName(),
+                instructor.getLastName(),
+                schoolMapper.mapSchoolToSchoolNameDTO(instructor.getSchool())
+        );
     }
 }

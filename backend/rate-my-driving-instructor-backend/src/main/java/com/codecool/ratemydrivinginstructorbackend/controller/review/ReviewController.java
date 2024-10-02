@@ -23,11 +23,6 @@ public class ReviewController {
         return reviewService.findReviewByInstructorName(lastName, firstName);
     }
 
-    @GetMapping("/count")
-    public int getNumberOfReviews() {
-        return reviewService.countNumberOfReviews();
-    }
-
     @GetMapping
     public List<ReviewDTO> findAllReviews() {
         return reviewService.findAllReviews();

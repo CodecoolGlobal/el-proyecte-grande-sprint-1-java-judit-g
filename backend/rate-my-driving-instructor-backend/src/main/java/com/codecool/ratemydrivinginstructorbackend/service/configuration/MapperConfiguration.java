@@ -6,34 +6,33 @@ import com.codecool.ratemydrivinginstructorbackend.service.appuser.AppUserMapper
 import com.codecool.ratemydrivinginstructorbackend.service.school.SchoolMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 @Configuration
 public class MapperConfiguration {
 
-    private SchoolMapper schoolMapper = new SchoolMapper();
-
     @Bean
-    public AppUserMapper reviewerMapper() {
-        return new AppUserMapper();
+    public AppUserMapper appUserMapper(@Lazy ReviewMapper reviewMapper) {
+        return new AppUserMapper(reviewMapper);
     }
 
     @Bean
-    public ReviewMapper reviewMapper() {
-        return new ReviewMapper(reviewerMapper());
+    public ReviewMapper reviewMapper(@Lazy AppUserMapper appUserMapper, @Lazy InstructorMapper instructorMapper) {
+        return new ReviewMapper(appUserMapper, instructorMapper);
     }
 
     @Bean
-    public InstructorMapper instructorMapper(ReviewMapper reviewMapper) {
+    public InstructorMapper instructorMapper(SchoolMapper schoolMapper, ReviewMapper reviewMapper) {
         InstructorMapper instructorMapper = new InstructorMapper();
+        instructorMapper.setSchoolMapper(schoolMapper);
         instructorMapper.setReviewMapper(reviewMapper);
-        instructorMapper.setSchoolMapper(this.schoolMapper);
-        return  instructorMapper;
+        return instructorMapper;
     }
 
     @Bean
-    public SchoolMapper schoolMapper(InstructorMapper instructorMapper) {
+    public SchoolMapper schoolMapper(@Lazy InstructorMapper instructorMapper) {
+        SchoolMapper schoolMapper = new SchoolMapper();
         schoolMapper.setInstructorMapper(instructorMapper);
         return schoolMapper;
     }
-
 }

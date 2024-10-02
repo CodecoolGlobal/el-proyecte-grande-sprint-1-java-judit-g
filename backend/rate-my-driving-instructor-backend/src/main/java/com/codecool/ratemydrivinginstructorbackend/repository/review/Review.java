@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -21,6 +22,7 @@ public class Review {
     private UUID publicId = UUID.randomUUID();
     private String description;
     private int rating;
+    private LocalDateTime publishingTime;
 
 
     @ManyToOne
@@ -36,5 +38,6 @@ public class Review {
         this.rating = rating;
         this.appUser = appUser;
         this.instructor = instructor;
+        this.publishingTime = LocalDateTime.now();
     }
 }

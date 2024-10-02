@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="HttpClientEndpointsTabState">
-    <option name="requestToText" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;d48ae607a1ca02c5b5db55ca80e20463da73aa6c&quot; value=&quot;###&amp;#10;GET http://localhost:8080/api/instructor/count&quot; /&gt;&#10;  &lt;entry key=&quot;cc791c2ac78215f6de3f76d9bc390d4705ea13c7&quot; value=&quot;###&amp;#10;GET http://localhost:8080/api/school&quot; /&gt;&#10;  &lt;entry key=&quot;7049eedd0ea177f5235136d30c7a1bb1769cfa52&quot; value=&quot;###&amp;#10;GET http://localhost:8080/api/instructor/search?&amp;#10;    name={{$random.alphanumeric(8)}}&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
-  </component>
-</project>

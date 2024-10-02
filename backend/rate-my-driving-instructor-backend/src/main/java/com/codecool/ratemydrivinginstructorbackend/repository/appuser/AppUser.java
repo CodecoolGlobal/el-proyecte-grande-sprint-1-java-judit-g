@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -30,7 +31,7 @@ public class AppUser {
     @Column(name = "appuser_role")
     private List<Role> roles = new ArrayList<>();
 
-    @JoinColumn(name = "reviewer_private_id")
+    @JoinColumn(name = "appuser_private_id")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Review> reviews = new ArrayList<>();
@@ -42,6 +43,13 @@ public class AppUser {
         this.reviews = new ArrayList<>();
         this.password = password;
         this.roles = roles;
+    }
+
+    public AppUser(String username, List<Role> roles, List<Review> reviews, String password) {
+        this.username = username;
+        this.roles = roles;
+        this.reviews = new ArrayList<>(reviews);
+        this.password = password;
     }
 
     public AppUser(String username) {

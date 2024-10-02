@@ -1,11 +1,8 @@
 package com.codecool.ratemydrivinginstructorbackend.service.appuser;
 
-import com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO.JwtResponse;
-import com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO.AppUserDTO;
-import com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO.AppUserLoginDTO;
+import com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO.*;
 import com.codecool.ratemydrivinginstructorbackend.repository.appuser.AppUser;
 import com.codecool.ratemydrivinginstructorbackend.repository.appuser.ReviewerRepository;
-import com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO.NewAppUserDTO;
 import com.codecool.ratemydrivinginstructorbackend.repository.appuser.Role;
 import com.codecool.ratemydrivinginstructorbackend.security.jwt.JwtUtils;
 import com.codecool.ratemydrivinginstructorbackend.service.appuser.exception.AppUserNotFoundException;
@@ -54,6 +51,12 @@ public class AppUserService {
     public AppUserDTO findByPublicId(UUID publicId) {
         AppUser appUser = reviewerRepository.findByPublicId(publicId).orElseThrow(() -> new AppUserNotFoundException("Reviewer was not found"));
         return appUserMapper.mapAppUserToAppUserDTO(appUser);
+    }
+
+    public AppUserForAdminDTO findByUsername(String username) {
+        AppUser appUser = reviewerRepository.findByUsername(username).orElseThrow(() -> new AppUserNotFoundException("User with username was not found"));
+        System.out.println(appUser);
+        return appUserMapper.mapAppUserToAppUserForAdminDTO(appUser);
     }
 
     public List<AppUserDTO> findAll() {

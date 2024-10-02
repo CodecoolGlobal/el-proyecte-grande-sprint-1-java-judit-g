@@ -12544,10 +12544,3 @@ footer ul li a {
         --ref-products-per-row: 3 !important
     }
 }
-
-.content {
-    margin-top: 300px;
-    height: calc(100% - 60px);
-    overflow-y: auto;
-    padding: 1rem;
-  }

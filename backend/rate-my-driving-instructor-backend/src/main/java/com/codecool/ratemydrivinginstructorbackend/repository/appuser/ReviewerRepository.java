@@ -11,7 +11,7 @@ public interface ReviewerRepository extends JpaRepository<AppUser, Long> {
 
     Optional<AppUser> findByPublicId(UUID publicId);
 
-
+    Optional<AppUser> findByUsername(String username);
 
     void deleteByPublicId(UUID publicId);
 

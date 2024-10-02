@@ -7,15 +7,12 @@ import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.S
 import com.codecool.ratemydrivinginstructorbackend.repository.school.School;
 import com.codecool.ratemydrivinginstructorbackend.repository.school.SchoolAddress;
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
+import lombok.Setter;
 
-
+@Setter
 public class SchoolMapper {
 
     private InstructorMapper instructorMapper;
-
-    public void setInstructorMapper(InstructorMapper instructorMapper) {
-        this.instructorMapper = instructorMapper;
-    }
 
     public School mapNewSchoolDTOToSchool(NewSchoolDTO newSchoolDTO) {
         return new School(
