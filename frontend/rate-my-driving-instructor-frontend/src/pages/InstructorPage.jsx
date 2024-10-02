@@ -10,7 +10,7 @@ export default function InstructorPage() {
   const [instructor, setInstructor] = useState(null);
   const [isSearched, setIsSearched] = useState(true);
   const { publicID } = useParams();
-  
+
   async function fetchInstructor(publicID) {
     const response = await fetch(`/api/instructor/${publicID}`, {
       method: 'GET',
@@ -32,27 +32,26 @@ export default function InstructorPage() {
   }
 
   return instructor && (<>
-  <div className="d-flex flex-column min-vh-100">
-  <div className="instructor-page">
-    <div className="instructor-container mb-10">
-      <InstructorCard 
-        instructor={instructor}
-        isSearched={isSearched}
-      />
+    <div className="d-flex flex-column min-vh-100">
+      <div className="instructor-page">
+        <div className="instructor-container mb-10">
+          <InstructorCard
+            instructor={instructor}
+            isSearched={isSearched}
+          />
+        </div>
+        <div className="reviews-container overflow-auto">
+          <ReviewForm instructorPublicId={publicID} onSubmit={handleSubmitReview} />
+          {
+            instructor.reviewDTOs.map(review => (
+              <ReviewCard
+                review={review}
+                key={review.publicId} />
+            ))
+          }
+        </div>
+      </div>
     </div>
-    <div className="reviews-container overflow-auto">
-      <ReviewForm instructorPublicId={publicID} onSubmit={handleSubmitReview}/>
-      { 
-        instructor.reviewDTOs.map(review => (
-          <ReviewCard 
-          review={review} 
-          key={review.publicId}/>
-        ))
-      }
-    </div>
-  </div>
-</div>
-
   </>)
 }
 

@@ -16,50 +16,50 @@ import AdminPage from './pages/AdminPage.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
+    element: <Layout />,
     children: [
-        {
-          path: "/",
-          element:<App/>
-        },
-        {
-          path: "/home",
-          element:<HomePage/>
-        },
-        {
-          path: "/school/:id",
-          element:<SchoolPage/>
-        },
-        {
-          path: "/login",
-          element:<LoginPage/>
-        },
-        {
-          path: "/register",
-          element:<Register/>
-        },
-        {
-          path: "/instructor/:publicID",
-          element:<InstructorPage/>
-        },
-        {
-          path: "/aboutus",
-          element:<AboutUsPage/>
-        },
-        {
-          path: "/contacts",
-          element:<ContactPage/>
-        },
-        {
-          path: "/admin",
-          element:<AdminPage/>
-        },
+      {
+        path: "/",
+        element: <App />
+      },
+      {
+        path: "/home",
+        element: <HomePage />
+      },
+      {
+        path: "/school/:id",
+        element: <SchoolPage />
+      },
+      {
+        path: "/login",
+        element: <LoginPage />
+      },
+      {
+        path: "/register",
+        element: <Register />
+      },
+      {
+        path: "/instructor/:publicID",
+        element: <InstructorPage />
+      },
+      {
+        path: "/aboutus",
+        element: <AboutUsPage />
+      },
+      {
+        path: "/contacts",
+        element: <ContactPage />
+      },
+      {
+        path: "/admin",
+        element: <AdminPage />
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

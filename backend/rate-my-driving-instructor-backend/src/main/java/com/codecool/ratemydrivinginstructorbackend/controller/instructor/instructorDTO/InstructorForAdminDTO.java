@@ -4,5 +4,5 @@ import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.S
 
 import java.util.UUID;
 
-public record InstructorForAdminDTO(UUID publicId, String firstName, String lastName, SchoolNameDTO schoolNameDTO) {
+public record InstructorForAdminDTO(UUID publicId, String firstName, String lastName, SchoolNameDTO schoolName) {
 }
