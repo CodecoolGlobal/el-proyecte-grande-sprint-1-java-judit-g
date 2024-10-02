@@ -10,6 +10,7 @@ import com.codecool.ratemydrivinginstructorbackend.service.appuser.AppUserMapper
 import com.codecool.ratemydrivinginstructorbackend.service.instructor.InstructorMapper;
 import lombok.Setter;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ReviewMapper {
@@ -36,15 +37,17 @@ public class ReviewMapper {
                 review.getPublicId(),
                 review.getDescription(),
                 review.getRating(),
+                review.getPublishingTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
                 appUserMapper.mapAppUserToAppUserDTO(review.getAppUser()));
     }
 
     private ReviewForAdminDTO mapReviewToReviewForAdminDTO(Review review) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy, hh:mm a z");
         return new ReviewForAdminDTO(
                 review.getPublicId(),
                 review.getDescription(),
                 review.getRating(),
-                review.getPublishingTime(),
+                review.getPublishingTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
                 instructorMapper.mapInstructorToInstructorForAdminDTO(review.getInstructor()));
     }
 

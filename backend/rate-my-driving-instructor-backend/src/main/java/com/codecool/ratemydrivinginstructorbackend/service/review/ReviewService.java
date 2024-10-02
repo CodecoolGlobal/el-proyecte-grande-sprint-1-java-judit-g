@@ -70,9 +70,7 @@ public class ReviewService {
 
     @Transactional
     public void deleteReview(UUID publicId) {
-        Optional<Review> optionalReview = reviewRepository.findByPublicId(publicId);
-        Review review = optionalReview.orElseThrow(() -> new ReviewNotFoundException("Review was not found and thus cannot be deleted"));
-        reviewRepository.deleteById(review.getPrivateId());
+        reviewRepository.deleteByPublicId(publicId);
     }
 
     @Transactional

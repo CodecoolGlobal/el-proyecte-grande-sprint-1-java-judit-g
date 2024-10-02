@@ -5,5 +5,5 @@ import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instruc
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record ReviewForAdminDTO(UUID publicId, String description, int rating, LocalDateTime publishingTime, InstructorForAdminDTO instructor) {
+public record ReviewForAdminDTO(UUID publicId, String description, int rating, String publishingTime, InstructorForAdminDTO instructor) {
 }
