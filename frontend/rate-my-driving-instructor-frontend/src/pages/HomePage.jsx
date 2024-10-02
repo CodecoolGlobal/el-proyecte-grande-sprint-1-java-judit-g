@@ -26,29 +26,29 @@ export default function HomePage() {
         setFetchedList(listedSearchResult);
     }
 
-    async function fetchAllStatData() {
-        const schoolRes = await fetch(`/api/school/count`);   
-        const instructorRes = await fetch(`/api/instructor/count`);
-        const reviewRes = await fetch(`/api/review/count`);
-        const userRes = await fetch(`/api/user/count`);
+    // async function fetchAllStatData() {
+    //     const schoolRes = await fetch(`/api/school/count`);   
+    //     const instructorRes = await fetch(`/api/instructor/count`);
+    //     const reviewRes = await fetch(`/api/review/count`);
+    //     const userRes = await fetch(`/api/user/count`);
 
-        const schoolNumber = await schoolRes.json();
-        const instructorNumber = await instructorRes.json();
-        const reviewNumber = await reviewRes.json();
-        const userNumber = await userRes.json();
+    //     const schoolNumber = await schoolRes.json();
+    //     const instructorNumber = await instructorRes.json();
+    //     const reviewNumber = await reviewRes.json();
+    //     const userNumber = await userRes.json();
         
-        console.log(schoolNumber + "s", instructorNumber + "i", reviewNumber + "r", userNumber + "u");
+    //     console.log(schoolNumber + "s", instructorNumber + "i", reviewNumber + "r", userNumber + "u");
         
 
-        if (schoolNumber && instructorNumber && reviewNumber && userNumber) {
-            setStats({
-                "school": schoolNumber,
-                "instructor": instructorNumber,
-                "review": reviewNumber,
-                "user": userNumber
-            })
-        }
-    }
+    //     if (schoolNumber && instructorNumber && reviewNumber && userNumber) {
+    //         setStats({
+    //             "school": schoolNumber,
+    //             "instructor": instructorNumber,
+    //             "review": reviewNumber,
+    //             "user": userNumber
+    //         })
+    //     }
+    // }
 
     function onSubmit(event) {
         event.preventDefault();
@@ -56,9 +56,9 @@ export default function HomePage() {
         
     }
 
-    useEffect(() => {
-        fetchAllStatData()
-    }, [])
+    // useEffect(() => {
+    //     fetchAllStatData()
+    // }, [])
 
     return (
         <>
@@ -81,15 +81,17 @@ export default function HomePage() {
                         }}>School</button> 
                 </div>  
                 <form className="searchForm text-center" onSubmit={onSubmit}>
-                    <input 
-                    className="form-control"
-                    type="text"
-                    value={searchItem}
-                    placeholder={`${searchType}...`}
-                    onChange={(e) => setSearchItem(e.target.value)} 
-                    name="search" 
-                    id="search" 
-                    />
+                    <div className="mb-2">
+                        <input 
+                        className="form-control"
+                        type="text"
+                        value={searchItem}
+                        placeholder={`${searchType}...`}
+                        onChange={(e) => setSearchItem(e.target.value)} 
+                        name="search" 
+                        id="search" 
+                        />  
+                    </div>
                     <button type="submit" className="btn btn-primary d-block w-100">Search</button>
                 </form>
             </div>

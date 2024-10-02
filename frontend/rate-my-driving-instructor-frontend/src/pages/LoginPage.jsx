@@ -27,6 +27,7 @@ function LoginPage() {
       localStorage.setItem('jwt', data.jwt)
       localStorage.setItem('publicId', data.publicId)
       localStorage.setItem('roles', data.role)
+      localStorage.setItem('username', data.username)
       window.dispatchEvent(new Event('storage'));
       navigate('/home');
     }
