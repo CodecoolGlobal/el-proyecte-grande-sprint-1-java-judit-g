@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
-function LoginPage() {
+function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -18,7 +18,7 @@ function LoginPage() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(username)
     });
     const data = await response.json();
     console.log(data);
@@ -26,15 +26,11 @@ function LoginPage() {
     if (data.jwt) {
       localStorage.setItem('jwt', data.jwt)
       localStorage.setItem('publicId', data.publicId)
-      localStorage.setItem('roles', data.role)
-      localStorage.setItem('username', data.username)
-      window.dispatchEvent(new Event('storage'));
-      navigate('/home');
     }
   }
 
   return (
-    <div>
+    <div>login
       <section className="position-relative py-4 py-xl-5">
         <div className='container'>
           <div className='row mb-5'>
@@ -70,4 +66,4 @@ function LoginPage() {
   )
 }
 
-export default LoginPage
+export default Login
