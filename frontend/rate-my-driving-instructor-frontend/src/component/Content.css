@@ -4,3 +4,18 @@
   overflow-y: auto;
   padding: 1rem;
 }
+
+.instructor-page {
+  padding: 5rem;
+}
+
+.instructor-container {
+  margin-top: 80%;
+}
+
+.reviews-container {
+  margin-top: 1rem;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
+
