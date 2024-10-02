@@ -19,25 +19,29 @@ async function createReview(review) {
 }
 
 function ReviewForm({ instructorPublicId, onSubmit }) {
-
+  
   const [description, setDescription] = useState(null);
   const [rating, setRating] = useState(null);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     if (description) {
       let reviewerPublicId = localStorage.getItem('publicId');
-      console.log(reviewerPublicId);
-      let review = {description, instructorPublicId, reviewerPublicId, rating}
-      console.log(review);
-      createReview(review);
-      onSubmit(review);
+      let userName = localStorage.getItem('username');
+      let appUserDTO = {
+        publicId: reviewerPublicId,
+        username: userName
+      }
+      let reviewToPost = {description, instructorPublicId, reviewerPublicId, rating};
+      let reviewToRender = {description, instructorPublicId, appUserDTO, rating};
+      createReview(reviewToPost);
+      onSubmit(reviewToRender);
     }
   }
 
   return (
     <div>
-      <div>
+      <div className="review-form">
         <form className="p-3 p-xl-4" method="post" onSubmit={event => handleSubmit(event)}>
             <StarRating onRating={setRating} rating={rating}/>
             <div className="mb-3">
@@ -52,7 +56,6 @@ function ReviewForm({ instructorPublicId, onSubmit }) {
     </div>
     )
 }
-
 
 
 export default ReviewForm

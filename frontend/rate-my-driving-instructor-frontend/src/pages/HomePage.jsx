@@ -13,10 +13,9 @@ export default function HomePage() {
     async function fetchSearchData(searchType, searchItem) {
         console.log(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`);
         
-        const response = await fetch(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`, {
+        const response = await fetch(`/api/user/${searchType.toLowerCase()}/search?name=${searchItem}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
                 'Content-Type': 'application/json',
             }
         });
@@ -27,10 +26,10 @@ export default function HomePage() {
     }
 
     async function fetchAllStatData() {
-        const schoolRes = await fetch(`/api/school/count`);   
-        const instructorRes = await fetch(`/api/instructor/count`);
-        const reviewRes = await fetch(`/api/review/count`);
-        const userRes = await fetch(`/api/user/count`);
+        const schoolRes = await fetch(`/api/user/school/count`);   
+        const instructorRes = await fetch(`/api/user/instructor/count`);
+        const reviewRes = await fetch(`/api/user/review/count`);
+        const userRes = await fetch(`/api/user/user/count`);
 
         const schoolNumber = await schoolRes.json();
         const instructorNumber = await instructorRes.json();
@@ -81,15 +80,17 @@ export default function HomePage() {
                         }}>School</button> 
                 </div>  
                 <form className="searchForm text-center" onSubmit={onSubmit}>
-                    <input 
-                    className="form-control"
-                    type="text"
-                    value={searchItem}
-                    placeholder={`${searchType}...`}
-                    onChange={(e) => setSearchItem(e.target.value)} 
-                    name="search" 
-                    id="search" 
-                    />
+                    <div className="mb-2">
+                        <input 
+                        className="form-control"
+                        type="text"
+                        value={searchItem}
+                        placeholder={`${searchType}...`}
+                        onChange={(e) => setSearchItem(e.target.value)} 
+                        name="search" 
+                        id="search" 
+                        />  
+                    </div>
                     <button type="submit" className="btn btn-primary d-block w-100">Search</button>
                 </form>
             </div>
@@ -111,7 +112,7 @@ export default function HomePage() {
         </div>
 
         
-        {/* <div className="statDiv">
+        <div className="statDiv">
             <h1>
                 STATISTICS
             </h1>
@@ -131,7 +132,7 @@ export default function HomePage() {
                 <h3> Number of reviews: </h3>
                 {stats["review"]}
             </div>
-        </div> */}
+        </div>
         </>
     )
 }
