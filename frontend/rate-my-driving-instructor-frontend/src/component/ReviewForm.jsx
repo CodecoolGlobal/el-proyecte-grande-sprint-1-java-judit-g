@@ -36,17 +36,23 @@ function ReviewForm({ instructorPublicId, onSubmit }) {
   }
 
   return (
-    <form className="review-form" onSubmit={event => handleSubmit(event)}>
+    <div>
       <div>
-        <label htmlFor="description" />
-        <input type="text" name="description" onChange={event => setDescription(event.target.value)} />
+        <form className="p-3 p-xl-4" method="post" onSubmit={event => handleSubmit(event)}>
+            <StarRating onRating={setRating} rating={rating}/>
+            <div className="mb-3">
+              <label htmlFor="description" />
+              <textarea id="message-1" className="form-control" name="description" rows="6" placeholder="Write down your experiences! :)" onChange={event => setDescription(event.target.value)}></textarea>
+            </div>
+            <div>
+                <button className="btn btn-primary shadow d-block w-100" type="submit">Submit</button>
+            </div>
+        </form>
       </div>
-      <div className="buttons">
-        <button type="submit">Submit</button>
-      </div>
-      <StarRating onRating={setRating} rating={rating}/>
-    </form>
+    </div>
     )
 }
+
+
 
 export default ReviewForm

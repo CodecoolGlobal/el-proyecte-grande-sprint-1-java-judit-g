@@ -7,8 +7,8 @@ function ContactPage() {
       <h1>Contact Us</h1>
       <p>We would love to hear from you! Whether you have questions, feedback, or need assistance, feel free to reach out to us.</p>
       <h2></h2>
-      <div className="row d-flex justify-content-center">
-    <div className="col-md-6 col-xl-4">
+    <div className="row d-flex justify-content-center">
+    <div className="col-md-6">
         <div>
             <form className="p-3 p-xl-4" method="post">
                 <div className="mb-3"><input id="name-1" className="form-control" type="text" name="name" placeholder="Name" /></div>
