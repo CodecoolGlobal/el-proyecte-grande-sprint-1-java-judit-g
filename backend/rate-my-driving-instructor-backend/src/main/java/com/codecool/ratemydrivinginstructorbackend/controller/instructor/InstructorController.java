@@ -42,19 +42,9 @@ public class InstructorController {
         return instructorService.postNewInstructor(newInstructorDTO);
     }
 
-    @PutMapping("/{instructorId}")
-    public InstructorDTO updateInstructor(@PathVariable UUID instructorId, @RequestBody InstructorDTO instructor) {
-        return instructorService.updateInstructor(instructorId, instructor);
-    }
-
     @GetMapping("/count")
     public int getNumberOfInstructors() {
-       return instructorService.countNumberOfInstructors();
-    }
-
-    @DeleteMapping("/{instructorId}")
-    public void deleteInstructor(@PathVariable UUID instructorId) {
-        instructorService.deleteInstructor(instructorId);
+        return instructorService.countNumberOfInstructors();
     }
 
     @GetMapping("/search")

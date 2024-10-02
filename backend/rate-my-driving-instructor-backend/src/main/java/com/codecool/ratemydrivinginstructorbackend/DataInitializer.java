@@ -45,7 +45,8 @@ public class DataInitializer {
     @Transactional
     @PostConstruct
     public void initializeData() {
-        AppUser appUser1 = createInitReviewer("xxx", "xxx");
+        AppUser admin = createInitReviewer("xx", "xx");
+        admin.addRole(Role.ROLE_ADMIN);
         AppUser appUser2 = createInitReviewer("Éva", "Nagy");
         AppUser appUser3 = createInitReviewer("Péter", "Szabó");
         AppUser appUser4 = createInitReviewer("Kata", "Tóth");
@@ -57,7 +58,7 @@ public class DataInitializer {
         AppUser appUser10 = createInitReviewer("Tamás", "Molnár");
 
         List<AppUser> appUsers = List.of(
-                appUser1, appUser2, appUser3, appUser4, appUser5,
+                admin, appUser2, appUser3, appUser4, appUser5,
                 appUser6, appUser7, appUser8, appUser9, appUser10
         );
 
@@ -345,7 +346,7 @@ public class DataInitializer {
         AppUser appUser = new AppUser();
         appUser.setUsername(name);
         appUser.setPassword(passwordEncoder.encode(password));
-        appUser.setRoles(List.of(Role.ROLE_USER));
+        appUser.addRole(Role.ROLE_USER);
         return appUser;
     }
 }
