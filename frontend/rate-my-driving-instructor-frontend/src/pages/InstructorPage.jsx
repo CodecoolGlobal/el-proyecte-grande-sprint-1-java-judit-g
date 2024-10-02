@@ -20,8 +20,6 @@ export default function InstructorPage() {
       }
     });
     const instructorData = await response.json();
-    
-  console.log(instructorData.reviewDTOs);
     setInstructor(instructorData);
   }
 
@@ -29,11 +27,8 @@ export default function InstructorPage() {
     fetchInstructor(publicID);
   }, [])
 
-  function handleSubmitReview(review) {
-    let newInstructor = structuredClone(instructor);
-    console.log(newInstructor);
-    newInstructor.reviewDTOs.push(review);
-    setInstructor(newInstructor);
+  async function handleSubmitReview() {
+    await fetchInstructor(publicID);
   }
 
   return instructor && (<>
@@ -50,9 +45,8 @@ export default function InstructorPage() {
       { 
         instructor.reviewDTOs.map(review => (
           <ReviewCard 
-            review={review} 
-            key={review.publicId}
-          />
+          review={review} 
+          key={review.publicId}/>
         ))
       }
     </div>

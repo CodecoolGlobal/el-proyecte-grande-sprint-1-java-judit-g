@@ -19,12 +19,13 @@ async function createReview(review) {
 }
 
 function ReviewForm({ instructorPublicId, onSubmit }) {
-
+  
   const [description, setDescription] = useState(null);
   const [rating, setRating] = useState(null);
 
   function handleSubmit(event) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  async function handleSubmit(event) {
     event.preventDefault();
     if (description) {
       let reviewerPublicId = localStorage.getItem('publicId');
