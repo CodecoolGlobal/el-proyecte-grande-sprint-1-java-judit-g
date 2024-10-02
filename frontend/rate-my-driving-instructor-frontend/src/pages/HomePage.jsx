@@ -25,29 +25,29 @@ export default function HomePage() {
         setFetchedList(listedSearchResult);
     }
 
-    // async function fetchAllStatData() {
-    //     const schoolRes = await fetch(`/api/school/count`);   
-    //     const instructorRes = await fetch(`/api/instructor/count`);
-    //     const reviewRes = await fetch(`/api/review/count`);
-    //     const userRes = await fetch(`/api/user/count`);
+    async function fetchAllStatData() {
+        const schoolRes = await fetch(`/api/user/school/count`);   
+        const instructorRes = await fetch(`/api/user/instructor/count`);
+        const reviewRes = await fetch(`/api/user/review/count`);
+        const userRes = await fetch(`/api/user/user/count`);
 
-    //     const schoolNumber = await schoolRes.json();
-    //     const instructorNumber = await instructorRes.json();
-    //     const reviewNumber = await reviewRes.json();
-    //     const userNumber = await userRes.json();
+        const schoolNumber = await schoolRes.json();
+        const instructorNumber = await instructorRes.json();
+        const reviewNumber = await reviewRes.json();
+        const userNumber = await userRes.json();
         
-    //     console.log(schoolNumber + "s", instructorNumber + "i", reviewNumber + "r", userNumber + "u");
+        console.log(schoolNumber + "s", instructorNumber + "i", reviewNumber + "r", userNumber + "u");
         
 
-    //     if (schoolNumber && instructorNumber && reviewNumber && userNumber) {
-    //         setStats({
-    //             "school": schoolNumber,
-    //             "instructor": instructorNumber,
-    //             "review": reviewNumber,
-    //             "user": userNumber
-    //         })
-    //     }
-    // }
+        if (schoolNumber && instructorNumber && reviewNumber && userNumber) {
+            setStats({
+                "school": schoolNumber,
+                "instructor": instructorNumber,
+                "review": reviewNumber,
+                "user": userNumber
+            })
+        }
+    }
 
     function onSubmit(event) {
         event.preventDefault();
@@ -55,9 +55,9 @@ export default function HomePage() {
         
     }
 
-    // useEffect(() => {
-    //     fetchAllStatData()
-    // }, [])
+    useEffect(() => {
+        fetchAllStatData()
+    }, [])
 
     return (
         <>
@@ -112,7 +112,7 @@ export default function HomePage() {
         </div>
 
         
-        {/* <div className="statDiv">
+        <div className="statDiv">
             <h1>
                 STATISTICS
             </h1>
@@ -132,7 +132,7 @@ export default function HomePage() {
                 <h3> Number of reviews: </h3>
                 {stats["review"]}
             </div>
-        </div> */}
+        </div>
         </>
     )
 }
