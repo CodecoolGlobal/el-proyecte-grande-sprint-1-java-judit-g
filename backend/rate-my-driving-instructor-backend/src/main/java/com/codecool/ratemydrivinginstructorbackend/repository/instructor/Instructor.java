@@ -9,9 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -43,13 +41,13 @@ public class Instructor {
     @JoinColumn(name = "instructor_private_id")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @OneToMany(cascade = CascadeType.PERSIST)
-    private Set<Review> reviews = new HashSet<>();
+    private List<Review> reviews = new ArrayList<>();
 
-    public Instructor(String firstName, String lastName, School school, Set<Review> reviews, Set<LicenseType> licenseType, double avgRating) {
+    public Instructor(String firstName, String lastName, School school, List<Review> reviews, Set<LicenseType> licenseType, double avgRating) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.school = school;
-        this.reviews = new HashSet<>(reviews);
+        this.reviews = new ArrayList<>(reviews);
         this.licenseType = new HashSet<>(licenseType);
         this.avgRating = avgRating;
     }
@@ -58,7 +56,7 @@ public class Instructor {
         this.firstName = s;
         this.lastName = s1;
         this.school = school;
-        this.reviews = new HashSet<>();
+        this.reviews = new ArrayList<>();
         this.licenseType = licenseType;
     }
 
