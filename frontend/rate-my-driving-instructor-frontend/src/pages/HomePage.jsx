@@ -13,10 +13,9 @@ export default function HomePage() {
     async function fetchSearchData(searchType, searchItem) {
         console.log(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`);
         
-        const response = await fetch(`/api/${searchType.toLowerCase()}/search?name=${searchItem}`, {
+        const response = await fetch(`/api/user/${searchType.toLowerCase()}/search?name=${searchItem}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
                 'Content-Type': 'application/json',
             }
         });
