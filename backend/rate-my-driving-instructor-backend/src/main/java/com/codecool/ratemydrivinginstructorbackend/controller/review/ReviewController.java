@@ -38,4 +38,9 @@ public class ReviewController {
         return reviewService.createReview(newReviewDTO);
     }
 
+    @DeleteMapping("/{publicId}")
+    public void deleteReview(@PathVariable UUID publicId) {
+        reviewService.deleteReview(publicId);
+    }
+
 }
