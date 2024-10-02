@@ -8,18 +8,19 @@ function StarRating({ onRating, rating }) {
     <div className='star-rating'>
       {[...Array(5)].map((star, index) => {
         const currentRating = index + 1;
-        return(
+        return (
+          // eslint-disable-next-line react/jsx-key
           <label>
             <input
               type="radio"
               name="rating"
               value={currentRating}
-              onClick={() => onRating(currentRating)} 
+              onClick={() => onRating(currentRating)}
             />
             <FaStar
-              className='star' 
+              className='star'
               size={50}
-              color={currentRating <= (hover || rating) ? "#ffc107": "#e4e5e9"}
+              color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
               onMouseEnter={() => setHover(currentRating)}
               onMouseLeave={() => setHover(null)}
             />

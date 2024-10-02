@@ -8,7 +8,7 @@ function SchoolPage() {
   const [school, setSchool] = useState(null);
 
   console.log(id);
-  
+
 
   useEffect(() => {
     async function fetchData() {
@@ -21,30 +21,29 @@ function SchoolPage() {
       });
       const data = await response.json();
       console.log(data);
-      
+
       setSchool(data);
       console.log(data);
     }
     fetchData();
-    
+
   }, [id]);
 
 
   return (
     <div>
       <div>SchoolPage</div>
-      {school ? 
+      {school ?
         <div>
           <h3>{school.name}</h3>
           <h4>{school.phoneNumber}</h4>
-          <Address address={school.addressDTO}/>
-      {school.instructors ? 
-      school.instructors.map(instructor => (
-        //ide jön majd az instructor card komponens
-        <div key={instructor.publicId}>
-          <InstructorCard instructor={instructor}></InstructorCard>
-        </div>
-      )) : null}
+          <Address address={school.addressDTO} />
+          {school.instructors ?
+            school.instructors.map(instructor => (
+              <div key={instructor.publicId}>
+                <InstructorCard instructor={instructor}></InstructorCard>
+              </div>
+            )) : null}
         </div>
         : <h1>Loading...</h1>
       }
