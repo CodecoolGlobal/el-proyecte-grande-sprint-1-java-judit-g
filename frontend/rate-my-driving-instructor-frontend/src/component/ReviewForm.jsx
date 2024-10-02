@@ -19,19 +19,19 @@ async function createReview(review) {
 }
 
 function ReviewForm({ instructorPublicId, onSubmit }) {
-
+  
   const [description, setDescription] = useState(null);
   const [rating, setRating] = useState(null);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     if (description) {
       let reviewerPublicId = localStorage.getItem('publicId');
       console.log(reviewerPublicId);
       let review = {description, instructorPublicId, reviewerPublicId, rating}
       console.log(review);
-      createReview(review);
-      onSubmit(review);
+      await createReview(review);
+      await onSubmit(review);
     }
   }
 
