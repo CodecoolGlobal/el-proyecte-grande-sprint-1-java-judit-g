@@ -11,6 +11,7 @@ import InstructorPage from './component/InstructorPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import AboutUsPage from './pages/AboutUsPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
+import AdminPage from './pages/AdminPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         {
           path: "/contacts",
           element:<ContactPage/>
+        },
+        {
+          path: "/admin",
+          element:<AdminPage/>
         },
     ],
   },

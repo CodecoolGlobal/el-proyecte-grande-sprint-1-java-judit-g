@@ -29,21 +29,6 @@ public class SchoolController {
         return schoolService.getSchoolById(schoolId);
     }
 
-    @PostMapping
-    public void createSchool(@RequestBody NewSchoolDTO school) {
-        schoolService.createSchool(school);
-    }
-
-    @PutMapping("/{publicId}")
-    public void updateSchool(@PathVariable UUID publicId, @RequestBody SchoolDTO school) {
-        schoolService.updateSchool(publicId, school);
-    }
-
-    @DeleteMapping("/{publicId}")
-    public void deleteInstructor(@PathVariable UUID publicId) {
-        schoolService.deleteSchool(publicId);
-    }
-
     @GetMapping("/count")
     public int getNumberOfSchools() {
         return schoolService.countNumberOfSchools();

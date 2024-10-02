@@ -4,9 +4,9 @@ import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.R
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.InstructorRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.ReviewRepository;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.ReviewerRepository;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.AppUser;
+import com.codecool.ratemydrivinginstructorbackend.repository.appuser.ReviewerRepository;
 import com.codecool.ratemydrivinginstructorbackend.repository.review.Review;
-import com.codecool.ratemydrivinginstructorbackend.repository.reviewer.Reviewer;
 import com.codecool.ratemydrivinginstructorbackend.service.review.exception.ReviewNotCreatedException;
 import com.codecool.ratemydrivinginstructorbackend.service.review.exception.ReviewNotFoundException;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.NewReviewDTO;
@@ -58,7 +58,7 @@ public class ReviewService {
 
     public ReviewDTO createReview(NewReviewDTO newReviewDTO) {
         Optional<Instructor> optionalInstructor = instructorRepository.findByPublicId(newReviewDTO.instructorPublicId());
-        Optional<Reviewer> optionalReviewer = reviewerRepository.findByPublicId(newReviewDTO.reviewerPublicId());
+        Optional<AppUser> optionalReviewer = reviewerRepository.findByPublicId(newReviewDTO.reviewerPublicId());
 
         if (optionalReviewer.isPresent() && optionalInstructor.isPresent()) {
             Review review = reviewMapper.mapNewReviewDTOtoReview(newReviewDTO, optionalInstructor.get(), optionalReviewer.get());

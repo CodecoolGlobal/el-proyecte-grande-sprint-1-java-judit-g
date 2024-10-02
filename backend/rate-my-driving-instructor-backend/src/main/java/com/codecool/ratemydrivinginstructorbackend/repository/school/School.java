@@ -1,9 +1,9 @@
 package com.codecool.ratemydrivinginstructorbackend.repository.school;
 
-
 import com.codecool.ratemydrivinginstructorbackend.repository.instructor.Instructor;
-import com.codecool.ratemydrivinginstructorbackend.repository.school.schooladdress.SchoolAddress;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
+@Getter
+@Setter
 public class School {
 
     @Id
@@ -19,7 +21,6 @@ public class School {
     private long privateId;
     private UUID publicId = UUID.randomUUID();
 
-    @OneToOne(cascade = CascadeType.ALL)
     private SchoolAddress schoolAddress;
 
     @JoinColumn(name = "school_private_id")
@@ -46,53 +47,5 @@ public class School {
 
     public boolean isId(int id) {
         return this.privateId == id;
-    }
-
-    public long getPrivateId() {
-        return privateId;
-    }
-
-    public void setPrivateId(long id) {
-        this.privateId = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public SchoolAddress getAddress() {
-        return schoolAddress;
-    }
-
-    public void setAddress(SchoolAddress schoolAddress) {
-        this.schoolAddress = schoolAddress;
-    }
-
-    public Set<Instructor> getInstructors() {
-        return instructors;
-    }
-
-    public void setInstructors(Set<Instructor> instructors) {
-        this.instructors = instructors;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public UUID getPublicId() {
-        return publicId;
-    }
-
-    public void setPublicId(UUID publicId) {
-        this.publicId = publicId;
     }
 }
