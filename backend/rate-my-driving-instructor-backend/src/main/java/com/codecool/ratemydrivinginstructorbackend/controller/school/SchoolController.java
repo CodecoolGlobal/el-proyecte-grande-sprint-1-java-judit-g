@@ -29,9 +29,4 @@ public class SchoolController {
         return schoolService.getSchoolById(schoolId);
     }
 
-    @GetMapping("/count")
-    public int getNumberOfSchools() {
-        return schoolService.countNumberOfSchools();
-    }
-
 }

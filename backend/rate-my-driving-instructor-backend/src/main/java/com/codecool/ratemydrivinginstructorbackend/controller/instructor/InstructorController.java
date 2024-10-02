@@ -42,9 +42,5 @@ public class InstructorController {
         return instructorService.postNewInstructor(newInstructorDTO);
     }
 
-    @GetMapping("/count")
-    public int getNumberOfInstructors() {
-        return instructorService.countNumberOfInstructors();
-    }
 }
 
