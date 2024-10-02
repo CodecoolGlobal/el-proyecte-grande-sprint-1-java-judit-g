@@ -15,7 +15,7 @@ function Register() {
 
     const response = await fetch('/api/user/register', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser)
     });
     const data = await response.json();
@@ -40,10 +40,10 @@ function Register() {
                     </div>
                     <form className="text-center" method="post" onSubmit={event => handleSubmit(event)}>
                       <div className="mb-3">
-                        <input className="form-control" type="username" name="username" placeholder="Username" onChange={e => setUsername(e.target.value)}/>
+                        <input className="form-control" type="username" name="username" placeholder="Username" onChange={e => setUsername(e.target.value)} />
                       </div>
                       <div className="mb-3">
-                        <input className="form-control" type="password" name="password" placeholder="Password" style={{ marginRight: '82px' }} onChange={e => setPassword(e.target.value)}/>
+                        <input className="form-control" type="password" name="password" placeholder="Password" style={{ marginRight: '82px' }} onChange={e => setPassword(e.target.value)} />
                       </div>
                       <div className="mb-3">
                         <button className="btn btn-primary d-block w-100" type="submit">Register</button>
