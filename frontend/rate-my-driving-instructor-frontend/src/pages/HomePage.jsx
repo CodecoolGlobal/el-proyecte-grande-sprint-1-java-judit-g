@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import './HomePage.css'
 import SchoolCard from "../component/cards/SchoolCard";
 import InstructorCard from "../component/cards/InstructorCard";
+import SearchForm from './../component/SearchForm';
 
 export default function HomePage() {
     const [searchItem, setSearchItem] = useState("");
@@ -79,20 +80,12 @@ export default function HomePage() {
                         searchType === "School" ? null : setFetchedList([]);
                         }}>School</button> 
                 </div>  
-                <form className="searchForm text-center" onSubmit={onSubmit}>
-                    <div className="mb-2">
-                        <input 
-                        className="form-control"
-                        type="text"
-                        value={searchItem}
-                        placeholder={`${searchType}...`}
-                        onChange={(e) => setSearchItem(e.target.value)} 
-                        name="search" 
-                        id="search" 
-                        />  
-                    </div>
-                    <button type="submit" className="btn btn-primary d-block w-100">Search</button>
-                </form>
+                <SearchForm 
+                onSubmit={onSubmit}
+                searchItem={searchItem}
+                searchType={searchType}
+                setSearchItem={setSearchItem}
+                />
             </div>
             {fetchedList[0] ? 
                 <div className="searchResultBox">
