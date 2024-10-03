@@ -32,7 +32,7 @@ function SchoolPage() {
 
   return (
     <div>
-      <div>SchoolPage</div>
+      <div className='page'>SchoolPage</div>
       {school ?
         <div>
           <h3>{school.name}</h3>

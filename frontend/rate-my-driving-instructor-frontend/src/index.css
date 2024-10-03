@@ -2,6 +2,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  place-content: top;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -80,7 +81,8 @@ body {
   --bs-link-color: #3763f4;
   --bs-link-hover-color: #2c4fc3;
   --bs-code-color: #dc3dcb;
-  --bs-highlight-bg: #fff3cd
+  --bs-highlight-bg: #fff3cd;
+  padding: 6rem;
 }
 
 *,

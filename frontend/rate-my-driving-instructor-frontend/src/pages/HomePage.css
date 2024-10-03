@@ -71,7 +71,6 @@ button:active {
 
 body {
   display: grid;
-  place-content: center;
   margin: 0;
   height: 5vh;
   font-family: system-ui, sans-serif;
