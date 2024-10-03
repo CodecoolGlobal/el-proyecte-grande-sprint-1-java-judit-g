@@ -71,9 +71,10 @@ button:active {
 
 body {
   display: grid;
-  margin: 0;
+  margin: 6rem;
   height: 5vh;
   font-family: system-ui, sans-serif;
+  place-content: top;
 }
 
 .statDiv {
