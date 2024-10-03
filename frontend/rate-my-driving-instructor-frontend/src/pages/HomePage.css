@@ -83,7 +83,7 @@ body {
   justify-content: space-around;
   padding: 20px;
   margin: 20px;
-  background-color: #b4880d;
+  background-color: #495057;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -100,7 +100,7 @@ body {
   width: 200px;
   padding: 20px;
   margin: 10px;
-  background-color: #c11515;
+  background-color: #3763f4;
   border: 2px solid #ccc;
   border-radius: 8px;
   text-align: center;
@@ -111,7 +111,7 @@ body {
 
 .statDiv>div:hover {
   border-color: #007bff;
-  background-color: #627c0d;
+  background-color: #2c4fc3;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 

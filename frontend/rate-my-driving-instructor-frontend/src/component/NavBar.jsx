@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import './NavBar.css';
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const nav = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('jwt'));
 
   function handleLogout() {
@@ -9,6 +11,7 @@ function NavBar() {
     localStorage.clear('publicId');
     setIsLoggedIn(false);
     window.dispatchEvent(new Event('storage'));
+    nav('/home');
   }
 
   useEffect(() => {
@@ -29,8 +32,8 @@ function NavBar() {
         <div id="navcol-1" className="collapse navbar-collapse">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item"><a className="nav-link" href="/home">Home</a></li>
-            <li className="nav-item"><a className="nav-link" href="/instructors">Instructors</a></li>
-            <li className="nav-item"><a className="nav-link" href="/schools">Schools</a></li>
+            {/* <li className="nav-item"><a className="nav-link" href="/instructors">Instructors</a></li>
+            <li className="nav-item"><a className="nav-link" href="/schools">Schools</a></li> */}
             <li className="nav-item"><a className="nav-link" href="/contacts">Contacts</a></li>
             <li className="nav-item"><a className="nav-link" href="/aboutus">About us</a></li>
             {localStorage.getItem('roles')?.includes('ROLE_ADMIN') ?

@@ -46,7 +46,7 @@ public class DataInitializer {
     @Transactional
     @PostConstruct
     public void initializeData() {
-        AppUser admin = createInitReviewer("xx", "xx");
+        AppUser admin = createInitReviewer("admin", "admin");
         admin.addRole(Role.ROLE_ADMIN);
         AppUser appUser2 = createInitReviewer("Éva", "Nagy");
         AppUser appUser3 = createInitReviewer("Péter", "Szabó");

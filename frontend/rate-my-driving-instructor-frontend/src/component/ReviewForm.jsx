@@ -34,7 +34,7 @@ function ReviewForm({ instructorPublicId, onSubmit }) {
       }
       let reviewToPost = { description, instructorPublicId, reviewerPublicId, rating };
       let reviewToRender = { description, instructorPublicId, appUserDTO, rating };
-      createReview(reviewToPost);
+      await createReview(reviewToPost);
       onSubmit(reviewToRender);
     }
   }

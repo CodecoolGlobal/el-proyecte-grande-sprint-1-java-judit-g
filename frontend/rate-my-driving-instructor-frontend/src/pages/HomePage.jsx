@@ -107,7 +107,6 @@ export default function HomePage() {
 
       <div className="statDiv">
         <h1>
-          STATISTICS
         </h1>
         <div className="schoolBox">
           <h3>Number of schools:</h3>
