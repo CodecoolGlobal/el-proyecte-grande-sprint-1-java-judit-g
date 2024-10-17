@@ -67,9 +67,10 @@ public class WebSecurityConfig {
                         //regex!
                         auth
                                 .requestMatchers("/api/user/**").permitAll()
-                                .requestMatchers("/api/instructor/**").hasRole("USER")
-                                .requestMatchers("/api/school/**").hasRole("USER")
-                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/api/instructor/**").permitAll()
+                                .requestMatchers("/api/school/**").permitAll()
+                                .requestMatchers("/api/admin/**").permitAll()
+                                .requestMatchers("/api/review/**").permitAll()
                                 .requestMatchers("/error").permitAll()
                                 .anyRequest().authenticated()
                 );

@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Component
@@ -45,7 +46,7 @@ public class DataInitializer {
     @Transactional
     @PostConstruct
     public void initializeData() {
-        AppUser admin = createInitReviewer("xx", "xx");
+        AppUser admin = createInitReviewer("admin", "admin");
         admin.addRole(Role.ROLE_ADMIN);
         AppUser appUser2 = createInitReviewer("Éva", "Nagy");
         AppUser appUser3 = createInitReviewer("Péter", "Szabó");
@@ -204,6 +205,7 @@ public class DataInitializer {
         for (Review review : reviews) {
             AppUser randomAppUser = appUsers.get(random.nextInt(appUsers.size()));
             review.setAppUser(randomAppUser);
+            review.setPublishingTime(LocalDateTime.now());
             randomAppUser.getReviews().add(review);
         }
 
@@ -338,7 +340,7 @@ public class DataInitializer {
         instructor.setFirstName(firstName);
         instructor.setLastName(lastName);
         instructor.setLicenseType(licenses);
-        instructor.setReviews(new HashSet<>(Set.of()));
+        instructor.setReviews(new ArrayList<>(List.of()));
         return instructor;
     }
 

@@ -15,11 +15,11 @@ async function createReview(review) {
   if (response.status === 400) {
     const error = await response.json();
     console.log(error);
-  } 
+  }
 }
 
 function ReviewForm({ instructorPublicId, onSubmit }) {
-  
+
   const [description, setDescription] = useState(null);
   const [rating, setRating] = useState(null);
 
@@ -32,9 +32,9 @@ function ReviewForm({ instructorPublicId, onSubmit }) {
         publicId: reviewerPublicId,
         username: userName
       }
-      let reviewToPost = {description, instructorPublicId, reviewerPublicId, rating};
-      let reviewToRender = {description, instructorPublicId, appUserDTO, rating};
-      createReview(reviewToPost);
+      let reviewToPost = { description, instructorPublicId, reviewerPublicId, rating };
+      let reviewToRender = { description, instructorPublicId, appUserDTO, rating };
+      await createReview(reviewToPost);
       onSubmit(reviewToRender);
     }
   }
@@ -43,18 +43,18 @@ function ReviewForm({ instructorPublicId, onSubmit }) {
     <div>
       <div className="review-form">
         <form className="p-3 p-xl-4" method="post" onSubmit={event => handleSubmit(event)}>
-            <StarRating onRating={setRating} rating={rating}/>
-            <div className="mb-3">
-              <label htmlFor="description" />
-              <textarea id="message-1" className="form-control" name="description" rows="6" placeholder="Write down your experiences! :)" onChange={event => setDescription(event.target.value)}></textarea>
-            </div>
-            <div>
-                <button className="btn btn-primary shadow d-block w-100" type="submit">Submit</button>
-            </div>
+          <StarRating onRating={setRating} rating={rating} />
+          <div className="mb-3">
+            <label htmlFor="description" />
+            <textarea id="message-1" className="form-control" name="description" rows="6" placeholder="Write down your experiences! :)" onChange={event => setDescription(event.target.value)}></textarea>
+          </div>
+          <div>
+            <button className="btn btn-primary shadow d-block w-100" type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </div>
-    )
+  )
 }
 
 

@@ -22,7 +22,7 @@ function LoginPage() {
     });
     const data = await response.json();
     console.log(data);
-    
+
     if (data.jwt) {
       localStorage.setItem('jwt', data.jwt)
       localStorage.setItem('publicId', data.publicId)
@@ -49,14 +49,14 @@ function LoginPage() {
                     </div>
                     <form className="text-center" method="post" onSubmit={event => handleSubmit(event)}>
                       <div className="mb-3">
-                        <input className="form-control" type="username" name="username" placeholder="Username" onChange={e => setUsername(e.target.value)}/>
-                        </div>
+                        <input className="form-control" type="username" name="username" placeholder="Username" onChange={e => setUsername(e.target.value)} />
+                      </div>
                       <div className="mb-3">
-                        <input className="form-control" type="password" name="password" placeholder="Password" style={{ marginRight: '82px' }} onChange={e => setPassword(e.target.value)}/>
-                        </div>
+                        <input className="form-control" type="password" name="password" placeholder="Password" style={{ marginRight: '82px' }} onChange={e => setPassword(e.target.value)} />
+                      </div>
                       <div className="mb-3">
                         <button className="btn btn-primary d-block w-100" type="submit">Login</button>
-                        </div>
+                      </div>
                       <p className="text-muted">Forgot your password?</p>
                     </form>
                   </div>

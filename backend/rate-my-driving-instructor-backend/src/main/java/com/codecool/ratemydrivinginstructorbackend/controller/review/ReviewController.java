@@ -3,6 +3,7 @@ package com.codecool.ratemydrivinginstructorbackend.controller.review;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.NewReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.service.review.ReviewService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,11 +24,6 @@ public class ReviewController {
         return reviewService.findReviewByInstructorName(lastName, firstName);
     }
 
-    @GetMapping("/count")
-    public int getNumberOfReviews() {
-        return reviewService.countNumberOfReviews();
-    }
-
     @GetMapping
     public List<ReviewDTO> findAllReviews() {
         return reviewService.findAllReviews();
@@ -38,9 +34,16 @@ public class ReviewController {
         return reviewService.findByPublicId(publicId);
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping
     public ReviewDTO createReview(@RequestBody NewReviewDTO newReviewDTO) {
         return reviewService.createReview(newReviewDTO);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{publicId}")
+    public void deleteReview(@PathVariable UUID publicId) {
+        reviewService.deleteReview(publicId);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.codecool.ratemydrivinginstructorbackend.controller.admin;
 
+import com.codecool.ratemydrivinginstructorbackend.controller.appuser.appuserDTO.AppUserForAdminDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.instructor.instructorDTO.InstructorDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.review.reviewDTO.ReviewDTO;
 import com.codecool.ratemydrivinginstructorbackend.controller.school.schoolDTO.NewSchoolDTO;
@@ -62,5 +63,12 @@ public class AdminController {
     @DeleteMapping("/school/{publicId}")
     public void deleteSchool(@PathVariable UUID publicId) {
         schoolService.deleteSchool(publicId);
+    }
+
+    @GetMapping("/appuser")
+    public AppUserForAdminDTO getAppUserByUserName(@RequestParam String username) {
+        var result = appUserService.findByUsername(username);
+        System.out.println(result);
+        return result;
     }
 }
