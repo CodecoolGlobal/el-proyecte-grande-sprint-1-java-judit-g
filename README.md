@@ -47,15 +47,10 @@ This project is a full-stack web application designed to allow users to review a
 1. Clone the project to your local machine:
     ```bash
     git clone git@github.com:CodecoolGlobal/el-proyecte-grande-sprint-1-java-judit-g.git
-    cd rate-my-driving-instructor
+    cd el-proyecte-grande-sprint-1-java-judit-g
     ```
 
-2. Navigate to the backend directory and create a .env file:
-    ```bash
-    cd backend/rate-my-driving-instructor-backend
-    ```
-    Inside this directory, create a .env file with the following content:
-    
+2. Create a .env file:
     ```env
     DB_PASSWORD=your_password
     DB_NAME=your_dbname
