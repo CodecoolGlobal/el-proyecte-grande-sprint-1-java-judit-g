@@ -18,6 +18,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.codecool.ratemydrivinginstructorbackend.repository.appuser.Role.ROLE_USER;
+
 @Configuration
 @EnableMethodSecurity
 public class WebSecurityConfig {
@@ -67,10 +69,10 @@ public class WebSecurityConfig {
                         //regex!
                         auth
                                 .requestMatchers("/api/user/**").permitAll()
-                                .requestMatchers("/api/instructor/**").permitAll()
-                                .requestMatchers("/api/school/**").permitAll()
-                                .requestMatchers("/api/admin/**").permitAll()
-                                .requestMatchers("/api/review/**").permitAll()
+                                .requestMatchers("/api/instructor/**").hasRole("USER")
+                                .requestMatchers("/api/school/**").hasRole("USER")
+                                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/api/review/**").hasRole("USER")
                                 .requestMatchers("/error").permitAll()
                                 .anyRequest().authenticated()
                 );

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    env_file:
+      - .env
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: ./backend/rate-my-driving-instructor-backend
+      dockerfile: Dockerfile
+    container_name: ratemy-spring-boot-app
+    ports:
+      - "9090:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  db:
+    image: 'postgres:15-alpine'
+    container_name: postgres-ratemydrivinginstructor-db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  frontend:
+    build:
+      context: ./frontend   # Path to client folder containing the solarwatch folder
+      dockerfile: Dockerfile
+    container_name: rate-my-driving-instructor-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://spring-boot-app:8080/api
+    depends_on:
+      - app
+
+volumes:
+  postgres-data:

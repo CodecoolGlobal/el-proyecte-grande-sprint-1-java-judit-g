@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ReviewForm from "../component/ReviewForm";
 import InstructorCard from "../component/cards/InstructorCard";
 import ReviewCard from "../component/cards/ReviewCard";
-import '../component/content.css';
+import '../component/Content.css';
 
 
 export default function InstructorPage() {

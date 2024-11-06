@@ -40,7 +40,6 @@ public class AppUserController {
     @PostMapping("/login")
     public ResponseEntity<?> authenticateReviewer(@RequestBody AppUserLoginDTO appUserLoginDTO) {
         JwtResponse jwtResponse = appUserService.authenticateUser(appUserLoginDTO);
-        System.out.println(jwtResponse);
         return ResponseEntity.ok(jwtResponse);
     }
 
