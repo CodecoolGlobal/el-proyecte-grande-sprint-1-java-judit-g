@@ -76,6 +76,7 @@ This project is a full-stack web application designed to allow users to review a
     ```bash
     docker-compose down
     ```
+**Admin Access**: Certain features require administrator access, which you can obtain by logging in with the username `admin` and password `admin`.
 
 ## Docker Commands
 
